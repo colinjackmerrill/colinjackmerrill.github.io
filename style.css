@@ -1,0 +1,17 @@
+.home-split {
+  display: flex;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}
+
+.home-column {
+  flex: 1;
+}
+
+@media (max-width: 700px) {
+  .home-split {
+    flex-direction: column;
+  }
+}
