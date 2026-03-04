@@ -105,6 +105,15 @@ footer .about-link:hover {
   color: inherit;
 }
 
+.site-title svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  color: #aaa;
+  position: relative;
+  top: -1px;
+}
+
 .about-page {
   max-width: 600px;
   margin: 4rem auto;
