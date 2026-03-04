@@ -120,3 +120,18 @@ footer .social-links {
     flex-direction: column;
   }
 }
+
+.hub-grid--wrap {
+  flex-wrap: wrap;
+}
+
+.hub-grid--wrap .hub-item {
+  flex: 1 1 250px;
+  max-width: calc(33% - 2rem);
+}
+
+@media (max-width: 700px) {
+  .hub-grid--wrap .hub-item {
+    max-width: 100%;
+  }
+}
