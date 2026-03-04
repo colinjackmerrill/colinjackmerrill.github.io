@@ -95,16 +95,14 @@
 
   </main>
 
-  <footer>
-    <a href="/">Home</a>
-    <div class="social-links">
-      <a href="https://www.instagram.com/literarycolin/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://bsky.app/profile/colinjackofallbooks.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-      <a href="https://www.goodreads.com/user/show/21366299-colin-jack" target="_blank" rel="noopener">Goodreads</a>
-      <a href="https://fable.co/fabler/literarycolin-410323518390?period_type=year" target="_blank" rel="noopener">Fable</a>
-      <a href="https://app.thestorygraph.com/profile/literarycolin" target="_blank" rel="noopener">StoryGraph</a>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
+</script>
 
 </body>
 </html>
