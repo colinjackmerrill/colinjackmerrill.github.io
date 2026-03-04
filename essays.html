@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Essays by Colin Merrill — including Analyzing Narrative, a series working through the oldest stories in human history."/>
+  <title>Essays — Colin Merrill</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="site-title">
+      Colin Merrill
+      <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="13" y="2" width="14" height="8" rx="1"/>
+        <line x1="16" y1="5" x2="24" y2="5" stroke-width="0.8"/>
+        <line x1="16" y1="7" x2="22" y2="7" stroke-width="0.8"/>
+        <rect x="4" y="10" width="32" height="16" rx="2"/>
+        <rect x="8" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="14" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="20" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="26" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="10" y="19" width="4" height="3" rx="0.5"/>
+        <rect x="16" y="19" width="4" height="3" rx="0.5"/>
+        <rect x="22" y="19" width="4" height="3" rx="0.5"/>
+        <path d="M4 26 L2 32 L38 32 L36 26"/>
+        <circle cx="6" cy="12" r="1.5"/>
+        <circle cx="34" cy="12" r="1.5"/>
+      </svg>
+    </a>
+  </header>
+
+  <main class="essays-page">
+
+    <h1>Essays</h1>
+
+    <section class="essay-series">
+      <h2>Analyzing Narrative</h2>
+      <p class="series-description">A series working through the oldest and most enduring stories in human history to understand how they're built and why they work.</p>
+
+      <ul class="essay-list">
+        <!-- future essays go here, example:
+        <li class="essay-item">
+          <a href="/essays/gilgamesh.html" class="essay-title">Gilgamesh: The First Story</a>
+          <span class="essay-date">March 2026</span>
+          <p class="essay-description">How the world's oldest narrative establishes every story structure that still exists today.</p>
+        </li>
+        -->
+      </ul>
+
+      <p class="empty-state">First essay coming soon.</p>
+
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+        const link = document.getElementById('footer-main-link');
+        if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+          link.textContent = 'Home';
+          link.href = '/';
+        }
+      });
+  </script>
+
+</body>
+</html>
