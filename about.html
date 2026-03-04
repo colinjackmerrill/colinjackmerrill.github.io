@@ -26,6 +26,11 @@
     .then(res => res.text())
     .then(html => {
       document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
     });
 </script>
 
