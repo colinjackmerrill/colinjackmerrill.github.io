@@ -11,6 +11,10 @@ body {
   padding: 0 1rem;
 }
 
+a {
+  color: inherit;
+}
+
 .home-split {
   display: flex;
   gap: 3rem;
