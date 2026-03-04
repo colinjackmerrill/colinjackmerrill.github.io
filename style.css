@@ -214,3 +214,73 @@ footer .about-link:hover {
 .reading-section {
   margin-bottom: 5rem;
 }
+
+.essays-page {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}
+
+.essays-page h1 {
+  margin-bottom: 2rem;
+}
+
+.essay-series {
+  margin-bottom: 4rem;
+}
+
+.essay-series h2 {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.series-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.essay-list {
+  list-style: none;
+}
+
+.essay-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.essay-title {
+  display: block;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 0.2rem;
+}
+
+.essay-title:hover {
+  text-decoration: underline;
+}
+
+.essay-date {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.4rem;
+}
+
+.essay-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.empty-state {
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.9rem;
+}
