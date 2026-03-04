@@ -29,6 +29,16 @@ body {
   }
 }
 
+.home-column h2 a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 2px solid transparent;
+}
+
+.home-column h2 a:hover {
+  border-bottom-color: #1a1a1a;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
