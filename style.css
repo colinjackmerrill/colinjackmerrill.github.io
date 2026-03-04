@@ -51,24 +51,45 @@ a {
 
 footer {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 20px 1rem;
+  margin: 3rem auto 0;
+  padding: 1.5rem 1rem 2rem;
+  border-top: 1px solid #e0e0e0;
 }
 
-footer a {
+footer .about-link {
+  display: block;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.75rem;
   text-decoration: none;
-  color: inherit;
 }
 
-footer a:hover {
-  text-decoration: underline;
+footer .about-link:hover {
+  color: #1a1a1a;
 }
 
 .social-links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
-  margin-top: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: #bbb;
+  margin-top: 0;
 }
 
 
