@@ -27,6 +27,12 @@ a {
   flex: 1;
 }
 
+.home-column svg {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #aaa;
+}
+
 @media (max-width: 700px) {
   .home-split {
     flex-direction: column;
