@@ -1,9 +1,9 @@
 function calcReadTime() {
-  const article = document.querySelector('article') || document.querySelector('.essay-body');
+  const content = document.querySelector('.essay-content');
   const readTimeEl = document.getElementById('read-time');
-  if (!article || !readTimeEl) return;
-  const words = article.innerText.trim().split(/\s+/).length;
+  if (!content || !readTimeEl) return;
+  const words = content.innerText.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / 238);
-  readTimeEl.textContent = `${minutes} min read`;
+  readTimeEl.textContent = minutes + ' min read';
 }
 document.addEventListener('DOMContentLoaded', calcReadTime);
