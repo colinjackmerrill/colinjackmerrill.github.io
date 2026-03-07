@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Essays by Colin Merrill — including Analyzing Narrative, a series working through the oldest stories in human history."/>
+  <meta name="description" content="Essays by Colin Merrill — including On Storytelling and Analyzing Narrative, exploring the craft of fiction and the oldest stories in human history."/>
   <title>Essays — Colin Merrill</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <header class="site-header">
     <a href="/" class="site-title">
       Colin Merrill
@@ -31,31 +30,36 @@
       </svg>
     </a>
   </header>
-
   <main class="essays-page">
-
     <h1>Essays</h1>
+
+    <section class="essay-series">
+      <h2>On Storytelling</h2>
+      <p class="series-description">Essays on the nature of narrative, the craft of fiction, and the human impulse to make meaning through story.</p>
+      <ul class="essay-list">
+        <li class="essay-item">
+          <a href="/essays/we-are-all-storytellers.html" class="essay-title">We Are All Storytellers</a>
+          <span class="essay-date">March 2026</span>
+          <p class="essay-description">On the ancient, inescapable human impulse to make meaning through narrative — and why the stories we tell ourselves matter most.</p>
+        </li>
+      </ul>
+    </section>
 
     <section class="essay-series">
       <h2>Analyzing Narrative</h2>
       <p class="series-description">A series working through the oldest and most enduring stories in human history to understand how they're built and why they work.</p>
-
       <ul class="essay-list">
         <!-- future essays go here, example:
         <li class="essay-item">
           <a href="/essays/gilgamesh.html" class="essay-title">Gilgamesh: The First Story</a>
-          <span class="essay-date">March 2026</span>
+          <span class="essay-date">Coming Soon</span>
           <p class="essay-description">How the world's oldest narrative establishes every story structure that still exists today.</p>
         </li>
         -->
       </ul>
-
       <p class="empty-state">First essay coming soon.</p>
-
     </section>
-
   </main>
-
   <div id="footer-placeholder"></div>
   <script>
     fetch('/footer.html')
@@ -69,6 +73,5 @@
         }
       });
   </script>
-
 </body>
 </html>
