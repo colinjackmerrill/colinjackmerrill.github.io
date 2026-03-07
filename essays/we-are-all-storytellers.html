@@ -165,8 +165,9 @@
     <h1>We Are All Storytellers</h1>
     <p class="essay-subtitle">On the ancient, inescapable human impulse to make meaning through narrative — and why the stories we tell ourselves matter most.</p>
     <div class="essay-meta-line">
-      <span class="essay-date">March 2026</span>
-    </div>
+  <span class="essay-date">March 2026</span>
+  <span class="essay-read-time" id="read-time"></span>
+</div>
     <hr class="essay-rule">
 
     <div class="essay-content">
@@ -303,6 +304,16 @@
   </main>
 
   <div id="footer-placeholder"></div>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const content = document.querySelector('.essay-content');
+    const readTimeEl = document.getElementById('read-time');
+    if (!content || !readTimeEl) return;
+    const words = content.innerText.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / 238);
+    readTimeEl.textContent = minutes + ' min read';
+  });
+</script>
   <script>
     fetch('/footer.html')
       .then(res => res.text())
