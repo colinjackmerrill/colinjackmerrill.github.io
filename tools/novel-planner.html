@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Novel Planner</title>
+<title>Novel Planner — Colin Merrill</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
-    --ink: #1a1208;
-    --paper: #f5f0e8;
-    --aged: #e8e0cc;
+    --ink: #1a1a1a;
+    --paper: #fff;
+    --aged: #f5f0e8;
     --accent: #8b3a1a;
     --faint: #c8bfa8;
     --gold: #b8922a;
     --muted: #6b5e4a;
-    --section-bg: #ede8dc;
+    --section-bg: #f7f4ef;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,16 +27,21 @@
     font-size: 16px;
     line-height: 1.5;
     min-height: 100vh;
-    padding: 40px 20px 80px;
+    padding: 0 0 80px;
   }
 
-  header {
+  .planner-wrap {
+    padding: 40px 20px 0;
+  }
+
+
+  .planner-wrap header {
     text-align: center;
     margin-bottom: 48px;
     position: relative;
   }
 
-  header::after {
+  .planner-wrap header::after {
     content: '';
     display: block;
     width: 120px;
@@ -44,7 +50,7 @@
     margin: 16px auto 0;
   }
 
-  h1 {
+  .planner-wrap h1 {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 2.4rem;
     font-weight: 300;
@@ -52,7 +58,7 @@
     color: var(--ink);
   }
 
-  h1 em {
+  .planner-wrap h1 em {
     font-style: italic;
     color: var(--accent);
   }
@@ -395,6 +401,30 @@
 </head>
 <body>
 
+<header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="13" y="2" width="14" height="8" rx="1"/>
+      <line x1="16" y1="5" x2="24" y2="5" stroke-width="0.8"/>
+      <line x1="16" y1="7" x2="22" y2="7" stroke-width="0.8"/>
+      <rect x="4" y="10" width="32" height="16" rx="2"/>
+      <rect x="8" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="14" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="20" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="26" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="10" y="19" width="4" height="3" rx="0.5"/>
+      <rect x="16" y="19" width="4" height="3" rx="0.5"/>
+      <rect x="22" y="19" width="4" height="3" rx="0.5"/>
+      <path d="M4 26 L2 32 L38 32 L36 26"/>
+      <circle cx="6" cy="12" r="1.5"/>
+      <circle cx="34" cy="12" r="1.5"/>
+    </svg>
+  </a>
+</header>
+
+<div class="planner-wrap">
+
 <header>
   <h1><em>The Novel</em> Planner</h1>
   <p class="subtitle">Theme · Premise · Character · Story</p>
@@ -684,5 +714,20 @@
     });
   });
 </script>
+</div><!-- /.planner-wrap -->
+
+<footer>
+  <a href="/about.html" class="about-link" id="footer-main-link">About Colin</a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/literarycolin/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://bsky.app/profile/colinjackofallbooks.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+    <a href="https://www.goodreads.com/user/show/21366299-colin-jack" target="_blank" rel="noopener">Goodreads</a>
+    <a href="https://fable.co/fabler/literarycolin-410323518390?period_type=year" target="_blank" rel="noopener">Fable</a>
+    <a href="https://app.thestorygraph.com/profile/literarycolin" target="_blank" rel="noopener">StoryGraph</a>
+    <a href="https://pangobooks.com/bookstore/literarycolin" target="_blank" rel="noopener">PangoBooks</a>
+  </div>
+  <p class="copyright">&copy; 2026 Colin Merrill</p>
+</footer>
+
 </body>
 </html>
