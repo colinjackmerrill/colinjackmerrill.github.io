@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novel Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #f5f0e8;
+    --aged: #e8e0cc;
+    --accent: #8b3a1a;
+    --faint: #c8bfa8;
+    --gold: #b8922a;
+    --muted: #6b5e4a;
+    --section-bg: #ede8dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: var(--gold);
+    margin: 16px auto 0;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  .entry-points {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .entry-btn {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border: 1px solid var(--faint);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+
+  .entry-btn:hover, .entry-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(139, 58, 26, 0.04);
+  }
+
+  .entry-btn.active {
+    font-weight: 400;
+  }
+
+  .entry-label {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  /* FLOW LAYOUT */
+  .flow {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .row.trio {
+    gap: 0;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--section-bg);
+    border: 1px solid var(--faint);
+    padding: 20px 22px;
+    flex: 1;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 12px rgba(26,18,8,0.07);
+  }
+
+  .card.highlight {
+    border-color: var(--gold);
+    background: #f0ead8;
+  }
+
+  .card-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-label .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    font-size: 0.65rem;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  .card-hint {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  textarea, input[type="text"] {
+    width: 100%;
+    background: rgba(245, 240, 232, 0.7);
+    border: none;
+    border-bottom: 1px solid var(--faint);
+    color: var(--ink);
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 6px 4px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  textarea:focus, input[type="text"]:focus {
+    border-bottom-color: var(--accent);
+    background: rgba(245, 240, 232, 0.95);
+  }
+
+  textarea { min-height: 70px; }
+  textarea.tall { min-height: 100px; }
+  textarea.short { min-height: 52px; }
+
+  /* ARROWS */
+  .arrow-h {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 1.1rem;
+    position: relative;
+  }
+
+  .arrow-h::before {
+    content: '⟷';
+    font-size: 1.3rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .arrow-v {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .arrow-v::before {
+    content: '↕';
+    font-size: 1.3rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .arrow-down {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+  }
+
+  .arrow-down::before {
+    content: '↓';
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* SPECIAL SECTIONS */
+  .section-divider {
+    text-align: center;
+    margin: 32px 0 16px;
+    position: relative;
+  }
+
+  .section-divider span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--paper);
+    padding: 0 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--faint);
+  }
+
+  /* PILL TAGS */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .tag-input {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(245,240,232,0.8);
+    border: 1px solid var(--faint);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+  }
+
+  .tag-input:hover { border-color: var(--accent); color: var(--accent); }
+  .tag-input.selected { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* TRIO cards for plot */
+  .trio .card { border-right: none; }
+  .trio .card:last-child { border-right: 1px solid var(--faint); }
+
+  .plot-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  /* NOTES */
+  .note-box {
+    background: transparent;
+    border: 1px dashed var(--faint);
+    padding: 16px 20px;
+    margin-top: 0;
+  }
+
+  /* SAVE */
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    padding: 10px 28px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
+  .btn.primary:hover { background: #6d2c13; border-color: #6d2c13; }
+
+  .entry-highlight .card {
+    transition: outline 0.3s;
+  }
+
+  .card.entry-active {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 24px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    border-radius: 2px;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 600px) {
+    .row { flex-direction: column; }
+    .arrow-h { width: 100%; height: 28px; }
+    .arrow-h::before { content: '↕'; }
+    .trio { flex-direction: column; }
+    .trio .card { border-right: 1px solid var(--faint); border-bottom: none; }
+    .trio .card:last-child { border-bottom: 1px solid var(--faint); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><em>The Novel</em> Planner</h1>
+  <p class="subtitle">Theme · Premise · Character · Story</p>
+</header>
+
+<div class="entry-points">
+  <span style="font-size:0.8rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;align-self:center;margin-right:4px;">Start from:</span>
+  <button class="entry-btn active" onclick="setEntry('theme')">Theme</button>
+  <button class="entry-btn" onclick="setEntry('premise')">Premise</button>
+  <button class="entry-btn" onclick="setEntry('character')">Character</button>
+  <button class="entry-btn" onclick="setEntry('story')">Story / Image</button>
+</div>
+
+<p class="entry-label" id="entry-label">Working top-down from theme → premise → character → story</p>
+
+<div class="flow" id="flow">
+
+  <!-- LAYER 1: THEMES -->
+  <div class="row" id="row-theme">
+    <div class="card" id="card-themes" style="max-width:100%">
+      <div class="card-label"><span class="num">1</span> Thematic Territory</div>
+      <div class="card-hint">2–3 topics your story lives inside. These are nouns, not arguments yet.</div>
+      <div class="tags" id="theme-tags">
+        <span class="tag-input" onclick="toggleTag(this)">Mortality</span>
+        <span class="tag-input" onclick="toggleTag(this)">Identity</span>
+        <span class="tag-input" onclick="toggleTag(this)">Power</span>
+        <span class="tag-input" onclick="toggleTag(this)">Grief</span>
+        <span class="tag-input" onclick="toggleTag(this)">Love</span>
+        <span class="tag-input" onclick="toggleTag(this)">Belonging</span>
+        <span class="tag-input" onclick="toggleTag(this)">Redemption</span>
+        <span class="tag-input" onclick="toggleTag(this)">Freedom</span>
+        <span class="tag-input" onclick="toggleTag(this)">Betrayal</span>
+        <span class="tag-input" onclick="toggleTag(this)">Truth</span>
+        <span class="tag-input" onclick="toggleTag(this)">War</span>
+        <span class="tag-input" onclick="toggleTag(this)">Faith</span>
+        <span class="tag-input" onclick="toggleTag(this)">Ambition</span>
+        <span class="tag-input" onclick="toggleTag(this)">Memory</span>
+        <span class="tag-input" onclick="toggleTag(this)">Coming of Age</span>
+        <span class="tag-input" onclick="toggleTag(this)">Transformation</span>
+      </div>
+      <input type="text" id="theme-custom" placeholder="or write your own topics…" style="margin-top:10px;">
+    </div>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- LAYER 2: THEMATIC CLAIM -->
+  <div class="row" id="row-claim">
+    <div class="card highlight" id="card-claim" style="max-width:100%">
+      <div class="card-label"><span class="num">2</span> Thematic Claim</div>
+      <div class="card-hint">What does your story <em>argue</em> about those topics? One sentence. Should be arguable — someone could write a great story that disagrees with it.</div>
+      <textarea id="claim" placeholder="e.g. "The acceptance of death is the beginning of a meaningful life.""></textarea>
+    </div>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- LAYER 3: PREMISE + CHARACTER side by side -->
+  <div class="row" id="row-mid">
+    <div class="card" id="card-premise">
+      <div class="card-label"><span class="num">3</span> Premise</div>
+      <div class="card-hint">The "what if" that generates your story. A situation that puts maximum pressure on your thematic claim.</div>
+      <textarea id="premise" class="tall" placeholder="e.g. "What if a king who believes his greatness exempts him from death loses his only friend — and must choose between impossible immortality and accepting what he already has?""></textarea>
+    </div>
+    <div class="arrow-h"></div>
+    <div class="card" id="card-character">
+      <div class="card-label"><span class="num">4</span> Central Character</div>
+      <div class="card-hint">Who is the right person to test your premise? Define them from the inside out.</div>
+      <div style="margin-bottom:10px;">
+        <div class="plot-label">Wound</div>
+        <textarea id="char-wound" class="short" placeholder="What happened to them (or didn't) that shaped everything?"></textarea>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div class="plot-label">Fear</div>
+        <textarea id="char-fear" class="short" placeholder="What do they most want to avoid?"></textarea>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div class="plot-label">False Belief / Contradiction</div>
+        <textarea id="char-belief" class="short" placeholder="What lie do they tell themselves? What do they believe about the world that isn't true?"></textarea>
+      </div>
+      <div>
+        <div class="plot-label">Want vs. Need</div>
+        <textarea id="char-want" class="short" placeholder="What do they consciously want? What do they actually need (usually the opposite)?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- LAYER 4: WORLD + TONE -->
+  <div class="row trio" id="row-world">
+    <div class="card" id="card-world">
+      <div class="card-label"><span class="num">5</span> World & Setting</div>
+      <div class="card-hint">Where and when. What does the physical world press against the character?</div>
+      <textarea id="world" placeholder="Time period, place, atmosphere. What does this world want from people?"></textarea>
+    </div>
+    <div class="card" id="card-tone">
+      <div class="card-label"><span class="num">6</span> Tone & Voice</div>
+      <div class="card-hint">What register does this story live in?</div>
+      <textarea id="tone" placeholder="e.g. elegiac and interior / propulsive and dark / quietly comic…"></textarea>
+    </div>
+    <div class="card" id="card-supporting">
+      <div class="card-label"><span class="num">7</span> Supporting Characters</div>
+      <div class="card-hint">Who tests, mirrors, or opposes the protagonist?</div>
+      <textarea id="supporting" placeholder="Foil, mentor, antagonist, love interest — and what each one represents thematically."></textarea>
+    </div>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- LAYER 5: STORY / PLOT -->
+  <div class="section-divider"><span>Story Structure</span></div>
+
+  <div class="row trio" id="row-plot">
+    <div class="card" id="card-begin">
+      <div class="card-label"><span class="num">8</span> Beginning</div>
+      <div class="plot-label" style="margin-top:4px">Opening World</div>
+      <textarea id="begin-world" class="short" placeholder="The protagonist in their ordinary world. False belief in full operation."></textarea>
+      <div class="plot-label" style="margin-top:10px">Inciting Incident</div>
+      <textarea id="begin-incident" class="short" placeholder="The event that makes the old life impossible. Forces a choice."></textarea>
+    </div>
+    <div class="card" id="card-mid">
+      <div class="card-label"><span class="num">9</span> Middle</div>
+      <div class="plot-label" style="margin-top:4px">Rising Pressure</div>
+      <textarea id="mid-rising" class="short" placeholder="What escalating events force the false belief to crack?"></textarea>
+      <div class="plot-label" style="margin-top:10px">Midpoint Shift</div>
+      <textarea id="mid-shift" class="short" placeholder="Something changes — a revelation, a loss, a turn of the screw."></textarea>
+      <div class="plot-label" style="margin-top:10px">Crisis / Dark Night</div>
+      <textarea id="mid-crisis" class="short" placeholder="All is lost. The false belief is fully exposed. The choice must be made."></textarea>
+    </div>
+    <div class="card" id="card-end">
+      <div class="card-label"><span class="num">10</span> End</div>
+      <div class="plot-label" style="margin-top:4px">Climax</div>
+      <textarea id="end-climax" class="short" placeholder="The protagonist acts from their true self (or fails to). The thematic claim is tested to its limit."></textarea>
+      <div class="plot-label" style="margin-top:10px">Resolution</div>
+      <textarea id="end-resolution" class="short" placeholder="What does the world look like now? What has changed — and what hasn't?"></textarea>
+      <div class="plot-label" style="margin-top:10px">Final Image</div>
+      <textarea id="end-image" class="short" placeholder="The last thing the reader sees. Should echo or invert the opening image."></textarea>
+    </div>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- LAYER 6: OPEN QUESTIONS -->
+  <div class="row" id="row-notes">
+    <div class="card note-box" style="max-width:100%">
+      <div class="card-label"><span class="num">11</span> Open Questions & Gaps</div>
+      <div class="card-hint">What don't you know yet? What is the story resisting? What are you most afraid of in this material?</div>
+      <textarea id="notes" class="tall" placeholder="Leave space for uncertainty here. The gaps are often where the real story lives."></textarea>
+    </div>
+  </div>
+
+</div>
+
+<!-- ACTIONS -->
+<div class="actions">
+  <button class="btn" onclick="clearAll()">Clear All</button>
+  <button class="btn primary" onclick="saveToFile()">Export as Text</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const entryDescriptions = {
+    theme: 'Working top-down from theme → premise → character → story',
+    premise: 'Starting from premise — then asking: what character best tests it? What theme does it serve?',
+    character: 'Starting from character — then asking: what situation exposes their wound? What does the story argue?',
+    story: 'Starting from a scene or image — then reverse-engineering: what character lives here? What does it mean?'
+  };
+
+  const entryHighlights = {
+    theme: ['card-themes', 'card-claim'],
+    premise: ['card-premise', 'card-claim'],
+    character: ['card-character'],
+    story: ['card-begin', 'card-end']
+  };
+
+  function setEntry(type) {
+    document.querySelectorAll('.entry-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('entry-label').textContent = entryDescriptions[type];
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('entry-active'));
+    (entryHighlights[type] || []).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('entry-active');
+    });
+  }
+
+  function toggleTag(el) {
+    el.classList.toggle('selected');
+  }
+
+  function getSelectedTags() {
+    return Array.from(document.querySelectorAll('.tag-input.selected')).map(t => t.textContent).join(', ');
+  }
+
+  function val(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function saveToFile() {
+    const tags = getSelectedTags();
+    const custom = val('theme-custom');
+    const topics = [tags, custom].filter(Boolean).join('; ');
+
+    const lines = [
+      '═══════════════════════════════════════',
+      '           THE NOVEL PLANNER',
+      '═══════════════════════════════════════',
+      '',
+      '1. THEMATIC TERRITORY',
+      topics || '(not filled in)',
+      '',
+      '2. THEMATIC CLAIM',
+      val('claim') || '(not filled in)',
+      '',
+      '3. PREMISE',
+      val('premise') || '(not filled in)',
+      '',
+      '4. CENTRAL CHARACTER',
+      '  Wound: ' + (val('char-wound') || '—'),
+      '  Fear: ' + (val('char-fear') || '—'),
+      '  False Belief: ' + (val('char-belief') || '—'),
+      '  Want vs. Need: ' + (val('char-want') || '—'),
+      '',
+      '5. WORLD & SETTING',
+      val('world') || '(not filled in)',
+      '',
+      '6. TONE & VOICE',
+      val('tone') || '(not filled in)',
+      '',
+      '7. SUPPORTING CHARACTERS',
+      val('supporting') || '(not filled in)',
+      '',
+      '─── STORY STRUCTURE ───────────────────',
+      '',
+      '8. BEGINNING',
+      '  Opening World: ' + (val('begin-world') || '—'),
+      '  Inciting Incident: ' + (val('begin-incident') || '—'),
+      '',
+      '9. MIDDLE',
+      '  Rising Pressure: ' + (val('mid-rising') || '—'),
+      '  Midpoint Shift: ' + (val('mid-shift') || '—'),
+      '  Crisis / Dark Night: ' + (val('mid-crisis') || '—'),
+      '',
+      '10. END',
+      '  Climax: ' + (val('end-climax') || '—'),
+      '  Resolution: ' + (val('end-resolution') || '—'),
+      '  Final Image: ' + (val('end-image') || '—'),
+      '',
+      '11. OPEN QUESTIONS & GAPS',
+      val('notes') || '(not filled in)',
+      '',
+      '═══════════════════════════════════════',
+    ];
+
+    const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'novel-plan.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Exported as novel-plan.txt');
+  }
+
+  function clearAll() {
+    if (!confirm('Clear everything?')) return;
+    document.querySelectorAll('textarea, input[type="text"]').forEach(el => el.value = '');
+    document.querySelectorAll('.tag-input.selected').forEach(el => el.classList.remove('selected'));
+    showToast('Cleared.');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  // Auto-resize textareas
+  document.querySelectorAll('textarea').forEach(ta => {
+    ta.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
+    });
+  });
+</script>
+</body>
+</html>
