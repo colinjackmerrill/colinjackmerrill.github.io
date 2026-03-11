@@ -467,7 +467,8 @@
   .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
   .btn.primary:hover { background: #6d2c13; }
 
-  .toast {
+  .btn.share { background: #2a3a2a; color: #c8d8b8; border-color: #2a3a2a; letter-spacing: 0.12em; }
+  .btn.share:hover { background: #1a2a1a; border-color: #1a2a1a; }
     position: fixed;
     bottom: 28px;
     left: 50%;
@@ -620,6 +621,7 @@
     <button class="btn" onclick="resetAll()">Reset to 3</button>
     <button class="btn secondary" onclick="window.print()">Save as PDF</button>
     <button class="btn primary" onclick="exportTxt()">Export as Text</button>
+    <button class="btn share" onclick="generateShareCard()">Share Card</button>
   </div>
 
 </div>
@@ -888,6 +890,266 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ── SHARE CARD ────────────────────────────────────────────
+function generateShareCard() {
+  const title  = document.getElementById('book-title').value.trim() || 'Untitled';
+  const author = document.getElementById('book-author').value.trim() || '';
+  const avg    = Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 4) / 4;
+  const desc   = descriptor(avg);
+  const coverSrc = document.getElementById('cover-preview').src;
+  const hasCover = document.getElementById('cover-preview').classList.contains('loaded');
+
+  // 4:5 at 2× for crisp retina export → 1080×1350
+  const W = 1080, H = 1350;
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+
+  const INK    = '#1a1a1a';
+  const PAPER  = '#faf8f4';
+  const ACCENT = '#8b3a1a';
+  const GOLD   = '#b8922a';
+  const MUTED  = '#6b5e4a';
+  const FAINT  = '#d8d0bc';
+  const DARK   = '#111008';
+
+  function drawCard() {
+    // ── BACKGROUND ─────────────────────────────────────────
+    ctx.fillStyle = DARK;
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle warm texture overlay — faint horizontal lines
+    ctx.strokeStyle = 'rgba(255,240,200,0.025)';
+    ctx.lineWidth = 1;
+    for (let y = 0; y < H; y += 6) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+
+    // Top accent bar
+    const barGrad = ctx.createLinearGradient(0, 0, W, 0);
+    barGrad.addColorStop(0, ACCENT);
+    barGrad.addColorStop(1, '#5a2010');
+    ctx.fillStyle = barGrad;
+    ctx.fillRect(0, 0, W, 6);
+
+    // ── COVER ────────────────────────────────────────────────
+    const coverX = 88, coverY = 88;
+    const coverW = 220, coverH = 300;
+
+    if (hasCover) {
+      const img = document.getElementById('cover-preview');
+      // Shadow behind cover
+      ctx.shadowColor = 'rgba(0,0,0,0.7)';
+      ctx.shadowBlur = 40;
+      ctx.shadowOffsetX = 12;
+      ctx.shadowOffsetY = 16;
+      ctx.drawImage(img, coverX, coverY, coverW, coverH);
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+    } else {
+      // Placeholder cover block
+      ctx.fillStyle = '#2a2018';
+      ctx.fillRect(coverX, coverY, coverW, coverH);
+      ctx.strokeStyle = '#3a3028';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(coverX, coverY, coverW, coverH);
+      ctx.fillStyle = '#4a4038';
+      ctx.font = '28px Georgia';
+      ctx.textAlign = 'center';
+      ctx.fillText('📖', coverX + coverW/2, coverY + coverH/2 + 10);
+    }
+
+    // ── TITLE & AUTHOR ───────────────────────────────────────
+    const textX = coverX + coverW + 52;
+    const textMaxW = W - textX - 80;
+
+    // Author (small caps style above title)
+    ctx.fillStyle = GOLD;
+    ctx.font = '500 26px Georgia';
+    ctx.textAlign = 'left';
+    ctx.letterSpacing = '0.15em';
+    const authorDisplay = author.toUpperCase();
+    ctx.fillText(authorDisplay, textX, coverY + 44, textMaxW);
+
+    // Title — large, italic, Cormorant-like weight
+    ctx.fillStyle = '#f5f0e8';
+    ctx.font = 'italic 300 72px Georgia';
+    ctx.textAlign = 'left';
+
+    // Word-wrap title
+    const titleWords = title.split(' ');
+    let titleLines = [];
+    let currentLine = '';
+    for (const word of titleWords) {
+      const test = currentLine ? currentLine + ' ' + word : word;
+      if (ctx.measureText(test).width > textMaxW) {
+        if (currentLine) titleLines.push(currentLine);
+        currentLine = word;
+      } else {
+        currentLine = test;
+      }
+    }
+    if (currentLine) titleLines.push(currentLine);
+    titleLines = titleLines.slice(0, 3); // max 3 lines
+
+    const titleLineH = 80;
+    titleLines.forEach((line, i) => {
+      ctx.fillText(line, textX, coverY + 90 + i * titleLineH, textMaxW);
+    });
+
+    // Thin gold rule under title area
+    const ruleY = coverY + 110 + titleLines.length * titleLineH;
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(textX, ruleY);
+    ctx.lineTo(textX + textMaxW, ruleY);
+    ctx.stroke();
+
+    // ── SCORE SECTION ────────────────────────────────────────
+    const scoreY = coverY + coverH + 72;
+
+    // Descriptor label
+    ctx.fillStyle = 'rgba(255,240,200,0.45)';
+    ctx.font = '300 30px Georgia';
+    ctx.letterSpacing = '0.2em';
+    ctx.textAlign = 'left';
+    ctx.fillText(desc.toUpperCase(), 88, scoreY);
+
+    // Big score number
+    ctx.fillStyle = GOLD;
+    ctx.font = '300 160px Georgia';
+    ctx.textAlign = 'left';
+    ctx.letterSpacing = '0em';
+    ctx.fillText(fmt(avg), 78, scoreY + 148);
+
+    // /5
+    ctx.fillStyle = 'rgba(184,146,42,0.4)';
+    ctx.font = '300 52px Georgia';
+    ctx.textAlign = 'left';
+    const scoreW = ctx.measureText(fmt(avg)).width;
+    ctx.fillText('/ 5', 88 + scoreW + 12, scoreY + 148);
+
+    // ── STAR ROW ─────────────────────────────────────────────
+    const starY = scoreY + 185;
+    const starSize = 56;
+    const starGap = 14;
+    const totalStarW = 5 * starSize + 4 * starGap;
+    const starStartX = 88;
+
+    for (let s = 1; s <= 5; s++) {
+      const fill = Math.min(1, Math.max(0, avg - (s - 1)));
+      drawCanvasStar(ctx, starStartX + (s-1) * (starSize + starGap), starY, starSize, fill, GOLD, '#3a3020');
+    }
+
+    // ── CRITERIA BREAKDOWN ───────────────────────────────────
+    const bkY = starY + starSize + 70;
+    const colW = (W - 176) / 2;
+    const rowH = 46;
+
+    // Section label
+    ctx.fillStyle = 'rgba(255,240,200,0.3)';
+    ctx.font = '300 22px Georgia';
+    ctx.letterSpacing = '0.18em';
+    ctx.textAlign = 'left';
+    ctx.fillText('CRITERIA BREAKDOWN', 88, bkY - 18);
+
+    // Thin rule
+    ctx.strokeStyle = 'rgba(255,240,200,0.1)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(88, bkY - 8); ctx.lineTo(W - 88, bkY - 8); ctx.stroke();
+
+    CRITERIA.forEach((c, i) => {
+      const col = i < 6 ? 0 : 1;
+      const row = i < 6 ? i : i - 6;
+      const cx = 88 + col * (colW + 24);
+      const cy = bkY + row * rowH + 32;
+
+      // Short criterion name
+      const shortName = c.name.split('/')[0].trim().split(' ').slice(0, 3).join(' ');
+      ctx.fillStyle = 'rgba(255,240,200,0.5)';
+      ctx.font = '300 20px Georgia';
+      ctx.letterSpacing = '0em';
+      ctx.textAlign = 'left';
+      ctx.fillText(shortName, cx, cy);
+
+      // Mini stars (3 tiny ones)
+      const miniStarSize = 14;
+      const miniGap = 3;
+      const miniX = cx + colW - (5 * miniStarSize + 4 * miniGap) - 8;
+      for (let s = 1; s <= 5; s++) {
+        const fill = Math.min(1, Math.max(0, scores[i] - (s-1)));
+        drawCanvasStar(ctx, miniX + (s-1)*(miniStarSize + miniGap), cy - miniStarSize + 2, miniStarSize, fill, GOLD, '#2a2018');
+      }
+    });
+
+    // ── BRANDING ─────────────────────────────────────────────
+    const brandY = H - 60;
+    ctx.fillStyle = 'rgba(255,240,200,0.2)';
+    ctx.font = '300 24px Georgia';
+    ctx.letterSpacing = '0.12em';
+    ctx.textAlign = 'center';
+    ctx.fillText('@literarycolin  ·  colinmerrill.com', W/2, brandY);
+
+    // Bottom accent line
+    ctx.strokeStyle = ACCENT;
+    ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(88, H - 32); ctx.lineTo(W - 88, H - 32); ctx.stroke();
+
+    // ── DOWNLOAD ─────────────────────────────────────────────
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 30);
+    const a = document.createElement('a');
+    a.download = `share-${slug}.png`;
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+    showToast('Share card downloaded.');
+  }
+
+  // If we have a cover image, make sure it's loaded (it already is as a data URL)
+  drawCard();
+}
+
+// ── CANVAS STAR ───────────────────────────────────────────
+function drawCanvasStar(ctx, x, y, size, fill, colorFull, colorEmpty) {
+  // Draw a 5-point star at (x, y) with given size, partially filled
+  const cx = x + size / 2, cy = y + size / 2;
+  const outerR = size / 2, innerR = size / 2 * 0.42;
+  const points = 5;
+
+  function starPath() {
+    ctx.beginPath();
+    for (let i = 0; i < points * 2; i++) {
+      const r = i % 2 === 0 ? outerR : innerR;
+      const angle = (i * Math.PI / points) - Math.PI / 2;
+      const px = cx + r * Math.cos(angle);
+      const py = cy + r * Math.sin(angle);
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+  }
+
+  if (fill <= 0) {
+    ctx.fillStyle = colorEmpty;
+    starPath(); ctx.fill();
+  } else if (fill >= 1) {
+    ctx.fillStyle = colorFull;
+    starPath(); ctx.fill();
+  } else {
+    // Draw empty first, then clip a gradient fill on top
+    ctx.fillStyle = colorEmpty;
+    starPath(); ctx.fill();
+
+    ctx.save();
+    starPath();
+    ctx.clip();
+    ctx.fillStyle = colorFull;
+    ctx.fillRect(cx - outerR, cy - outerR, outerR * 2 * fill, outerR * 2);
+    ctx.restore();
+  }
 }
 
 // ── COVER ─────────────────────────────────────────────────
