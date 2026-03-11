@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Rater — Colin Merrill</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fff;
+    --accent: #8b3a1a;
+    --faint: #d8d0bc;
+    --gold: #b8922a;
+    --muted: #6b5e4a;
+    --card-bg: #faf8f4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0 0 80px;
+  }
+
+  .rater-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 48px 24px 0;
+  }
+
+  /* HEADER */
+  .rater-header { text-align: center; margin-bottom: 48px; }
+  .rater-header h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+  .rater-header h1 em { font-style: italic; color: var(--accent); }
+  .rater-header::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 1px;
+    background: var(--gold);
+    margin: 18px auto 0;
+  }
+  .rater-header p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+
+  /* BOOK INFO */
+  .book-info {
+    background: var(--card-bg);
+    border: 1px solid var(--faint);
+    padding: 18px 22px 4px;
+    margin-bottom: 2px;
+  }
+  .book-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+  .field-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 5px;
+    display: block;
+  }
+  .book-info input[type="text"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--faint);
+    color: var(--ink);
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    padding: 4px 0 6px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 14px;
+  }
+  .book-info input[type="text"]:focus { border-bottom-color: var(--accent); }
+
+  /* BOOK INFO LAYOUT */
+  .book-info-layout {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .book-info-fields { flex: 1; min-width: 0; }
+
+  /* COVER UPLOAD */
+  .cover-zone {
+    width: 80px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .cover-placeholder {
+    width: 80px;
+    height: 108px;
+    border: 1.5px dashed var(--faint);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--faint);
+    transition: all 0.18s;
+    background: #fff;
+    position: relative;
+  }
+  .cover-zone:hover .cover-placeholder {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .cover-placeholder svg { flex-shrink: 0; }
+  .cover-placeholder span {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 4px;
+  }
+  .cover-preview {
+    display: none;
+    width: 80px;
+    height: 108px;
+    object-fit: cover;
+    position: relative;
+  }
+  .cover-preview.loaded { display: block; }
+  .cover-remove {
+    display: none;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    z-index: 2;
+  }
+  .cover-remove.visible { display: flex; }
+  .cover-wrap {
+    position: relative;
+    display: inline-block;
+  }
+  input#cover-input { display: none; }
+
+  /* HEADER LINKS */
+  .header-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .header-link-btn {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+    text-decoration: underline;
+    text-decoration-color: var(--faint);
+    text-underline-offset: 3px;
+  }
+  .header-link-btn:hover, .header-link-btn.open { color: var(--accent); text-decoration-color: var(--accent); }
+  .header-link-sep { color: var(--faint); font-size: 0.82rem; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,26,26,0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--paper);
+    border: 1px solid var(--faint);
+    max-width: 520px;
+    width: 100%;
+    padding: 32px 30px 26px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .modal h2 em { font-style: italic; color: var(--accent); }
+  .modal p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .modal p:last-of-type { margin-bottom: 0; }
+  .modal strong { color: var(--ink); font-weight: 500; }
+  .modal-formula {
+    background: var(--card-bg);
+    border: 1px solid var(--faint);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .modal-formula code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--muted);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.15s;
+  }
+  .modal-close:hover { color: var(--ink); }
+
+  /* ANCHOR PANEL */
+  .anchor-panel {
+    display: none;
+    background: #fff;
+    border: 1px solid var(--faint);
+    border-left: 3px solid var(--gold);
+    padding: 15px 18px;
+    margin-bottom: 14px;
+    line-height: 1.65;
+    color: #3a3020;
+  }
+  .anchor-panel.open { display: block; }
+  .anchor-row { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--faint); }
+  .anchor-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .anchor-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .anchor-row p { font-size: 0.84rem; color: var(--muted); margin: 0; line-height: 1.5; }
+
+  /* CRITERIA */
+  .criteria-section { margin-bottom: 2px; }
+  .criteria-row {
+    background: var(--card-bg);
+    border: 1px solid var(--faint);
+    border-bottom: none;
+  }
+  .criteria-row:last-child { border-bottom: 1px solid var(--faint); }
+
+  .criteria-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 14px;
+    transition: background 0.15s;
+  }
+  .criteria-row:hover .criteria-main { background: #f5f2ec; }
+
+  .criteria-left {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .criteria-name { font-size: 0.95rem; color: var(--ink); line-height: 1.3; }
+
+  .desc-toggle {
+    font-size: 0.72rem;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    text-align: left;
+    margin-top: 2px;
+    opacity: 0.65;
+    transition: opacity 0.15s, color 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .desc-toggle:hover { opacity: 1; color: var(--accent); }
+
+  .criteria-desc {
+    display: none;
+    font-size: 0.855rem;
+    color: var(--muted);
+    line-height: 1.6;
+    padding: 10px 14px 12px;
+    border-top: 1px solid var(--faint);
+    background: #f9f7f3;
+    font-style: italic;
+  }
+  .criteria-desc.open { display: block; }
+
+  /* STARS */
+  .star-display { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .stars { display: flex; gap: 1px; }
+
+  .star-wrap {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .star-wrap:hover { transform: scale(1.15); }
+  .star-wrap svg { position: absolute; top: 0; left: 0; width: 22px; height: 22px; pointer-events: none; }
+
+  .score-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    min-width: 34px;
+    text-align: right;
+  }
+
+  .stepper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--faint);
+    border-radius: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .step-btn {
+    background: transparent;
+    border: none;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s;
+    padding: 0;
+    line-height: 1;
+  }
+  .step-btn:hover { background: var(--faint); color: var(--ink); }
+  .step-btn:disabled { opacity: 0.25; cursor: default; }
+
+  /* FINAL RATING */
+  .final-card {
+    background: var(--ink);
+    color: #fff;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2px;
+    gap: 20px;
+  }
+  .final-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .final-descriptor {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    margin-top: 3px;
+  }
+  .final-right { text-align: right; }
+  .final-stars { display: flex; gap: 3px; align-items: center; justify-content: flex-end; margin-bottom: 2px; }
+  .final-score {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .final-score .out-of {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    margin-left: 3px;
+  }
+
+  .unrated-notice {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    padding: 9px 26px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.18s;
+    border-radius: 2px;
+  }
+  .btn:hover { background: var(--ink); color: #fff; }
+  .btn.secondary { background: var(--gold); color: #fff; border-color: var(--gold); }
+  .btn.secondary:hover { background: #9a7a22; border-color: #9a7a22; }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn.primary:hover { background: #6d2c13; }
+
+  .toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(14px);
+    background: var(--ink);
+    color: #fff;
+    padding: 8px 20px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.88rem;
+    opacity: 0;
+    transition: all 0.22s;
+    pointer-events: none;
+    border-radius: 2px;
+    z-index: 999;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media print {
+    .site-header, footer, .actions, .anchor-btn, .anchor-panel,
+    .stepper, .desc-toggle, .criteria-desc, .header-links,
+    .modal-overlay, .cover-placeholder, .cover-remove { display: none !important; }
+    .cover-preview.loaded { display: block !important; }
+    body { padding: 0; font-size: 13px; }
+    .rater-wrap { padding: 20px; max-width: 100%; }
+    .final-card { background: #1a1a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cover-preview { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media (max-width: 540px) {
+    .book-info-grid { grid-template-columns: 1fr; }
+    .criteria-name { font-size: 0.88rem; }
+    .final-score { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="13" y="2" width="14" height="8" rx="1"/>
+      <line x1="16" y1="5" x2="24" y2="5" stroke-width="0.8"/>
+      <line x1="16" y1="7" x2="22" y2="7" stroke-width="0.8"/>
+      <rect x="4" y="10" width="32" height="16" rx="2"/>
+      <rect x="8" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="14" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="20" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="26" y="14" width="4" height="3" rx="0.5"/>
+      <rect x="10" y="19" width="4" height="3" rx="0.5"/>
+      <rect x="16" y="19" width="4" height="3" rx="0.5"/>
+      <rect x="22" y="19" width="4" height="3" rx="0.5"/>
+      <path d="M4 26 L2 32 L38 32 L36 26"/>
+      <circle cx="6" cy="12" r="1.5"/>
+      <circle cx="34" cy="12" r="1.5"/>
+    </svg>
+  </a>
+</header>
+
+<div class="rater-wrap">
+
+  <div class="rater-header">
+    <h1><em>Book</em> Rater</h1>
+    <p>Quarter-Star Scoring · 12 Criteria</p>
+    <div class="header-links">
+      <button class="header-link-btn" id="anchor-toggle" onclick="toggleAnchors()">Scoring anchors</button>
+      <span class="header-link-sep">·</span>
+      <button class="header-link-btn" onclick="openModal()">How is this scored?</button>
+    </div>
+  </div>
+
+  <div class="book-info">
+    <div class="book-info-layout">
+
+      <!-- COVER UPLOAD -->
+      <div class="cover-zone" onclick="document.getElementById('cover-input').click()" title="Add cover image">
+        <div class="cover-wrap">
+          <div class="cover-placeholder" id="cover-placeholder">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <span>Add cover</span>
+          </div>
+          <img id="cover-preview" class="cover-preview" alt="Book cover">
+          <button class="cover-remove" id="cover-remove" onclick="removeCover(event)" title="Remove cover">×</button>
+        </div>
+      </div>
+      <input type="file" id="cover-input" accept="image/*" onchange="handleCover(event)">
+
+      <!-- FIELDS -->
+      <div class="book-info-fields">
+        <div class="book-info-grid">
+          <div>
+            <label class="field-label" for="book-title">Title</label>
+            <input type="text" id="book-title" placeholder="Book title…">
+          </div>
+          <div>
+            <label class="field-label" for="book-author">Author</label>
+            <input type="text" id="book-author" placeholder="Author name…">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="anchor-panel" id="anchor-panel">
+    <div class="anchor-row">
+      <span class="anchor-score">5 — Exceptional</span>
+      <p>Among the strongest examples you've encountered. Executed with confidence and intention. Elevates the book as a whole. Little to no meaningful weakness in this area.</p>
+    </div>
+    <div class="anchor-row">
+      <span class="anchor-score">4 — Strong</span>
+      <p>Consistently effective with minor issues. Occasional weaknesses but never distracting. Clearly above average and thoughtfully executed.</p>
+    </div>
+    <div class="anchor-row">
+      <span class="anchor-score">3 — Mixed / Adequate</span>
+      <p>Works about half the time. Noticeable issues or inconsistencies. Neither a strength nor a serious weakness — competent but unremarkable.</p>
+    </div>
+    <div class="anchor-row">
+      <span class="anchor-score">2 — Weak</span>
+      <p>More problems than successes. Noticeably undermines the reading experience. Would benefit significantly from improvement.</p>
+    </div>
+    <div class="anchor-row">
+      <span class="anchor-score">1 — Poor / Failing</span>
+      <p>A consistent and significant problem. Actively damages the book. Among the weakest examples you've encountered in this category.</p>
+    </div>
+  </div>
+
+  <div class="criteria-section" id="criteria-section"></div>
+
+  <div class="final-card">
+    <div>
+      <div class="final-label">Final Rating</div>
+      <div class="final-descriptor" id="final-descriptor">—</div>
+    </div>
+    <div class="final-right">
+      <div class="final-stars" id="final-stars"></div>
+      <div class="final-score">
+        <span id="score-val">—</span><span class="out-of"> / 5</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="unrated-notice" id="unrated-notice">All criteria default to 3. Click stars to set a score, or use − / + for quarter-star precision.</p>
+
+  <div class="actions">
+    <button class="btn" onclick="resetAll()">Reset to 3</button>
+    <button class="btn secondary" onclick="window.print()">Save as PDF</button>
+    <button class="btn primary" onclick="exportTxt()">Export as Text</button>
+  </div>
+
+</div>
+
+<!-- HOW IS THIS SCORED? MODAL -->
+<div class="modal-overlay" id="score-modal" onclick="closeModalIfOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    <h2>How is this <em>scored?</em></h2>
+    <p>The final rating is a simple <strong>equal-weight average</strong> of all 12 criteria. No criterion counts more than any other — each one is worth exactly the same amount toward the final number.</p>
+    <div class="modal-formula">
+      <strong>Formula:</strong><br>
+      <code>Final Rating = (sum of all 12 scores) ÷ 12</code><br><br>
+      The result is rounded to the nearest <strong>quarter-star</strong> (0.25 increments) and expressed on a 1–5 scale.
+    </div>
+    <p>This means a 5 in Prose Style and a 5 in Reading Experience pull the average equally. If you care more about one criterion than another, let that influence how carefully you score it — but the math treats them the same.</p>
+    <p>The final number is also translated into a plain-English descriptor: <strong>Extraordinary</strong> (4.75+), <strong>Excellent</strong> (4.25+), <strong>Very Good</strong> (3.75+), <strong>Good</strong> (3.25+), <strong>Mixed</strong> (2.75+), <strong>Below Average</strong> (2.25+), <strong>Weak</strong> (1.75+), or <strong>Poor</strong>.</p>
+    <p>All criteria default to <strong>3 (Mixed / Adequate)</strong> when you open the tool. Adjust only the ones you feel strongly about, and the ones you leave at 3 will act as a neutral baseline.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="/about.html" class="about-link">About Colin</a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/literarycolin/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://bsky.app/profile/colinjackofallbooks.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+    <a href="https://www.goodreads.com/user/show/21366299-colin-jack" target="_blank" rel="noopener">Goodreads</a>
+    <a href="https://fable.co/fabler/literarycolin-410323518390?period_type=year" target="_blank" rel="noopener">Fable</a>
+    <a href="https://app.thestorygraph.com/profile/literarycolin" target="_blank" rel="noopener">StoryGraph</a>
+    <a href="https://pangobooks.com/bookstore/literarycolin" target="_blank" rel="noopener">PangoBooks</a>
+  </div>
+  <p class="copyright">&copy; 2026 Colin Merrill</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CRITERIA ──────────────────────────────────────────────
+const CRITERIA = [
+  {
+    name: 'Prose Clarity / Ease of Understanding',
+    desc: 'How readable and comprehensible the prose is at the sentence and paragraph level. Consider syntax, density, and whether any confusion feels intentional or accidental. High clarity doesn\'t mean simplicity — it means the difficulty is purposeful.'
+  },
+  {
+    name: 'Prose Style / Voice',
+    desc: 'The distinctiveness and quality of the author\'s voice — its music, rhythm, imagery, and texture. Does the style enhance the reading experience, or work against it? A strong voice feels inevitable rather than performed.'
+  },
+  {
+    name: 'Character Development',
+    desc: 'The depth, complexity, and believability of the characters. Do they grow, surprise, and feel driven by interior logic — or do they exist to serve the plot? The best characters have lives that seem to extend beyond the page.'
+  },
+  {
+    name: 'Emotional Impact',
+    desc: 'The emotional response the book evokes — how fully it moved, unsettled, delighted, or lingered with you. This isn\'t about whether a book made you cry; it\'s about whether it created genuine feeling that feels earned rather than manipulated.'
+  },
+  {
+    name: 'Plot / Narrative Cohesion',
+    desc: 'How well the story holds together structurally. Are cause and effect clear? Do events feel purposeful rather than scattered? Narrative cohesion doesn\'t require conventional plotting — it requires that the sequence of events have internal logic and inevitability.'
+  },
+  {
+    name: 'Pacing',
+    desc: 'The flow and speed of the reading experience — whether sections drag, rush, or breathe at the right rate for the material. Good pacing isn\'t uniformly fast or slow; it varies deliberately to match the emotional and narrative demands of each section.'
+  },
+  {
+    name: 'Dialogue vs. Description Balance',
+    desc: 'Whether dialogue and descriptive passages are balanced and natural. Do dialogue exchanges feel like real speech with subtext, or like characters explaining the plot? Do descriptive passages enrich the world, or stall the momentum?'
+  },
+  {
+    name: 'Originality / Ambition',
+    desc: 'The freshness of the ideas and the scale of what the book attempts. Does it take real risks — formally, thematically, or structurally — or does it stay on safe, familiar ground? Ambition that partially fails is often more interesting than competence that plays it safe.'
+  },
+  {
+    name: 'Ending / Resolution',
+    desc: 'How well the ending pays off — dramatically, emotionally, and thematically. Does the conclusion feel earned by everything that preceded it? A strong ending doesn\'t require resolution or happiness; it requires honesty and inevitability.'
+  },
+  {
+    name: 'Thematic Depth / Coherence',
+    desc: 'How fully developed and unified the book\'s central meaning is. Does the book have something real to say, and does it say it with consistency and intelligence? Thematic coherence doesn\'t mean didactic — it means the book knows what it\'s about.'
+  },
+  {
+    name: 'Consistency of Vision',
+    desc: 'Whether the book\'s tone, style, and elements work together toward a coherent artistic statement. Does the book fulfill the promises its opening pages make? A breakdown here is when a book seems to forget what it is partway through — or never quite decides.'
+  },
+  {
+    name: 'Reading Experience',
+    desc: 'The subjective counterweight to everything above: did you actually want to keep reading? This isn\'t about whether the book is good — it\'s about whether it was compelling to live inside. A technically accomplished book can fail this criterion. A flawed one can pass it. Rate honestly.'
+  },
+];
+
+const DEFAULT = 3;
+const scores = new Array(CRITERIA.length).fill(DEFAULT);
+
+// ── STAR SVG ──────────────────────────────────────────────
+function starSVG(fill, size, color, emptyColor) {
+  color = color || '#b8922a';
+  emptyColor = emptyColor || '#e0d8c8';
+  size = size || 22;
+  const id = 'g' + Math.random().toString(36).slice(2, 8);
+  const path = 'M11 2.5l2.47 5.01L19 8.39l-4 3.9.94 5.5L11 15.1l-4.94 2.69.94-5.5-4-3.9 5.53-.88z';
+  if (fill <= 0) return `<svg width="${size}" height="${size}" viewBox="0 0 22 22"><path d="${path}" fill="${emptyColor}"/></svg>`;
+  if (fill >= 1) return `<svg width="${size}" height="${size}" viewBox="0 0 22 22"><path d="${path}" fill="${color}"/></svg>`;
+  const pct = Math.round(fill * 100);
+  return `<svg width="${size}" height="${size}" viewBox="0 0 22 22">
+    <defs><linearGradient id="${id}" x1="0" x2="1"><stop offset="${pct}%" stop-color="${color}"/><stop offset="${pct}%" stop-color="${emptyColor}"/></linearGradient></defs>
+    <path d="${path}" fill="url(#${id})"/>
+  </svg>`;
+}
+
+function renderStars(score, size, interactive, rowIdx) {
+  let html = '';
+  for (let s = 1; s <= 5; s++) {
+    const fill = Math.min(1, Math.max(0, score - (s - 1)));
+    if (interactive) {
+      html += `<div class="star-wrap" onclick="clickStar(${rowIdx},${s})" title="Set to ${s}">${starSVG(fill, size)}</div>`;
+    } else {
+      html += `<div class="star-wrap" style="cursor:default">${starSVG(fill, size)}</div>`;
+    }
+  }
+  return html;
+}
+
+// ── BUILD ─────────────────────────────────────────────────
+function buildCriteria() {
+  const section = document.getElementById('criteria-section');
+  section.innerHTML = CRITERIA.map((c, i) => `
+    <div class="criteria-row" id="row-${i}">
+      <div class="criteria-main">
+        <div class="criteria-left">
+          <span class="criteria-name">${c.name}</span>
+          <button class="desc-toggle" onclick="toggleDesc(${i},this)">what to consider ↓</button>
+        </div>
+        <div class="star-display">
+          <div class="stars" id="stars-${i}">${renderStars(DEFAULT, 22, true, i)}</div>
+          <div class="score-num" id="num-${i}">${DEFAULT}</div>
+        </div>
+        <div class="stepper">
+          <button class="step-btn" id="dn-${i}" onclick="step(${i},-0.25)">−</button>
+          <button class="step-btn" id="up-${i}" onclick="step(${i}, 0.25)">+</button>
+        </div>
+      </div>
+      <div class="criteria-desc" id="desc-${i}">${c.desc}</div>
+    </div>
+  `).join('');
+  updateSteppers();
+}
+
+// ── SCORE ACTIONS ─────────────────────────────────────────
+function clickStar(i, starNum) {
+  // Click the star you're already on → nudge down a quarter
+  const newVal = scores[i] === starNum ? starNum - 0.25 : starNum;
+  setScore(i, newVal);
+}
+
+function step(i, delta) {
+  setScore(i, scores[i] + delta);
+}
+
+function setScore(i, val) {
+  scores[i] = Math.round(Math.min(5, Math.max(1, val)) * 4) / 4;
+  document.getElementById('stars-' + i).innerHTML = renderStars(scores[i], 22, true, i);
+  document.getElementById('num-' + i).textContent = fmt(scores[i]);
+  updateSteppers(i);
+  calcFinal();
+}
+
+function updateSteppers(only) {
+  const indices = (only !== undefined) ? [only] : CRITERIA.map((_, i) => i);
+  indices.forEach(i => {
+    document.getElementById('dn-' + i).disabled = scores[i] <= 1;
+    document.getElementById('up-' + i).disabled = scores[i] >= 5;
+  });
+}
+
+function fmt(val) {
+  if (val === null) return '—';
+  return Number.isInteger(val) ? String(val) : val.toFixed(2);
+}
+
+// ── DESCRIPTIONS ──────────────────────────────────────────
+function toggleDesc(i, btn) {
+  const panel = document.getElementById('desc-' + i);
+  const open = panel.classList.toggle('open');
+  btn.textContent = open ? 'hide ↑' : 'what to consider ↓';
+}
+
+// ── FINAL RATING ──────────────────────────────────────────
+const DESCRIPTORS = [
+  [4.75, 'Extraordinary'], [4.25, 'Excellent'], [3.75, 'Very Good'],
+  [3.25, 'Good'], [2.75, 'Mixed'], [2.25, 'Below Average'], [1.75, 'Weak'], [0, 'Poor'],
+];
+
+function descriptor(s) {
+  for (const [t, l] of DESCRIPTORS) { if (s >= t) return l; }
+  return 'Poor';
+}
+
+function calcFinal() {
+  const avg = Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 4) / 4;
+  document.getElementById('score-val').textContent = fmt(avg);
+  document.getElementById('final-descriptor').textContent = descriptor(avg);
+  document.getElementById('final-stars').innerHTML = renderStars(avg, 24, false);
+}
+
+// ── ANCHORS ───────────────────────────────────────────────
+function toggleAnchors() {
+  const panel = document.getElementById('anchor-panel');
+  const btn = document.getElementById('anchor-toggle');
+  const open = panel.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.textContent = open ? 'Hide anchors' : 'Scoring anchors';
+}
+
+// ── MODAL ─────────────────────────────────────────────────
+function openModal() {
+  document.getElementById('score-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('score-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalIfOverlay(e) {
+  if (e.target === document.getElementById('score-modal')) closeModal();
+}
+
+// ── EXPORT ────────────────────────────────────────────────
+function exportTxt() {
+  const title = document.getElementById('book-title').value.trim() || '(untitled)';
+  const author = document.getElementById('book-author').value.trim() || '(unknown author)';
+  const avg = Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 4) / 4;
+  const lines = [
+    '═══════════════════════════════════════════════',
+    '               BOOK RATER — @literarycolin',
+    '═══════════════════════════════════════════════',
+    '', `Title:   ${title}`, `Author:  ${author}`, '',
+    '─── Criteria Scores ────────────────────────────', '',
+    ...CRITERIA.map((c, i) => `${(c.name + ':').padEnd(44)} ${fmt(scores[i])}`),
+    '', '─── Final Rating ───────────────────────────────', '',
+    `  ${fmt(avg)} / 5  —  ${descriptor(avg)}`, '',
+    '═══════════════════════════════════════════════',
+  ];
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `rating-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 30)}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Exported as text file.');
+}
+
+// ── RESET ─────────────────────────────────────────────────
+function resetAll() {
+  if (!confirm('Reset all scores to 3?')) return;
+  document.getElementById('book-title').value = '';
+  document.getElementById('book-author').value = '';
+  scores.fill(DEFAULT);
+  buildCriteria();
+  calcFinal();
+  showToast('Reset to defaults.');
+}
+
+// ── TOAST ─────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ── COVER ─────────────────────────────────────────────────
+function handleCover(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const preview = document.getElementById('cover-preview');
+    const placeholder = document.getElementById('cover-placeholder');
+    const removeBtn = document.getElementById('cover-remove');
+    preview.src = ev.target.result;
+    preview.classList.add('loaded');
+    placeholder.style.display = 'none';
+    removeBtn.classList.add('visible');
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeCover(e) {
+  e.stopPropagation();
+  const preview = document.getElementById('cover-preview');
+  const placeholder = document.getElementById('cover-placeholder');
+  const removeBtn = document.getElementById('cover-remove');
+  preview.src = '';
+  preview.classList.remove('loaded');
+  placeholder.style.display = '';
+  removeBtn.classList.remove('visible');
+  document.getElementById('cover-input').value = '';
+}
+
+// ── INIT ──────────────────────────────────────────────────
+buildCriteria();
+calcFinal();
+</script>
+</body>
+</html>
