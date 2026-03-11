@@ -346,6 +346,8 @@
   .btn:hover { background: var(--ink); color: #fff; }
   .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
   .btn.primary:hover { background: #6d2c13; }
+  .btn.secondary { background: var(--gold); color: #fff; border-color: var(--gold); }
+  .btn.secondary:hover { background: #9a7a22; border-color: #9a7a22; }
 
   /* TOAST */
   .toast {
@@ -367,7 +369,18 @@
 
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  @media (max-width: 640px) {
+  @media print {
+    .site-header, footer, .entry-bar, .actions, .guide-btn, .guide-panel { display: none !important; }
+    body { padding: 0; font-size: 13px; }
+    .planner-wrap { padding: 20px 16px 0; max-width: 100%; }
+    .card { box-shadow: none !important; border-color: #ccc; break-inside: avoid; }
+    .row-2, .row-3 { display: block; }
+    .row-2 .card, .row-3 .card { border-right: 1px solid #ccc; margin-bottom: 4px; }
+    .arrow-h { display: none; }
+    .connector { display: none; }
+    textarea, input[type="text"] { border-bottom-color: #ccc; }
+    .tag.on { background: #555; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
     .row-2 { grid-template-columns: 1fr; }
     .arrow-h { height: 24px; font-size: 1.1rem; }
     .row-3 { grid-template-columns: 1fr; }
@@ -630,6 +643,7 @@
 
   <div class="actions">
     <button class="btn" onclick="clearAll()">Clear All</button>
+    <button class="btn secondary" onclick="window.print()">Save as PDF</button>
     <button class="btn primary" onclick="exportTxt()">Export as Text</button>
   </div>
 
