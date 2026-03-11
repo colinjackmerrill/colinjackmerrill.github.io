@@ -557,17 +557,34 @@
     </div>
     <div class="card" id="c-supporting">
       <div class="card-top">
-        <div class="card-label"><span class="card-num">7</span> Supporting Cast</div>
+        <div class="card-label"><span class="card-num">7</span> Foil & Mirror</div>
         <button class="guide-btn" onclick="toggleGuide('supporting',this)">✦ Help</button>
       </div>
-      <div class="card-hint">Who tests, mirrors, or opposes the protagonist?</div>
+      <div class="card-hint">Who reflects or tests the protagonist — the foil, mentor, or mirror character?</div>
       <div id="guide-supporting" class="guide-panel">
         <p>Supporting characters are most useful when they each embody a different answer to your story's central question. In Gilgamesh, Enkidu embodies the answer Gilgamesh can't reach alone: connection over greatness. The tavern-keeper Siduri embodies an even simpler answer: just live. Every major supporting character should represent a path the protagonist could take — but doesn't, or can't, or won't.</p>
         <span class="q">Who in your story believes the opposite of your protagonist's false belief? That person is probably essential.</span>
       </div>
-      <textarea id="supporting" placeholder="Foil, mentor, antagonist — and what each represents thematically."></textarea>
+      <textarea id="supporting" placeholder="Foil, mentor, mirror — and what each represents thematically."></textarea>
     </div>
   </div>
+
+  <div class="connector">↓</div>
+
+  <!-- 7b. ANTAGONIST -->
+  <div class="card" id="c-antagonist">
+    <div class="card-top">
+      <div class="card-label"><span class="card-num">7b</span> Antagonist / Opposing Force</div>
+      <button class="guide-btn" onclick="toggleGuide('antagonist',this)">✦ Help</button>
+    </div>
+    <div class="card-hint">Who or what stands most directly between the protagonist and what they want?</div>
+    <div id="guide-antagonist" class="guide-panel">
+      <p>An antagonist doesn't have to be a villain — they just have to want something that directly conflicts with what the protagonist wants. The best antagonists believe they're right. They have their own logic, their own wound, their own version of the thematic claim. In literary fiction the antagonist is often a system, a relationship, or the protagonist's own past rather than a single person.</p>
+      <p>The antagonist's role is structural: they create the specific pressure that forces the protagonist to change or be destroyed. Without them, the protagonist could avoid the central question indefinitely.</p>
+      <span class="q">Does your antagonist want something understandable — even sympathetic? If not, they may be a device rather than a character.</span>
+      <span class="q">Is your antagonist a person, a force, a system, or the protagonist themselves? All are valid — but knowing which shapes everything.</span>
+    </div>
+    <textarea id="antagonist" placeholder="Who or what opposes the protagonist — and what do they want? What makes them formidable?"></textarea>
 
   <div class="section-divider"><span>Story Structure</span></div>
 
@@ -575,7 +592,7 @@
   <div class="row-3">
     <div class="card" id="c-begin">
       <div class="card-top">
-        <div class="card-label"><span class="card-num">8</span> Beginning</div>
+        <div class="card-label"><span class="card-num">9</span> Beginning</div>
         <button class="guide-btn" onclick="toggleGuide('begin',this)">✦ Help</button>
       </div>
       <div id="guide-begin" class="guide-panel">
@@ -590,7 +607,7 @@
     </div>
     <div class="card" id="c-middle">
       <div class="card-top">
-        <div class="card-label"><span class="card-num">9</span> Middle</div>
+        <div class="card-label"><span class="card-num">10</span> Middle</div>
         <button class="guide-btn" onclick="toggleGuide('middle',this)">✦ Help</button>
       </div>
       <div id="guide-middle" class="guide-panel">
@@ -600,14 +617,14 @@
       </div>
       <div class="sub-label">Rising Pressure</div>
       <textarea id="mid-rising" class="short" placeholder="What escalating events crack the false belief?"></textarea>
-      <div class="sub-label">Midpoint Shift</div>
-      <textarea id="mid-shift" class="short" placeholder="A revelation, loss, or irrevocable choice."></textarea>
+      <div class="sub-label">The Turn <span style="font-size:0.65rem;letter-spacing:0;text-transform:none;font-style:italic;color:var(--muted);">(midpoint)</span></div>
+      <textarea id="mid-shift" class="short" placeholder="A revelation, loss, or irrevocable choice — after this, the character is playing a different game."></textarea>
       <div class="sub-label">Crisis / Dark Night</div>
       <textarea id="mid-crisis" class="short" placeholder="All is lost. The choice must be made."></textarea>
     </div>
     <div class="card" id="c-end">
       <div class="card-top">
-        <div class="card-label"><span class="card-num">10</span> End</div>
+        <div class="card-label"><span class="card-num">11</span> End</div>
         <button class="guide-btn" onclick="toggleGuide('end',this)">✦ Help</button>
       </div>
       <div id="guide-end" class="guide-panel">
@@ -619,8 +636,8 @@
       <textarea id="end-climax" class="short" placeholder="The protagonist acts from their true self — or fails to."></textarea>
       <div class="sub-label">Resolution</div>
       <textarea id="end-resolution" class="short" placeholder="What has changed — and what hasn't?"></textarea>
-      <div class="sub-label">Final Image</div>
-      <textarea id="end-image" class="short" placeholder="The last thing the reader sees. Echo or invert the opening."></textarea>
+      <div class="sub-label">Final Image <span style="font-size:0.65rem;letter-spacing:0;text-transform:none;font-style:italic;color:var(--muted);">(echoes or inverts your opening)</span></div>
+      <textarea id="end-image" class="short" placeholder="The last thing the reader sees — same world, different person."></textarea>
     </div>
   </div>
 
@@ -629,7 +646,7 @@
   <!-- 11. OPEN QUESTIONS -->
   <div class="card dashed" id="c-notes">
     <div class="card-top">
-      <div class="card-label"><span class="card-num">11</span> Open Questions & Gaps</div>
+      <div class="card-label"><span class="card-num">12</span> Open Questions & Gaps</div>
       <button class="guide-btn" onclick="toggleGuide('notes',this)">✦ Help me think</button>
     </div>
     <div class="card-hint">What don't you know yet? What is the story resisting? What are you most afraid of in this material?</div>
@@ -670,7 +687,7 @@ const entryMap = {
   theme:     ['c-themes','c-claim'],
   premise:   ['c-premise','c-claim'],
   character: ['c-character'],
-  story:     ['c-begin','c-end']
+  story:     ['c-begin','c-end','c-antagonist']
 };
 
 function setEntry(type, btn) {
@@ -727,21 +744,23 @@ function exportTxt() {
     val('world') || '(not filled in)', '',
     '6. TONE & VOICE',
     val('tone') || '(not filled in)', '',
-    '7. SUPPORTING CAST',
+    '7. FOIL & MIRROR',
     val('supporting') || '(not filled in)', '',
+    '7b. ANTAGONIST / OPPOSING FORCE',
+    val('antagonist') || '(not filled in)', '',
     '─── STORY STRUCTURE ───────────────────', '',
-    '8. BEGINNING',
+    '9. BEGINNING',
     '  Opening World:       ' + (val('begin-world') || '—'),
     '  Inciting Incident:   ' + (val('begin-incident') || '—'), '',
-    '9. MIDDLE',
+    '10. MIDDLE',
     '  Rising Pressure:     ' + (val('mid-rising') || '—'),
-    '  Midpoint Shift:      ' + (val('mid-shift') || '—'),
+    '  The Turn (Midpoint): ' + (val('mid-shift') || '—'),
     '  Crisis / Dark Night: ' + (val('mid-crisis') || '—'), '',
-    '10. END',
+    '11. END',
     '  Climax:              ' + (val('end-climax') || '—'),
     '  Resolution:          ' + (val('end-resolution') || '—'),
     '  Final Image:         ' + (val('end-image') || '—'), '',
-    '11. OPEN QUESTIONS & GAPS',
+    '12. OPEN QUESTIONS & GAPS',
     val('notes') || '(not filled in)', '',
     '═══════════════════════════════════════',
   ];
