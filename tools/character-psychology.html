@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Psychology — Colin Merrill</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1410;
+    --paper: #f5f0e8;
+    --aged: #e8dfc8;
+    --rust: #8b3a2a;
+    --rust-dim: #6b2d20;
+    --fade: #9a9080;
+    --line: #c8bfa8;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Aged paper texture via pseudo-element */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 27px,
+        rgba(180,165,140,0.18) 27px,
+        rgba(180,165,140,0.18) 28px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(139,58,42,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 80%, rgba(100,80,50,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .title {
+    font-size: clamp(2.8rem, 7vw, 4.2rem);
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    color: var(--fade);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--rust);
+    margin: 1.2rem auto 0;
+    opacity: 0.5;
+  }
+
+  /* Cards */
+  .card {
+    background: rgba(255,252,245,0.7);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--rust);
+    padding: 2rem 2.2rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    transition: opacity 0.3s ease;
+  }
+
+  .card.fading {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+
+  .card.appearing {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.28s ease 0.05s, transform 0.28s ease 0.05s;
+  }
+
+  .card-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-label .lock-btn {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--fade);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .card-label .lock-btn:hover {
+    border-color: var(--rust);
+    color: var(--rust);
+  }
+
+  .card-label .lock-btn.locked {
+    border-color: var(--rust);
+    color: var(--rust);
+    background: rgba(139,58,42,0.06);
+  }
+
+  .card-text {
+    font-size: clamp(1.05rem, 2.5vw, 1.22rem);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  .card-note {
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--fade);
+    margin-top: 0.85rem;
+    line-height: 1.5;
+    border-top: 1px solid var(--line);
+    padding-top: 0.85rem;
+  }
+
+  /* Arrow connector */
+  .connector {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--line);
+    margin: 0.2rem 0;
+    letter-spacing: 0.1em;
+    user-select: none;
+  }
+
+  /* Actions */
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--rust);
+    color: var(--paper);
+    border: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.85rem 2.2rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--rust-dim);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--fade);
+    border: 1px solid var(--line);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--fade);
+    color: var(--ink);
+  }
+
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--line);
+    text-transform: uppercase;
+  }
+
+  /* Corner ornament */
+  .ornament {
+    position: absolute;
+    top: -8px;
+    right: 18px;
+    font-size: 0.8rem;
+    color: var(--line);
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="title">Character Psychology</div>
+    <div class="subtitle">A wound &amp; belief generator for fiction writers</div>
+    <div class="divider"></div>
+  </header>
+
+  <div class="card" id="wound-card">
+    <div class="ornament">✦</div>
+    <div class="card-label">
+      <span>The Wound</span>
+      <button class="lock-btn" id="lock-wound" onclick="toggleLock('wound')">Lock</button>
+    </div>
+    <div class="card-text" id="wound-text"></div>
+    <div class="card-note" id="wound-note"></div>
+  </div>
+
+  <div class="connector">↓</div>
+
+  <div class="card" id="belief-card">
+    <div class="ornament">✦</div>
+    <div class="card-label">
+      <span>The False Belief</span>
+      <button class="lock-btn" id="lock-belief" onclick="toggleLock('belief')">Lock</button>
+    </div>
+    <div class="card-text" id="belief-text"></div>
+    <div class="card-note" id="belief-note"></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-primary" onclick="generate()">Generate New</button>
+    <button class="btn-secondary" onclick="generateBoth()">Shuffle Both</button>
+  </div>
+
+  <footer>Every character begins here &nbsp;·&nbsp; <a href="https://colinmerrill.com/writing-tools.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid var(--line);">colinmerrill.com</a></footer>
+</div>
+
+<script>
+const wounds = [
+  {
+    text: "A parent's love was conditional — given freely only when the child performed, achieved, or disappeared.",
+    note: "The child learned that being seen was dangerous. Being truly known meant being judged."
+  },
+  {
+    text: "They were the one who stayed calm in a crisis — praised for it, relied upon, never once asked how they were doing.",
+    note: "Competence became a cage. Others' need for their steadiness consumed the space where their own needs might have lived."
+  },
+  {
+    text: "They trusted someone completely, and that person used what they knew.",
+    note: "Intimacy and exposure became the same thing. Vulnerability began to feel like handing someone a weapon."
+  },
+  {
+    text: "They were failed publicly — humiliated in a moment when they most needed dignity.",
+    note: "The memory didn't fade. It calcified into a rule: never be caught wanting something you might not get."
+  },
+  {
+    text: "A sibling, friend, or rival was chosen over them — not once, but as a pattern.",
+    note: "They learned to read every room for who the favorite was. They stopped trying to be it."
+  },
+  {
+    text: "They witnessed something they couldn't stop and were never allowed to speak of it afterward.",
+    note: "Silence became a form of complicity they've been paying for ever since."
+  },
+  {
+    text: "They were given everything — comfort, opportunity, safety — and told they were lucky. They believed it, and it made them feel guilty for every want.",
+    note: "The wound of ease itself. Desire without permission becomes shame."
+  },
+  {
+    text: "They outgrew the place they came from, and the people they loved made them feel the distance as a betrayal.",
+    note: "Ambition and belonging became mutually exclusive. They've been negotiating that loss ever since."
+  },
+  {
+    text: "They failed at the one thing they built their identity around — and no one acknowledged how total the collapse was.",
+    note: "They kept moving, kept performing competence. The grief went underground."
+  },
+  {
+    text: "They were responsible for someone — a sibling, a parent, a friend — before they were old enough to be responsible for themselves.",
+    note: "They learned to monitor others constantly and lost the habit of monitoring themselves."
+  },
+  {
+    text: "They were loved intensely and then abandoned without explanation.",
+    note: "Every close relationship since has carried the quiet question: when does this end, and why won't they tell me."
+  },
+  {
+    text: "They told the truth once, at great cost, and it changed nothing.",
+    note: "Honesty stopped feeling like virtue and started feeling like exposure with no return."
+  },
+  {
+    text: "They were the peacekeeper in a volatile household — always smoothing, deflecting, absorbing.",
+    note: "Conflict became existential. Other people's anger still feels like their fault to fix."
+  },
+  {
+    text: "They were exceptional early — a prodigy, a golden child — and then became ordinary.",
+    note: "Average began to feel like failure. They've been trying to recapture a self that may never have been real."
+  },
+  {
+    text: "Someone they loved chose something else — work, an addiction, another person — over and over again.",
+    note: "They learned not to ask for things directly. If you don't ask, you can't be chosen against."
+  },
+  {
+    text: "They survived something others didn't, and no one talked about why.",
+    note: "Survival accumulated interest. They've been trying to justify the cost ever since."
+  },
+  {
+    text: "They were punished for a feeling — joy, anger, grief — until they stopped having it in front of others.",
+    note: "The feeling didn't disappear. It just learned to hide, and now it comes out sideways."
+  },
+  {
+    text: "Their competence was exploited by someone who should have protected them.",
+    note: "Being useful became a threat. They learned to underperform, or to perform only where it couldn't be taken."
+  },
+  {
+    text: "They were invisible in a family that rewarded loudness, or loud in one that rewarded silence.",
+    note: "They are still calibrating. Still trying to find the register that finally makes someone turn and look."
+  },
+  {
+    text: "A moment of moral failure — small, private, unwitnessed — that they've never been able to put down.",
+    note: "Not guilt for what others saw. Guilt for what they know about themselves."
+  }
+];
+
+const beliefs = [
+  {
+    text: "\"If I need something from someone, I will eventually be abandoned for it.\"",
+    note: "They give generously and receive reluctantly. Need feels like a debt they'll be called on to repay."
+  },
+  {
+    text: "\"The only safe way to be loved is to be useful.\"",
+    note: "They don't know how to receive affection that isn't transactional. Unconditional love makes them nervous."
+  },
+  {
+    text: "\"Showing weakness invites attack.\"",
+    note: "They are hypervigilant in any hierarchy. They'd rather appear cold than appear breakable."
+  },
+  {
+    text: "\"I have to earn the right to take up space.\"",
+    note: "They apologize for existing. They make themselves smaller in rooms where no one asked them to."
+  },
+  {
+    text: "\"Love always comes with a hidden cost I haven't found yet.\"",
+    note: "They wait for the other shoe. They sometimes create the conflict just to stop waiting."
+  },
+  {
+    text: "\"If people really knew me, they would leave.\"",
+    note: "Intimacy is terrifying not because they distrust others, but because they distrust themselves."
+  },
+  {
+    text: "\"Wanting things is the fastest way to lose them.\"",
+    note: "They approach desire obliquely, if at all. Sometimes they don't let themselves want until it's too late."
+  },
+  {
+    text: "\"The world is divided into people who are chosen and people who are not. I am not.\"",
+    note: "They resist opportunities not out of laziness but out of preemptive self-protection."
+  },
+  {
+    text: "\"If I stay in control, nothing bad can happen.\"",
+    note: "They mistake the feeling of control for safety. They'll sacrifice connection to maintain it."
+  },
+  {
+    text: "\"Other people's feelings are my responsibility.\"",
+    note: "They can read a room from the doorway. They'll abandon their own needs to regulate someone else's mood."
+  },
+  {
+    text: "\"Ambition is a form of betrayal.\"",
+    note: "Every success carries guilt. They self-sabotage not from fear of failure but from loyalty to where they came from."
+  },
+  {
+    text: "\"The truth doesn't change anything, so why pay the cost of saying it.\"",
+    note: "They are not liars — they are exhausted by a world that didn't respond when they told the truth."
+  },
+  {
+    text: "\"I am only as valuable as my last performance.\"",
+    note: "Rest feels dangerous. Stillness feels like disappearing. They mistake activity for worth."
+  },
+  {
+    text: "\"Conflict means someone is about to leave.\"",
+    note: "They agree to things they don't agree with. They disappear before they can be disappeared."
+  },
+  {
+    text: "\"I am different from everyone around me in a way that cannot be fixed.\"",
+    note: "The loneliness is the price of being exceptional. They've made it a point of pride to need less."
+  },
+  {
+    text: "\"If I ask for help, I am confirming that I am not enough.\"",
+    note: "Competence is armor. Letting someone in means letting them see the gap between who they appear to be and who they are."
+  },
+  {
+    text: "\"Being forgotten is safer than being remembered wrongly.\"",
+    note: "They erase themselves before others can misread them. Invisibility feels like authorship."
+  },
+  {
+    text: "\"Happiness is something that happens to other people and then gets taken away.\"",
+    note: "They don't allow themselves to settle into good things. They're already grieving them on the way in."
+  },
+  {
+    text: "\"If I stay small enough, nothing will be expected of me and I cannot disappoint anyone.\"",
+    note: "They confuse potential with threat. Capability feels like an obligation they never signed up for."
+  },
+  {
+    text: "\"I caused this. Whatever this is, I caused it.\"",
+    note: "Blame is a form of control. If everything is their fault, at least the world is legible."
+  }
+];
+
+let woundLocked = false;
+let beliefLocked = false;
+let currentWoundIdx = -1;
+let currentBeliefIdx = -1;
+
+function rand(arr, exclude) {
+  let idx;
+  do { idx = Math.floor(Math.random() * arr.length); } while (idx === exclude && arr.length > 1);
+  return idx;
+}
+
+function toggleLock(type) {
+  if (type === 'wound') {
+    woundLocked = !woundLocked;
+    document.getElementById('lock-wound').textContent = woundLocked ? 'Locked' : 'Lock';
+    document.getElementById('lock-wound').classList.toggle('locked', woundLocked);
+  } else {
+    beliefLocked = !beliefLocked;
+    document.getElementById('lock-belief').textContent = beliefLocked ? 'Locked' : 'Lock';
+    document.getElementById('lock-belief').classList.toggle('locked', beliefLocked);
+  }
+}
+
+function setCard(cardId, textId, noteId, data) {
+  const card = document.getElementById(cardId);
+  card.classList.add('fading');
+  setTimeout(() => {
+    document.getElementById(textId).textContent = data.text;
+    document.getElementById(noteId).textContent = data.note;
+    card.classList.remove('fading');
+    card.classList.add('appearing');
+    setTimeout(() => card.classList.remove('appearing'), 350);
+  }, 180);
+}
+
+function generate() {
+  if (!woundLocked) {
+    const idx = rand(wounds, currentWoundIdx);
+    currentWoundIdx = idx;
+    setCard('wound-card', 'wound-text', 'wound-note', wounds[idx]);
+  }
+  if (!beliefLocked) {
+    const idx = rand(beliefs, currentBeliefIdx);
+    currentBeliefIdx = idx;
+    setCard('belief-card', 'belief-text', 'belief-note', beliefs[idx]);
+  }
+}
+
+function generateBoth() {
+  woundLocked = false;
+  beliefLocked = false;
+  document.getElementById('lock-wound').textContent = 'Lock';
+  document.getElementById('lock-wound').classList.remove('locked');
+  document.getElementById('lock-belief').textContent = 'Lock';
+  document.getElementById('lock-belief').classList.remove('locked');
+  generate();
+}
+
+// Init
+generate();
+</script>
+</body>
+</html>
