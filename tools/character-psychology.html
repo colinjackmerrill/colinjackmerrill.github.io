@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Character Psychology — Colin Merrill</title>
-<meta name="description" content="A wound and false belief generator for fiction writers — Colin Merrill.">
+<meta name="description" content="A character arc generator for fiction writers — wound, false belief, fear, coping strategy, and the truth they must learn.">
 <link rel="icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
@@ -128,6 +128,30 @@
 
   .card-note.fading { opacity: 0; }
 
+  /* Contradiction line inside false belief card */
+  .card-contradiction {
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--faint);
+    line-height: 1.55;
+    transition: opacity 0.18s ease;
+  }
+
+  .card-contradiction.fading { opacity: 0; }
+
+  .card-contradiction-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
   /* LOCK BUTTON */
   .lock-btn {
     font-family: 'Crimson Pro', serif;
@@ -183,6 +207,9 @@
   .btn:hover { background: var(--ink); color: #fff; }
   .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
   .btn.primary:hover { background: #6d2c13; }
+  .btn.copy { border-color: var(--faint); color: var(--muted); }
+  .btn.copy:hover { border-color: var(--muted); background: transparent; color: var(--ink); }
+  .btn.copy.copied { border-color: var(--gold); color: var(--gold); }
 </style>
 </head>
 <body>
@@ -213,9 +240,10 @@
 
   <div class="tool-header">
     <h1><em>Character</em> Psychology</h1>
-    <p>Wound &amp; False Belief Generator</p>
+    <p>Character Arc Generator</p>
   </div>
 
+  <!-- WOUND -->
   <div class="card" id="wound-card">
     <div class="card-top">
       <div class="card-label">The Wound</div>
@@ -227,6 +255,7 @@
 
   <div class="connector">↓</div>
 
+  <!-- FALSE BELIEF -->
   <div class="card" id="belief-card">
     <div class="card-top">
       <div class="card-label">The False Belief</div>
@@ -234,10 +263,51 @@
     </div>
     <div class="card-body" id="belief-text"></div>
     <div class="card-note" id="belief-note"></div>
+    <div class="card-contradiction" id="belief-contradiction">
+      <span class="card-contradiction-label">Hidden Contradiction</span>
+      <span id="contradiction-text"></span>
+    </div>
+  </div>
+
+  <div class="connector">↓</div>
+
+  <!-- FEAR -->
+  <div class="card" id="fear-card">
+    <div class="card-top">
+      <div class="card-label">The Fear</div>
+      <button class="lock-btn" id="lock-fear" onclick="toggleLock('fear')">Lock</button>
+    </div>
+    <div class="card-body" id="fear-text"></div>
+    <div class="card-note" id="fear-note"></div>
+  </div>
+
+  <div class="connector">↓</div>
+
+  <!-- COPING STRATEGY -->
+  <div class="card" id="coping-card">
+    <div class="card-top">
+      <div class="card-label">The Coping Strategy</div>
+      <button class="lock-btn" id="lock-coping" onclick="toggleLock('coping')">Lock</button>
+    </div>
+    <div class="card-body" id="coping-text"></div>
+    <div class="card-note" id="coping-note"></div>
+  </div>
+
+  <div class="connector">↓</div>
+
+  <!-- TRUTH -->
+  <div class="card" id="truth-card">
+    <div class="card-top">
+      <div class="card-label">The Truth They Must Learn</div>
+      <button class="lock-btn" id="lock-truth" onclick="toggleLock('truth')">Lock</button>
+    </div>
+    <div class="card-body" id="truth-text"></div>
+    <div class="card-note" id="truth-note"></div>
   </div>
 
   <div class="actions">
     <button class="btn primary" onclick="generate()">Generate New</button>
+    <button class="btn copy" id="copy-btn" onclick="copyProfile()">Copy Profile</button>
   </div>
 
 </div>
@@ -462,210 +532,507 @@ const wounds = [
 const beliefs = [
   {
     text: "\"If I need something from someone, I will eventually be abandoned for it.\"",
-    note: "They give generously and receive reluctantly. Need feels like a debt they'll be called on to repay."
+    note: "They give generously and receive reluctantly. Need feels like a debt they'll be called on to repay.",
+    contradiction: "They secretly keep a precise record of every time someone stayed."
   },
   {
     text: "\"The only safe way to be loved is to be useful.\"",
-    note: "They don't know how to receive affection that isn't transactional. Unconditional love makes them nervous."
+    note: "They don't know how to receive affection that isn't transactional. Unconditional love makes them nervous.",
+    contradiction: "They are desperate to be loved for nothing at all — just for existing."
   },
   {
     text: "\"Showing weakness invites attack.\"",
-    note: "They are hypervigilant in any hierarchy. They'd rather appear cold than appear breakable."
+    note: "They are hypervigilant in any hierarchy. They'd rather appear cold than appear breakable.",
+    contradiction: "They are drawn, helplessly, to people who are openly vulnerable — and they protect them fiercely."
   },
   {
     text: "\"I have to earn the right to take up space.\"",
-    note: "They apologize for existing. They make themselves smaller in rooms where no one asked them to."
+    note: "They apologize for existing. They make themselves smaller in rooms where no one asked them to.",
+    contradiction: "They have an enormous inner life they've never shown anyone, and part of them is desperate to."
   },
   {
     text: "\"Love always comes with a hidden cost I haven't found yet.\"",
-    note: "They wait for the other shoe. They sometimes create the conflict just to stop waiting."
+    note: "They wait for the other shoe. They sometimes create the conflict just to stop waiting.",
+    contradiction: "They are capable of profound tenderness — and they show it, briefly, when they think no one is watching."
   },
   {
     text: "\"If people really knew me, they would leave.\"",
-    note: "Intimacy is terrifying not because they distrust others, but because they distrust themselves."
+    note: "Intimacy is terrifying not because they distrust others, but because they distrust themselves.",
+    contradiction: "They crave being known more than almost anything. They leave clues."
   },
   {
     text: "\"Wanting things is the fastest way to lose them.\"",
-    note: "They approach desire obliquely, if at all. Sometimes they don't let themselves want until it's too late."
+    note: "They approach desire obliquely, if at all. Sometimes they don't let themselves want until it's too late.",
+    contradiction: "They want things intensely, constantly. The wanting never stops — they just hide it even from themselves."
   },
   {
     text: "\"The world is divided into people who are chosen and people who are not. I am not.\"",
-    note: "They resist opportunities not out of laziness but out of preemptive self-protection."
+    note: "They resist opportunities not out of laziness but out of preemptive self-protection.",
+    contradiction: "They root for underdogs with a ferocity that reveals everything they won't say about themselves."
   },
   {
     text: "\"If I stay in control, nothing bad can happen.\"",
-    note: "They mistake the feeling of control for safety. They'll sacrifice connection to maintain it."
+    note: "They mistake the feeling of control for safety. They'll sacrifice connection to maintain it.",
+    contradiction: "What they actually want is to hand the wheel to someone they trust completely and rest."
   },
   {
     text: "\"Other people's feelings are my responsibility.\"",
-    note: "They can read a room from the doorway. They'll abandon their own needs to regulate someone else's mood."
+    note: "They can read a room from the doorway. They'll abandon their own needs to regulate someone else's mood.",
+    contradiction: "They are exhausted by this. They fantasize about being the one who is taken care of."
   },
   {
     text: "\"Ambition is a form of betrayal.\"",
-    note: "Every success carries guilt. They self-sabotage not from fear of failure but from loyalty to where they came from."
+    note: "Every success carries guilt. They self-sabotage not from fear of failure but from loyalty to where they came from.",
+    contradiction: "The ambition is enormous and has never gone away. It just learned to disguise itself."
   },
   {
     text: "\"The truth doesn't change anything, so why pay the cost of saying it.\"",
-    note: "They are not liars — they are exhausted by a world that didn't respond when they told the truth."
+    note: "They are not liars — they are exhausted by a world that didn't respond when they told the truth.",
+    contradiction: "They are still waiting for someone worth telling the truth to."
   },
   {
     text: "\"I am only as valuable as my last performance.\"",
-    note: "Rest feels dangerous. Stillness feels like disappearing. They mistake activity for worth."
+    note: "Rest feels dangerous. Stillness feels like disappearing. They mistake activity for worth.",
+    contradiction: "In their most private moments, they suspect that the stillness is actually where they live."
   },
   {
     text: "\"Conflict means someone is about to leave.\"",
-    note: "They agree to things they don't agree with. They disappear before they can be disappeared."
+    note: "They agree to things they don't agree with. They disappear before they can be disappeared.",
+    contradiction: "They have strong opinions about almost everything. They keep them like contraband."
   },
   {
     text: "\"I am different from everyone around me in a way that cannot be fixed.\"",
-    note: "The loneliness is the price of being exceptional. They've made it a point of pride to need less."
+    note: "The loneliness is the price of being exceptional. They've made it a point of pride to need less.",
+    contradiction: "They are looking, always, for the one person who will make them feel less alone in it."
   },
   {
     text: "\"If I ask for help, I am confirming that I am not enough.\"",
-    note: "Competence is armor. Letting someone in means letting them see the gap between who they appear to be and who they are."
+    note: "Competence is armor. Letting someone in means letting them see the gap between who they appear to be and who they are.",
+    contradiction: "They help others constantly and without reservation. They know what it means to be helped."
   },
   {
     text: "\"Being forgotten is safer than being remembered wrongly.\"",
-    note: "They erase themselves before others can misread them. Invisibility feels like authorship."
+    note: "They erase themselves before others can misread them. Invisibility feels like authorship.",
+    contradiction: "They want to leave a mark. Something that says: I was here and it mattered."
   },
   {
     text: "\"Happiness is something that happens to other people and then gets taken away.\"",
-    note: "They don't allow themselves to settle into good things. They're already grieving them on the way in."
+    note: "They don't allow themselves to settle into good things. They're already grieving them on the way in.",
+    contradiction: "They notice beauty everywhere. Small things stop them. They just don't let themselves stay."
   },
   {
     text: "\"If I stay small enough, nothing will be expected of me and I cannot disappoint anyone.\"",
-    note: "They confuse potential with threat. Capability feels like an obligation they never signed up for."
+    note: "They confuse potential with threat. Capability feels like an obligation they never signed up for.",
+    contradiction: "They have a vision for what their life could be. They think about it constantly."
   },
   {
     text: "\"I caused this. Whatever this is, I caused it.\"",
-    note: "Blame is a form of control. If everything is their fault, at least the world is legible."
+    note: "Blame is a form of control. If everything is their fault, at least the world is legible.",
+    contradiction: "They are extraordinarily forgiving of others. The accounting only runs one direction."
   },
   {
     text: "\"Closeness is just distance that hasn't turned yet.\"",
-    note: "They are warm from a precise remove. They know how to seem close without being reachable. The people who love them feel it and can't explain it."
+    note: "They are warm from a precise remove. They know how to seem close without being reachable.",
+    contradiction: "They have let one or two people all the way in, and those relationships are the ones they've never gotten over."
   },
   {
     text: "\"If I don't say what I want, at least I won't be told no.\"",
-    note: "They are fluent in suggestion and implication. Direct requests feel like handing someone a loaded gun and asking them to aim at their chest."
+    note: "They are fluent in suggestion and implication. Direct requests feel like handing someone a loaded gun.",
+    contradiction: "They know exactly what they want. The clarity is almost painful."
   },
   {
     text: "\"The moment I stop being exceptional, I stop being worth keeping.\"",
-    note: "They are incapable of mediocre effort, not because they love excellence but because they are terrified of what ordinary reveals."
+    note: "They are incapable of mediocre effort, not because they love excellence but because they are terrified of what ordinary reveals.",
+    contradiction: "They are moved by ordinary things — unremarkable kindness, small gestures, the unspectacular love of daily life."
   },
   {
     text: "\"Forgiveness is something other people get.\"",
-    note: "They apply a harsher standard to themselves than to anyone else. They can extend grace infinitely outward and not at all inward."
+    note: "They apply a harsher standard to themselves than to anyone else. They can extend grace infinitely outward and not at all inward.",
+    contradiction: "They believe, theoretically, that people deserve second chances. They watch others receive them with something close to longing."
   },
   {
     text: "\"I have already used up my share of good fortune.\"",
-    note: "They are quietly waiting for the correction. When things go well, they are braced. The good news is always a setup for the other shoe."
+    note: "They are quietly waiting for the correction. When things go well, they are braced.",
+    contradiction: "They are genuinely, helplessly happy for other people's luck. They just can't extend that generosity to themselves."
   },
   {
     text: "\"People who say they love me unconditionally haven't found my conditions yet.\"",
-    note: "They test love compulsively — not to destroy it, but because they genuinely can't believe it survives contact with their full self."
+    note: "They test love compulsively — not to destroy it, but because they genuinely can't believe it survives contact with their full self.",
+    contradiction: "They are loyal beyond reason to the people they love. They would survive anyone's conditions."
   },
   {
     text: "\"The only way to avoid being hurt first is to leave first.\"",
-    note: "They are the ones who end things that aren't over, sabotage things that are working, and mistake their own fear for intuition."
+    note: "They are the ones who end things that aren't over and sabotage things that are working.",
+    contradiction: "Every exit costs them. They grieve the things they ended. They just do it privately."
   },
   {
     text: "\"My feelings are an imposition on everyone around me.\"",
-    note: "They have a high tolerance for other people's emotion and a near-zero tolerance for their own. They apologize for crying. They apologize for being upset."
+    note: "They apologize for crying. They apologize for being upset. They have a very high tolerance for their own pain.",
+    contradiction: "When someone else is hurting, they show up completely. They know feelings are not an imposition."
   },
   {
     text: "\"Loyalty means never outgrowing anyone.\"",
-    note: "They hold themselves back in deference to relationships that would survive their growth, if they let them. They don't let them."
+    note: "They hold themselves back in deference to relationships that would survive their growth.",
+    contradiction: "They want to grow. They can feel themselves wanting it. They just can't reconcile it with love."
   },
   {
     text: "\"The version of me that people love is not the real one.\"",
-    note: "They are performing, always. The performance is very good. They can't stop even when they want to, because they no longer know exactly where it ends."
+    note: "They are performing, always. The performance is very good. They can't stop even when they want to.",
+    contradiction: "There are moments — rare, accidental — when the performance drops. Those moments are the ones they remember longest."
   },
   {
     text: "\"If I work hard enough, I can make up for what I lack.\"",
-    note: "They over-prepare, over-deliver, and over-explain. The work is never quite enough because the deficit it's trying to fill isn't real."
+    note: "They over-prepare, over-deliver, and over-explain. The work is never quite enough.",
+    contradiction: "They don't actually believe they're lacking. Sometimes, briefly, they know they're enough. They just can't hold onto it."
   },
   {
     text: "\"Safety is something you build alone.\"",
-    note: "They are self-reliant to a fault. Accepting help feels like a structural failure. They will exhaust themselves before they ask."
+    note: "They are self-reliant to a fault. Accepting help feels like a structural failure.",
+    contradiction: "The loneliness of this is not lost on them. They feel it most at night."
   },
   {
     text: "\"The people who seem happy have just hidden their damage better than I have.\"",
-    note: "This belief protects them from envy but also from hope. If no one is genuinely okay, there's no use trying to become okay."
+    note: "This belief protects them from envy but also from hope.",
+    contradiction: "They do believe happiness is real. They've felt it. That's what makes the distance from it so specific."
   },
   {
     text: "\"My needs drove someone away once. They will do it again.\"",
-    note: "They have become very good at having no needs, at least visibly. The needs don't disappear. They resurface as resentment, distance, or sudden inexplicable exits."
+    note: "They have become very good at having no needs, at least visibly.",
+    contradiction: "They are deeply attentive to the needs of others. They know how to be needed and how good it feels to meet someone there."
   },
   {
     text: "\"The only honest relationship is one where no one expects anything.\"",
-    note: "They confuse low-stakes attachment with integrity. Real intimacy feels dishonest to them — like a promise neither party can keep."
+    note: "They confuse low-stakes attachment with integrity.",
+    contradiction: "They expect a great deal, privately, from the people they love. The expectations are just never spoken."
   },
   {
     text: "\"Anger is the one feeling I'm not allowed to have.\"",
-    note: "They are extremely skilled at converting anger into something more acceptable — sadness, humor, withdrawal, over-functioning. The anger finds other doors."
+    note: "They convert anger into something more acceptable — sadness, humor, withdrawal, over-functioning.",
+    contradiction: "The anger is there. It's vast. On rare occasions, something small releases it, and the disproportionate response surprises everyone, including them."
   },
   {
     text: "\"If I can understand why someone hurt me, I don't have to feel it.\"",
-    note: "They are brilliant analysts of other people's psychology and relentless explainers of their own pain. Comprehension has become a substitute for grief."
+    note: "Comprehension has become a substitute for grief.",
+    contradiction: "The feeling is there anyway. Understanding doesn't dissolve it. They know this. They keep trying."
   },
   {
     text: "\"I am only allowed to take what I can justify.\"",
-    note: "Pleasure without a reason feels wrong. Rest without exhaustion first feels wrong. Joy without prior suffering feels like something they haven't earned."
+    note: "Pleasure without a reason feels wrong. Rest without exhaustion first feels wrong.",
+    contradiction: "They are generous to others without requiring justification. They've never noticed the asymmetry."
   },
   {
     text: "\"Someday I will be found out.\"",
-    note: "The specific content of what they fear being found out about shifts — but the certainty of the exposure doesn't. Success makes it worse, not better."
+    note: "The specific content of what they fear being found out about shifts — but the certainty of the exposure doesn't. Success makes it worse, not better.",
+    contradiction: "Part of them wants to be found out. Wants to stop performing. Wants someone to see the whole thing and stay."
   },
   {
     text: "\"The right person will eventually understand me without my having to explain.\"",
-    note: "They are waiting to be known without the vulnerability of being seen. It's a form of magical thinking that protects them from the risk of actual disclosure."
+    note: "They are waiting to be known without the vulnerability of being seen.",
+    contradiction: "They are an extraordinarily good explainer when they choose to be. The capacity for disclosure is there. The willingness is what's missing."
   },
   {
     text: "\"The more I want something, the more likely it is to be taken.\"",
-    note: "They have developed an elaborate system of wanting at a distance. They circle what they love without fully committing. Longing feels safer than having."
+    note: "They circle what they love without fully committing. Longing feels safer than having.",
+    contradiction: "When something is taken despite their carefulness, the grief is total. The wanting was never actually less."
   },
   {
     text: "\"Other people's needs are more real than mine.\"",
-    note: "Their own hunger, exhaustion, and pain register as suggestions. Other people's register as emergencies. They are always the last one they attend to."
+    note: "Their own hunger, exhaustion, and pain register as suggestions. Other people's register as emergencies.",
+    contradiction: "In their inner life, their needs are enormous and very loud. They just have a policy of not listening."
   },
   {
     text: "\"I don't deserve the good things I have, and eventually everyone will agree.\"",
-    note: "They live with one eye on the exit, expecting to be asked to return what was given to them by mistake. They never fully unpack."
+    note: "They live with one eye on the exit, expecting to be asked to return what was given to them by mistake.",
+    contradiction: "They work harder than almost anyone to deserve things. The effort is its own kind of argument against the belief."
   },
   {
     text: "\"Caring too much is the same as being foolish.\"",
-    note: "They have aestheticized detachment. They call it realism. It is also a way of never being the one who wanted something more than the other person did."
+    note: "They have aestheticized detachment. They call it realism.",
+    contradiction: "They care enormously. About everything. The detachment is the performance, not the feeling."
   },
   {
     text: "\"I have to get there first — to the realization, the ending, the disappointment — before it gets to me.\"",
-    note: "They pre-grieve. They pre-reject. They are always slightly ahead of the present moment, which means they are almost never in it."
+    note: "They pre-grieve. They pre-reject. They are always slightly ahead of the present moment.",
+    contradiction: "They want, more than almost anything, to be surprised by something good."
   },
   {
     text: "\"Being needed and being loved are the same thing.\"",
-    note: "They confuse the two so thoroughly that when someone loves them without needing them, it doesn't feel like love. It feels like a prelude to leaving."
+    note: "They confuse the two so thoroughly that when someone loves them without needing them, it doesn't feel like love.",
+    contradiction: "They know the difference. They've seen love that wasn't need. They just don't trust that it applies to them."
   },
   {
     text: "\"If I change, I will lose whatever it is that makes me worth loving.\"",
-    note: "Growth feels like a betrayal of the self that survived. They protect their damage, sometimes, the way others protect their gifts — as evidence of who they are."
+    note: "They protect their damage, sometimes, the way others protect their gifts.",
+    contradiction: "They are already changing. They can feel it. They are watching themselves become someone new with a complicated mix of hope and grief."
   },
   {
     text: "\"Asking for what I want is the same as being selfish.\"",
-    note: "They have collapsed the distinction between need and greed. Every desire gets run through a filter that asks: am I taking too much? The answer is always yes."
+    note: "They have collapsed the distinction between need and greed.",
+    contradiction: "They give to others without hesitation and never consider it selfish. The rule only applies inward."
   },
   {
     text: "\"The best I can do is not make things worse.\"",
-    note: "They have set the floor as the ceiling. Not causing harm has replaced causing good as the benchmark. It is a profoundly low bar they still sometimes feel they're failing."
+    note: "They have set the floor as the ceiling.",
+    contradiction: "They have made things significantly better for people around them, repeatedly, without acknowledging it. The evidence exists. They don't count it."
   },
   {
     text: "\"No one stays unless they have to.\"",
-    note: "They are waiting, in every relationship, for the obligation to lift. When someone chooses to stay freely, they look for the hidden reason. There must be one."
+    note: "They are waiting, in every relationship, for the obligation to lift.",
+    contradiction: "They stay. For everyone. Long past when they should, sometimes. They know what choosing to stay looks like."
   }
 ];
 
-let woundLocked = false;
-let beliefLocked = false;
-let currentWoundIdx = -1;
-let currentBeliefIdx = -1;
+const fears = [
+  {
+    text: "Being truly seen — not the version they've curated, but the unedited thing underneath.",
+    note: "They've managed their image so carefully for so long that they're no longer sure what the unedited version is."
+  },
+  {
+    text: "That the love they've been given is a mistake that will eventually be corrected.",
+    note: "Every kind thing that happens lands with a small silent asterisk: *not yet discovered."
+  },
+  {
+    text: "Becoming their worst fear about themselves — the proof that the critical voice was right all along.",
+    note: "They monitor themselves for symptoms of it constantly. The vigilance is exhausting and doesn't help."
+  },
+  {
+    text: "Being abandoned at the moment they most need someone.",
+    note: "They have elaborate contingency plans for this. They also quietly arrange things so it can never be tested."
+  },
+  {
+    text: "That their needs are too much — that the full weight of them, once known, will drive people away.",
+    note: "They ration themselves. Small doses. Manageable amounts. They've become very precise about this."
+  },
+  {
+    text: "Being ordinary — undistinguished, unremarkable, easily replaced.",
+    note: "The fear isn't vanity. It's the deeper suspicion that if they're not exceptional, there's no reason for anyone to stay."
+  },
+  {
+    text: "Making a decision they can't take back — committing to something that turns out to be wrong.",
+    note: "They keep their options open as a form of self-protection. The cost is that they are never fully anywhere."
+  },
+  {
+    text: "That the people they love will be hurt because of them.",
+    note: "They stay at a remove not from coldness but from a misguided protectiveness. Distance feels like the kindest thing they can offer."
+  },
+  {
+    text: "Being responsible for something — someone — and failing them.",
+    note: "They either avoid responsibility entirely, or they take it on so completely that failure becomes impossible to survive."
+  },
+  {
+    text: "That beneath all the performance and management, there is nothing — no real self to discover.",
+    note: "This is the fear they can't examine directly. They stay busy enough that it doesn't have to be faced."
+  },
+  {
+    text: "Conflict — specifically, the moment when someone's face changes because of something they said.",
+    note: "They have become experts at preventing that moment. The smoothness of their social surface is armor."
+  },
+  {
+    text: "Being wrong in a way that cannot be explained away or recovered from.",
+    note: "They are careful. Extremely careful. They check their work, their words, their impressions, compulsively."
+  },
+  {
+    text: "Losing control of how they are perceived — having the story someone tells about them be wrong.",
+    note: "They are proactive narrators of their own life. They shape the version that reaches people before the unedited one can."
+  },
+  {
+    text: "That the grief they've been carrying — and not fully feeling — will, if they let it, be bottomless.",
+    note: "They allow themselves to feel it only in small, managed amounts. They're afraid that opening the door fully would mean never closing it."
+  },
+  {
+    text: "Being blamed for something they couldn't have prevented.",
+    note: "They take preemptive responsibility for things that aren't their fault, just to stay ahead of the accusation."
+  },
+  {
+    text: "Asking for something and watching the other person's face register the inconvenience of it.",
+    note: "They would rather go without than witness that. The image of it — imagined, usually — is enough to stop the ask."
+  },
+  {
+    text: "That the good things in their life exist on borrowed time they didn't earn.",
+    note: "They don't let themselves settle. Settling feels like tempting fate. They remain, always, slightly braced."
+  },
+  {
+    text: "Being forgiven — and then expected to be different.",
+    note: "They avoid the situations that would require forgiveness. Change has always come with a cost they weren't told about in advance."
+  },
+  {
+    text: "Intimacy — the specific kind that requires them to stop performing and simply be.",
+    note: "They mistake the performance for the self. The idea of being without it feels like being without skin."
+  },
+  {
+    text: "That the distance they've kept from their own life will one day become permanent — that they will have missed it.",
+    note: "This fear surfaces in quiet moments and is quickly suppressed. But it's there. And it's getting louder."
+  }
+];
+
+const copingStrategies = [
+  {
+    text: "They make themselves indispensable. If people need them, people stay.",
+    note: "This works, technically. The relationships it creates are real. They're just not the ones they actually want."
+  },
+  {
+    text: "They become the most competent person in any room — the one with the answer, the plan, the follow-through.",
+    note: "Competence is not the same as safety, but it is the closest thing they've found."
+  },
+  {
+    text: "They leave first. Before the ending that's coming, they create one they control.",
+    note: "They've lost things this way that weren't going anywhere. They won't know that for years, if ever."
+  },
+  {
+    text: "They become the caretaker — focusing all attention outward so there's none left to turn inward.",
+    note: "It's not selfless. It's a very efficient way to avoid the interior."
+  },
+  {
+    text: "They underperform deliberately — staying below the threshold where failure would mean something.",
+    note: "The talent is visible anyway, to everyone except them. They find this feedback baffling."
+  },
+  {
+    text: "They intellectualize everything — converting feeling into analysis before it can land.",
+    note: "They are brilliant at this. They can explain their own wound with precision and feel almost nothing as they do it."
+  },
+  {
+    text: "They people-please — reading the room and becoming whatever that room needs.",
+    note: "They are extraordinarily good at this. They've had a great deal of practice. They have no idea who they are when no one is watching."
+  },
+  {
+    text: "They dominate — taking control of situations before the situation can control them.",
+    note: "People experience this as confidence or even aggression. It is neither. It is a very old fear, moving fast."
+  },
+  {
+    text: "They minimize — their feelings, their needs, their presence. They make themselves easy to keep.",
+    note: "The strategy works. They are kept. The cost is that they are never fully known by the people who keep them."
+  },
+  {
+    text: "They chase achievement — the next credential, the next milestone, the next proof that they are enough.",
+    note: "The feeling of enoughness never arrives. This is confusing. They conclude they haven't achieved enough yet."
+  },
+  {
+    text: "They avoid close relationships — keeping everything warm but shallow, friendly but unreachable.",
+    note: "They are well-liked. They have many acquaintances. They are profoundly lonely."
+  },
+  {
+    text: "They use humor — deflecting anything serious with a joke before it can become real.",
+    note: "People love this about them. It makes them easy to be around. It also makes them impossible to reach."
+  },
+  {
+    text: "They stay busy. Always. Motion is a form of management — if they stop, the thing they're outrunning catches up.",
+    note: "They are remarkably productive. They do not know what they would feel if they rested. They're not going to find out."
+  },
+  {
+    text: "They become the expert — on the subject, on the situation, on other people. Knowledge as control.",
+    note: "Information is a kind of armor. If they understand it, it can't surprise them. Surprise is what they're actually afraid of."
+  },
+  {
+    text: "They give everything away — time, energy, money, attention — before anyone can accuse them of taking too much.",
+    note: "They arrive at depletion regularly and don't understand why. The math is straightforward to everyone but them."
+  },
+  {
+    text: "They hide in plain sight — performing openness while keeping the actual self elsewhere.",
+    note: "People feel close to them. They have shared a great deal. None of it is the thing."
+  },
+  {
+    text: "They set impossibly high standards — for themselves, and sometimes for others — so that disappointment can be attributed to failure, not to them.",
+    note: "The bar moves. It always moves. That's the point of it."
+  },
+  {
+    text: "They tell a version of their own story so often and so well that it has replaced the original.",
+    note: "They believe the version. Mostly. There are moments, usually at 3am, when they don't."
+  },
+  {
+    text: "They find someone worse off and focus there — their own problems shrink in comparison.",
+    note: "This is not without compassion. But compassion and avoidance are not mutually exclusive."
+  },
+  {
+    text: "They wait. They are extraordinarily patient — with situations, with people, with themselves. Waiting feels like control.",
+    note: "What they're waiting for is unclear, even to them. For it to be safe. For permission. For someone to go first."
+  }
+];
+
+const truths = [
+  {
+    text: "Vulnerability is not the thing that drives people away. It's the thing that makes them stay.",
+    note: "The character has evidence for this already. They've seen it work in others. They haven't applied it to themselves."
+  },
+  {
+    text: "Being known is not the same as being judged. Some people will stay when they see all of it.",
+    note: "The proof of this will probably come in the form of a person they didn't expect."
+  },
+  {
+    text: "The control they've been maintaining was never what was keeping them safe.",
+    note: "Something will happen that they couldn't prevent despite all their preparation. It will hurt. It will also not destroy them."
+  },
+  {
+    text: "They are allowed to need things. Need is not the same as burden.",
+    note: "Someone will demonstrate this to them directly — will want to be needed, will ask for the chance to show up."
+  },
+  {
+    text: "The story they've been telling about themselves is not the only available story.",
+    note: "There is evidence for a different interpretation. There has always been evidence. They've been selecting against it."
+  },
+  {
+    text: "Other people are capable of handling their full self — and some of them have been waiting for it.",
+    note: "The character has been protecting people from themselves. The people didn't need the protection. They needed the person."
+  },
+  {
+    text: "Asking for help is not a confession of failure. It's an act of trust — which is what the people who love them have been waiting for.",
+    note: "The lesson arrives not as an idea but as an experience. Someone helps them. It doesn't cost them what they thought it would."
+  },
+  {
+    text: "The wound made them who they are, but it doesn't have to keep making their decisions.",
+    note: "There's a difference between being shaped by something and being run by it. The character will learn to feel that difference."
+  },
+  {
+    text: "They are not responsible for what happened to them. They are only responsible for what they do next.",
+    note: "This seems simple. For this character, it is not simple at all."
+  },
+  {
+    text: "The people who love them know more than they've admitted. And they're still here.",
+    note: "The character has been managing the information. The people have been seeing through the management. They stayed anyway."
+  },
+  {
+    text: "Rest is not the same as giving up. Stillness is not the same as disappearing.",
+    note: "They will have to stop — be made to stop, probably — before they discover this. What they find in the stillness will surprise them."
+  },
+  {
+    text: "Grief is not bottomless. Feeling it fully is survivable, and the only way out.",
+    note: "They've been managing the grief in small doses for years. The unmanaged version is what the story asks them to face."
+  },
+  {
+    text: "Being loved without earning it is not a trap. It is just love.",
+    note: "They will receive love they didn't perform for and wait for the catch. The catch won't come. That will be the hardest part to accept."
+  },
+  {
+    text: "The connection they've been protecting themselves from is the thing they've needed all along.",
+    note: "This is not a surprise to anyone watching. It will feel like a revelation to them."
+  },
+  {
+    text: "Changing doesn't mean losing themselves. It means finding out who they actually are beneath the strategy.",
+    note: "What they find will be both more ordinary and more worth keeping than the self they've been performing."
+  },
+  {
+    text: "Conflict is survivable. Relationships can rupture and repair. The middle option exists.",
+    note: "They will have to live through a rupture that doesn't end in silence or abandonment. It will rewrite the rule."
+  },
+  {
+    text: "The self that survived the wound is not the whole self. There is more — and there has always been more.",
+    note: "Someone will see the more. Will name it. The character's job is to resist less than they want to."
+  },
+  {
+    text: "Forgiveness — of themselves — is not the same as saying it didn't matter. It's saying they don't want to carry it anymore.",
+    note: "They will extend this grace to someone else first, as they always do, and recognize it on the way back."
+  },
+  {
+    text: "The distance they've kept hasn't protected them. It's just meant they've been alone while hurting.",
+    note: "They will be hurt while close to someone and discover that the hurt is different — still hurt, but not lonely."
+  },
+  {
+    text: "They are already enough. They have always been enough. The work was never going to get them there because they were already there.",
+    note: "This is the simplest truth and the hardest to receive. The character will resist it to the end."
+  }
+];
+
+let locks = { wound: false, belief: false, fear: false, coping: false, truth: false };
+let current = { wound: -1, belief: -1, fear: -1, coping: -1, truth: -1 };
 
 function rand(arr, exclude) {
   let idx;
@@ -674,43 +1041,121 @@ function rand(arr, exclude) {
 }
 
 function toggleLock(type) {
-  if (type === 'wound') {
-    woundLocked = !woundLocked;
-    const btn = document.getElementById('lock-wound');
-    btn.textContent = woundLocked ? 'Locked' : 'Lock';
-    btn.classList.toggle('locked', woundLocked);
-  } else {
-    beliefLocked = !beliefLocked;
-    const btn = document.getElementById('lock-belief');
-    btn.textContent = beliefLocked ? 'Locked' : 'Lock';
-    btn.classList.toggle('locked', beliefLocked);
-  }
+  locks[type] = !locks[type];
+  const btn = document.getElementById('lock-' + type);
+  btn.textContent = locks[type] ? 'Locked' : 'Lock';
+  btn.classList.toggle('locked', locks[type]);
 }
 
-function setCard(textId, noteId, data) {
+function setCard(textId, noteId, data, contradictionId) {
   const textEl = document.getElementById(textId);
   const noteEl = document.getElementById(noteId);
   textEl.classList.add('fading');
   noteEl.classList.add('fading');
+
+  if (contradictionId) {
+    const cEl = document.getElementById(contradictionId);
+    if (cEl) cEl.classList.add('fading');
+  }
+
   setTimeout(() => {
     textEl.textContent = data.text;
     noteEl.textContent = data.note;
     textEl.classList.remove('fading');
     noteEl.classList.remove('fading');
+
+    if (contradictionId && data.contradiction) {
+      const cEl = document.getElementById(contradictionId);
+      if (cEl) {
+        cEl.textContent = data.contradiction;
+        cEl.classList.remove('fading');
+      }
+    }
   }, 180);
 }
 
 function generate() {
-  if (!woundLocked) {
-    const idx = rand(wounds, currentWoundIdx);
-    currentWoundIdx = idx;
+  if (!locks.wound) {
+    const idx = rand(wounds, current.wound);
+    current.wound = idx;
     setCard('wound-text', 'wound-note', wounds[idx]);
   }
-  if (!beliefLocked) {
-    const idx = rand(beliefs, currentBeliefIdx);
-    currentBeliefIdx = idx;
-    setCard('belief-text', 'belief-note', beliefs[idx]);
+  if (!locks.belief) {
+    const idx = rand(beliefs, current.belief);
+    current.belief = idx;
+    // Special handling for belief card which has contradiction
+    const textEl = document.getElementById('belief-text');
+    const noteEl = document.getElementById('belief-note');
+    const contrEl = document.getElementById('contradiction-text');
+    const contrCard = document.getElementById('belief-contradiction');
+    textEl.classList.add('fading');
+    noteEl.classList.add('fading');
+    contrCard.classList.add('fading');
+    setTimeout(() => {
+      textEl.textContent = beliefs[idx].text;
+      noteEl.textContent = beliefs[idx].note;
+      contrEl.textContent = beliefs[idx].contradiction;
+      textEl.classList.remove('fading');
+      noteEl.classList.remove('fading');
+      contrCard.classList.remove('fading');
+    }, 180);
   }
+  if (!locks.fear) {
+    const idx = rand(fears, current.fear);
+    current.fear = idx;
+    setCard('fear-text', 'fear-note', fears[idx]);
+  }
+  if (!locks.coping) {
+    const idx = rand(copingStrategies, current.coping);
+    current.coping = idx;
+    setCard('coping-text', 'coping-note', copingStrategies[idx]);
+  }
+  if (!locks.truth) {
+    const idx = rand(truths, current.truth);
+    current.truth = idx;
+    setCard('truth-text', 'truth-note', truths[idx]);
+  }
+}
+
+function copyProfile() {
+  const w = wounds[current.wound];
+  const b = beliefs[current.belief];
+  const f = fears[current.fear];
+  const c = copingStrategies[current.coping];
+  const t = truths[current.truth];
+
+  const profile = [
+    'THE WOUND',
+    w ? w.text : '',
+    w ? w.note : '',
+    '',
+    'THE FALSE BELIEF',
+    b ? b.text : '',
+    b ? b.note : '',
+    b && b.contradiction ? 'Hidden Contradiction: ' + b.contradiction : '',
+    '',
+    'THE FEAR',
+    f ? f.text : '',
+    f ? f.note : '',
+    '',
+    'THE COPING STRATEGY',
+    c ? c.text : '',
+    c ? c.note : '',
+    '',
+    'THE TRUTH THEY MUST LEARN',
+    t ? t.text : '',
+    t ? t.note : '',
+  ].join('\n');
+
+  navigator.clipboard.writeText(profile).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Profile';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
 }
 
 generate();
