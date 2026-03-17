@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="/favicon.ico">
-  <meta name="description" content="Colin Merrill's writing — essays, fiction, and poetry.">
+  <meta name="description" content="Writing by Colin Merrill — essays, fiction, poetry, and tools for writers."/>
   <title>Writing — Colin Merrill</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
   <header class="site-header">
-  <a href="/" class="site-title">
-    Colin Merrill
-    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="13" y="2" width="14" height="8" rx="1"/>
-      <line x1="16" y1="5" x2="24" y2="5" stroke-width="0.8"/>
-      <line x1="16" y1="7" x2="22" y2="7" stroke-width="0.8"/>
-      <rect x="4" y="10" width="32" height="16" rx="2"/>
-      <rect x="8" y="14" width="4" height="3" rx="0.5"/>
-      <rect x="14" y="14" width="4" height="3" rx="0.5"/>
-      <rect x="20" y="14" width="4" height="3" rx="0.5"/>
-      <rect x="26" y="14" width="4" height="3" rx="0.5"/>
-      <rect x="10" y="19" width="4" height="3" rx="0.5"/>
-      <rect x="16" y="19" width="4" height="3" rx="0.5"/>
-      <rect x="22" y="19" width="4" height="3" rx="0.5"/>
-      <path d="M4 26 L2 32 L38 32 L36 26"/>
-      <circle cx="6" cy="12" r="1.5"/>
-      <circle cx="34" cy="12" r="1.5"/>
-    </svg>
-  </a>
-</header>
+    <a href="/" class="site-title">
+      Colin Merrill
+      <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="13" y="2" width="14" height="8" rx="1"/>
+        <line x1="16" y1="5" x2="24" y2="5" stroke-width="0.8"/>
+        <line x1="16" y1="7" x2="22" y2="7" stroke-width="0.8"/>
+        <rect x="4" y="10" width="32" height="16" rx="2"/>
+        <rect x="8" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="14" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="20" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="26" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="10" y="19" width="4" height="3" rx="0.5"/>
+        <rect x="16" y="19" width="4" height="3" rx="0.5"/>
+        <rect x="22" y="19" width="4" height="3" rx="0.5"/>
+        <path d="M4 26 L2 32 L38 32 L36 26"/>
+        <circle cx="6" cy="12" r="1.5"/>
+        <circle cx="34" cy="12" r="1.5"/>
+      </svg>
+    </a>
+  </header>
   <main class="hub-page">
     <h1>Writing</h1>
     <div class="hub-grid">
@@ -45,24 +45,19 @@
         <h2>Poetry</h2>
         <p>Original poems.</p>
       </a>
-      <a href="/writing-tools.html" class="hub-item">
-        <h2>Writing Tools</h2>
-        <p>Interactive utilities for novelists and storytellers — a novel planner, a character arc tool, and more.</p>
+      <a href="/writing-resources.html" class="hub-item">
+        <h2>Writing Tools &amp; Resources</h2>
+        <p>Interactive utilities for novelists and storytellers — a novel planner, a character arc tool, reference guides, and more.</p>
       </a>
     </div>
   </main>
   <div id="footer-placeholder"></div>
-<script>
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer-placeholder').innerHTML = html;
-      const link = document.getElementById('footer-main-link');
-      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
-        link.textContent = 'Home';
-        link.href = '/';
-      }
-    });
-</script>
+  <script>
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      });
+  </script>
 </body>
 </html>
