@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Writing tools and resources for novelists and storytellers — interactive utilities, reference guides, and frameworks for the craft of fiction."/>
+  <title>Writing Tools &amp; Resources — Colin Merrill</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="site-title">
+      Colin Merrill
+      <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="13" y="2" width="14" height="8" rx="1"/>
+        <line x1="16" y1="5" x2="24" y2="5" stroke-width="0.8"/>
+        <line x1="16" y1="7" x2="22" y2="7" stroke-width="0.8"/>
+        <rect x="4" y="10" width="32" height="16" rx="2"/>
+        <rect x="8" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="14" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="20" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="26" y="14" width="4" height="3" rx="0.5"/>
+        <rect x="10" y="19" width="4" height="3" rx="0.5"/>
+        <rect x="16" y="19" width="4" height="3" rx="0.5"/>
+        <rect x="22" y="19" width="4" height="3" rx="0.5"/>
+        <path d="M4 26 L2 32 L38 32 L36 26"/>
+        <circle cx="6" cy="12" r="1.5"/>
+        <circle cx="34" cy="12" r="1.5"/>
+      </svg>
+    </a>
+  </header>
+  <main class="essays-page">
+    <h1>Writing Tools &amp; Resources</h1>
+
+    <section class="essay-series">
+      <h2>Tools</h2>
+      <p class="series-description">Interactive utilities for novelists and storytellers.</p>
+      <ul class="essay-list">
+        <li class="essay-item">
+          <a href="/tools/novel-planner.html" class="essay-title">Novel Planner</a>
+          <p class="essay-description">A workspace for mapping the moving parts of a novel in progress — characters, structure, midpoint, and more.</p>
+        </li>
+        <li class="essay-item">
+          <a href="/tools/character-psychology.html" class="essay-title">Character Psychology</a>
+          <p class="essay-description">A generator for wound and false belief — the two things that exist before everything else in a character's life.</p>
+        </li>
+        <li class="essay-item">
+          <span class="essay-title">Scene Planner <span class="essay-date">Coming Soon</span></span>
+          <p class="essay-description">A workspace for the individual unit of story — purpose, conflict, POV, and what changes by the final line.</p>
+        </li>
+        <li class="essay-item">
+          <span class="essay-title">Premise Stress-Tester <span class="essay-date">Coming Soon</span></span>
+          <p class="essay-description">Put in a premise and interrogate it. Does it create irresolvable conflict? Does the want oppose the need? Find out before you write eighty pages.</p>
+        </li>
+        <li class="essay-item">
+          <span class="essay-title">Story Anatomy <span class="essay-date">Coming Soon</span></span>
+          <p class="essay-description">Describe your story and map it against the full framework — want, need, fear, false belief, mirror, opposing force, pivot, theme. An interactive extension of the Analyzing Narrative series.</p>
+        </li>
+        <li class="essay-item">
+          <span class="essay-title">First Line Workshop <span class="essay-date">Coming Soon</span></span>
+          <p class="essay-description">Write opening lines and examine what they promise, what they withhold, and whether they create the forward motion a first line needs.</p>
+        </li>
+        <li class="essay-item">
+          <span class="essay-title">Theme Extractor <span class="essay-date">Coming Soon</span></span>
+          <p class="essay-description">Describe your story and work backward to the theme underneath. Useful for writers who are deep in a draft and need to understand what they're actually writing about.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="essay-series">
+      <h2>Resources</h2>
+      <p class="series-description">Reference guides and frameworks for understanding how fiction works.</p>
+      <ul class="essay-list">
+        <li class="essay-item">
+          <a href="/resources/master-plots.html" class="essay-title">The Twenty Master Plots</a>
+          <p class="essay-description">The fundamental narrative situations underlying all fiction — from Quest and Pursuit to Transformation and Descension.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      });
+  </script>
+</body>
+</html>
