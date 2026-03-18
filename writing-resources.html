@@ -32,7 +32,6 @@
   </header>
   <main class="essays-page">
     <h1>Writing Tools &amp; Resources</h1>
-
     <section class="essay-series">
       <h2>Tools</h2>
       <p class="series-description">Interactive utilities for novelists and storytellers.</p>
@@ -67,14 +66,37 @@
         </li>
       </ul>
     </section>
-
     <section class="essay-series">
       <h2>Resources</h2>
       <p class="series-description">Reference guides and frameworks for understanding how fiction works.</p>
       <ul class="essay-list">
         <li class="essay-item">
-          <a href="/writing-resources/master-plots.html" class="essay-title">The Twenty Master Plots</a>
+          <a href="/resources/master-plots.html" class="essay-title">The Twenty Master Plots</a>
           <p class="essay-description">The fundamental narrative situations underlying all fiction — from Quest and Pursuit to Transformation and Descension.</p>
+        </li>
+        <li class="essay-item">
+          <a href="/resources/archetypal-characters.html" class="essay-title">The Archetypal Characters</a>
+          <p class="essay-description">The fundamental roles that recur across all storytelling — Hero, Shadow, Mentor, Trickster, and the rest.</p>
+        </li>
+        <li class="essay-item">
+          <a href="/resources/wounds-false-beliefs.html" class="essay-title">Wounds &amp; False Beliefs</a>
+          <p class="essay-description">The psychological core beneath every compelling character — a glossary of formative wounds and the mistaken convictions they generate.</p>
+        </li>
+        <li class="essay-item">
+          <a href="/resources/seven-conflicts.html" class="essay-title">The Seven Basic Conflicts</a>
+          <p class="essay-description">The fundamental types of opposition that drive every story — from Man vs. Self to Man vs. Society.</p>
+        </li>
+        <li class="essay-item">
+          <a href="/resources/narrative-structures.html" class="essay-title">Common Narrative Structures</a>
+          <p class="essay-description">A comparison of the major structural frameworks for fiction — the Three-Act Structure, Hero's Journey, Fichtean Curve, and more.</p>
+        </li>
+        <li class="essay-item">
+          <a href="/resources/scene-checklist.html" class="essay-title">The Scene Checklist</a>
+          <p class="essay-description">What every scene needs to do — and the questions to ask when one isn't working.</p>
+        </li>
+        <li class="essay-item">
+          <a href="/resources/craft-terms-glossary.html" class="essay-title">Craft Terms Glossary</a>
+          <p class="essay-description">Plain-language definitions for the terms that come up most in writing about fiction — inciting incident, free indirect discourse, dramatic irony, and more.</p>
         </li>
       </ul>
     </section>
@@ -83,9 +105,7 @@
   <script>
     fetch('/footer.html')
       .then(res => res.text())
-      .then(html => {
-        document.getElementById('footer-placeholder').innerHTML = html;
-      });
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; });
   </script>
 </body>
 </html>
