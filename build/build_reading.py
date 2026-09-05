@@ -3,7 +3,7 @@
 Generate the reading pages for colinmerrill.com from a Goodreads export.
 
 Reads  data/goodreads_library_export.csv
-Writes reading-log.html, book-reviews.html, reviews/<slug>.html
+Writes reading-log.html, book-reviews.html, reviews/<slug>.html, sitemap.xml
 
 Re-export from Goodreads (My Books > Import and Export > Export Library),
 drop the file into data/, and run this again. Everything regenerates.
@@ -245,6 +245,52 @@ def build_reviews(books):
                 f"{len(reviewed)} book reviews by Colin Merrill, covering literary fiction, classics, debuts and small press titles.",
                 "\n".join(out)), len(reviewed)
 
+# ---------------------------------------------------------------- sitemap
+
+SITE = "https://colinmerrill.com"
+
+def build_sitemap(review_slugs, review_dates):
+    """Every page on the site, so search engines can find the reviews."""
+    static = []
+    for name in sorted(os.listdir(ROOT)):
+        if name.endswith(".html") and name not in ("footer.html",):
+            static.append("/" if name == "index.html" else f"/{name}")
+    for sub in ("essays", "writing-resources", "tools"):
+        d = os.path.join(ROOT, sub)
+        if not os.path.isdir(d):
+            continue
+        for dirpath, _, files in os.walk(d):
+            for name in sorted(files):
+                if name.endswith(".html"):
+                    rel = os.path.relpath(os.path.join(dirpath, name), ROOT)
+                    static.append("/" + rel.replace(os.sep, "/"))
+
+    out = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    def url(loc, lastmod=None, priority=None):
+        out.append("  <url>")
+        out.append(f"    <loc>{SITE}{loc}</loc>")
+        if lastmod:
+            out.append(f"    <lastmod>{lastmod}</lastmod>")
+        if priority:
+            out.append(f"    <priority>{priority}</priority>")
+        out.append("  </url>")
+
+    for loc in static:
+        url(loc, priority="0.8" if loc in ("/", "/reading.html", "/book-reviews.html") else None)
+    for slug in review_slugs:
+        d = review_dates.get(slug, "")
+        lastmod = d.replace("/", "-") if re.match(r"\d{4}/\d{2}/\d{2}", d) else None
+        url(f"/reviews/{slug}.html", lastmod=lastmod, priority="0.7")
+    out.append("</urlset>")
+    return "\n".join(out) + "\n"
+
+ROBOTS = f"""User-agent: *
+Allow: /
+
+Sitemap: {SITE}/sitemap.xml
+"""
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -260,9 +306,19 @@ def main():
     with open(os.path.join(ROOT, "book-reviews.html"), "w", encoding="utf-8") as f:
         f.write(reviews_html)
 
+    slugs = [b["slug"] for b in books if b["review"] and not b["spoiler"]]
+    dates = {b["slug"]: b["date_read"] for b in books}
+    with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(build_sitemap(slugs, dates))
+    with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(ROBOTS)
+
     skipped = sum(1 for b in books if b["review"] and b["spoiler"])
     print(f"reading-log.html   {len(books)} books")
     print(f"book-reviews.html  {n} reviews  ({len(os.listdir(REVIEW_DIR))} pages in reviews/)")
+    urls = open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read().count("<loc>")
+    print(f"sitemap.xml        {urls} urls")
+    print(f"robots.txt         written")
     if skipped:
         print(f"skipped            {skipped} review(s) flagged as spoilers on Goodreads")
 
