@@ -253,7 +253,7 @@ def build_sitemap(review_slugs, review_dates):
     """Every page on the site, so search engines can find the reviews."""
     static = []
     for name in sorted(os.listdir(ROOT)):
-        if name.endswith(".html") and name not in ("footer.html",):
+        if name.endswith(".html") and name not in ("footer.html",) and not name.startswith("google"):
             static.append("/" if name == "index.html" else f"/{name}")
     for sub in ("essays", "writing-resources", "tools"):
         d = os.path.join(ROOT, sub)
