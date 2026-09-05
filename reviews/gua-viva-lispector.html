@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="2.75⭐️         Água Viva isn’t a novel in the traditional sense, and I think that’s important to know before picking it up. Lispector has created something">
+  <title>Água Viva by Clarice Lispector - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Água Viva</h1>
+      <p class="review-author">Clarice Lispector</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read August 14, 2025</span></p>
+      <div class="review-body">
+        <p>2.75⭐️</p>
+        <p><i>Água Viva</i> isn’t a novel in the traditional sense, and I think that’s important to know before picking it up. Lispector has created something much more experimental: a lyrical, stream-of-consciousness work that reads like a long prose poem or philosophical diary. Spoiler alert: there’s no plot, no characters to follow, just a narrator drifting through thoughts on time, sensation, art, and existence.</p>
+        <p>So, if you go in expecting a story, you’ll probably be disappointed. But if you enjoy untethered philosophical musings, you might find a lot to appreciate here!</p>
+        <p>For me, the musings felt a bit too meandering and broad in scope, without much focus to anchor me. Maybe I wasn’t in the right state of mind for it because I found myself craving something more structured. On the flip side, this same sweeping, unrestrained quality could be exactly what another reader is looking for, especially if they’re in the mood to let their mind wander along with the narrator.</p>
+        <p>The writing itself is beautiful, which is no surprise coming from Lispector. Her sentences often stop you in your tracks. Even though <i>Água Viva</i> didn’t resonate with me as much as <i>The Hour of the Star</i>, I still admire the talent and originality behind it.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/13082435" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

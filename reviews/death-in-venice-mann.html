@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Have you ever finished a book feeling certain it was important without being entirely sure you enjoyed it? That was Death in Venice for me.         Thomas ">
+  <title>Death in Venice by Thomas Mann - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Death in Venice</h1>
+      <p class="review-author">Thomas Mann</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read February 1, 2026</span></p>
+      <div class="review-body">
+        <p>Have you ever finished a book feeling certain it was important without being entirely sure you enjoyed it? That was Death in Venice for me.</p>
+        <p>Thomas Mann&#x27;s 1912 classic follows Gustav, an aging German writer who travels to Venice and becomes consumed by an obsession with a beautiful Polish boy he never speaks to. That&#x27;s the whole plot. What Mann does with it is layer symbolism, Greek philosophy, and psychological dread, all while an epidemic quietly closes in around the edges.</p>
+        <p>The prose is meticulous, ornate, and rewards close reading, but it can also feel suffocating. Everything means something. Every stranger the protagonist encounters is a mythological signpost. It&#x27;s brilliantly crafted, but its density keeps you at arm&#x27;s length.</p>
+        <p>I respect this more than I was moved by it. For me, it&#x27;s a masterwork of atmosphere and ideas that left me admiring Mann&#x27;s control while wishing he&#x27;d let me feel a little more and think a little less.</p>
+        <p>3.25/5 Stars.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/53061" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

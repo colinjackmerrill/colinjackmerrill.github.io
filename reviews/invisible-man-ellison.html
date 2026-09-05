@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Readers who go in blind will likely not be prepared for Invisible Man.         Heck, even those acquainted with novels in the same vein may not be ready fo">
+  <title>Invisible Man by Ralph Ellison - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Invisible Man</h1>
+      <p class="review-author">Ralph Ellison</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read April 20, 2025</span></p>
+      <div class="review-body">
+        <p>Readers who go in blind will likely not be prepared for <i>Invisible Man</i>.</p>
+        <p>Heck, even those acquainted with novels in the same vein may not be ready for Ellison&#x27;s strain of experimental literary jazz.</p>
+        <p><i>Invisible Man</i>’s stream of consciousness is a powerful wave that crashes over the reader—an opportunity to bask in the rawness of Ellison’s message and the feeling it creates.</p>
+        <p>The unique and passionate voices of Ellison’s characters are always front and center. They magnify—and are magnified by—his masterful command of prose, imagery, and characterization.</p>
+        <p>Like a niche subgenre of jazz, <i>Invisible Man</i>’s quirks, dissonances, and surrealism may put off some readers—but those who make it to the last page will likely return to it again, noticing a bassline here, a new harmony there, that they didn’t hear before.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/16981" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

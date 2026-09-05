@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="When I heard Saunders was dragging us back into the afterlife I was FULLY prepared to have my brain scrambled and my soul lovingly drop-kicked into the aby">
+  <title>Vigil by George Saunders - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Vigil</h1>
+      <p class="review-author">George Saunders</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read January 29, 2026</span></p>
+      <div class="review-body">
+        <p>When I heard Saunders was dragging us back into the afterlife I was FULLY prepared to have my brain scrambled and my soul lovingly drop-kicked into the abyss. I was expecting George to haunt me, confuse me, and spiritually yeet me into the void.</p>
+        <p>So...DID HE DO IT?!</p>
+        <p>Yep. Vigil is as explosive, playful, and darkly funny as I was expecting, while tackling some of Saunders’ favorite obsessions: corporate greed, capitalism, and the environmental costs of progress.</p>
+        <p>Reading Vigil&#x27;s synopsis, you might worry this is just Lincoln in the Bardo all over again, but this is a very different ride. A woman ushers a dying oil company CEO into the afterlife, and the story feels more grounded yet expansive. The CEO insists he has nothing to regret, claiming “I lived big. The world is better for it.” That wild certainty drives the tension between self-delusion and the consequences we leave behind.</p>
+        <p>Vigil has an indie, experimental vibe, so in my opinion it is not a book guaranteed to please casual readers or anyone looking for a neat, comforting story. It rewards patience and curiosity. Readers willing to get lost in moral complexity, existential humor, and jarring narrative turns will find themselves fully immersed. The pacing alternates between quiet reflection and bursts of chaotic energy-- moments that especially shine in the audiobook (extraordinary performances!).</p>
+        <p>Saunders is fully in command of his craft. The book manages to be challenging, surprising, and disorienting without being exhausting. As long as you let go and let Saunders lead, it&#x27;s a ride worth taking.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/238873074" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

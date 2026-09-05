@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="From the moment I put down Sigrid Nunez’s The Friend, I felt like I had been let in on something quiet yet enormous. It’s deeply intimate and relatable. Th">
+  <title>The Friend by Sigrid Nunez - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Friend</h1>
+      <p class="review-author">Sigrid Nunez</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read September 14, 2025</span></p>
+      <div class="review-body">
+        <p>From the moment I put down Sigrid Nunez’s <i>The Friend</i>, I felt like I had been let in on something quiet yet enormous. It’s deeply intimate and relatable. The narrator has a voice that sounds like it’s speaking to you, under the hum of loss, the roar of silence.</p>
+        <p>Nunez doesn&#x27;t just give readers a story of a death, but a study in what remains and the way one’s life continues to echo. The narrator’s best friend and mentor has committed suicide, and she inherits his Great Dane, Apollo. Apollo ends up being shared grief, a catalyst for introspection, and a companion in silence.</p>
+        <p>At its core, the book dares to suggest that our losses define us:</p>
+        <p>“What we miss—what we lose and what we mourn—isn’t it this that makes us who, deep down, we truly are?”</p>
+        <p>Nunez uses the narrator’s writing life as a framework for the novel so that it feels part memoir, part essay, part love letter to literature. References to authors, reflections on what writing means, and how authors and readers relate to each other enrich it.</p>
+        <p>The tone is balanced between humor and heartbreak. Nunez has the uncanny ability to be both funny and tragic, to convey dry wit and emotional truth simultaneously. The narrator is self-aware, cleverly critical, able to mock literary pretensions one moment, and then in the next, stripped bare by grief.</p>
+        <p><i>The Friend</i> is a novel that avoids clichés and that succinctly conveys how writing is one of the means we use to carry grief. Some readers may find <i>The Friend</i> to be too loosely structured, the sections about writing life long or digressive. That’s because the novel is more about ruminations, memory, emotional logic than narrative logic. It’s quiet rather than explosive—a novel that stays with you.</p>
+        <p>If you want your novels intimate, philosophical, raw but not overblown, this is one to read. It delivers beautifully in voice, in tone, in the small heartbreaks that echo large. It&#x27;s deeply moving, exceptionally well crafted, and one of the most honest, resonant literary novels I’ve read in a while.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/40164365" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

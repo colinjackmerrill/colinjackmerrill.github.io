@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="★★★★★         This book CONSUMED me.         The Passion is romantic, tragic, addicting, weird, funny, and unexpectedly profound. I was swept away by the a">
+  <title>The Passion by Jeanette Winterson - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Passion</h1>
+      <p class="review-author">Jeanette Winterson</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read August 10, 2025</span></p>
+      <div class="review-body">
+        <p>★★★★★</p>
+        <p>This book CONSUMED me.</p>
+        <p><i>The Passion</i> is romantic, tragic, addicting, weird, funny, and unexpectedly profound. I was swept away by the alternating perspectives of Henri and Villanelle, which were both unforgettable in their own way, and by the way their stories twist together against the backdrop of war, love, and fate.</p>
+        <p>Winterson’s prose is absolutely stunning: sometimes a single word hits like a dart, other times a long, winding sentence builds into something equally sharp and devastating. She blends humor, heartbreak, and surreal touches so seamlessly that I often had to pause just to take it in.</p>
+        <p>This novel came out of nowhere for me and has instantly joined my list of all-time favorites. I can’t recommend it enough, especially if you want a story that will pull you under and refuse to let go.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/15047" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

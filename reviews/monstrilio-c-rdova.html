@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Monstrilio is a dark, tender, and gloriously unhinged meditation on grief that refuses to behave like a traditional grief narrative. It explores love after">
+  <title>Monstrilio by Gerardo Sámano Córdova - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Monstrilio</h1>
+      <p class="review-author">Gerardo Sámano Córdova</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read June 26, 2025</span></p>
+      <div class="review-body">
+        <p>Monstrilio is a dark, tender, and gloriously unhinged meditation on grief that refuses to behave like a traditional grief narrative. It explores love after loss, and what happens when that love is allowed to curdle, mutate, and take on a life of its own.</p>
+        <p>The story follows a mother and aunt who, after an unspeakable tragedy, quite literally refuse to let go. What begins as an act of desperate devotion slowly becomes something unsettling. The novel asks uncomfortable questions. How much of grief is about honoring the dead, and how much is about soothing the living? When does love stop being love and become something monstrous?</p>
+        <p>What makes Monstrilio so compelling is its tonal balancing act. The book contains grotesque body horror yet it is also at times deeply emotional and sincere. The horror never feels gratuitous because it externalizes the interior experience of grief.</p>
+        <p>Beneath the strangeness is a deeply human story about family, identity, generational trauma, and the terror of loving something you cannot save.</p>
+        <p>This is not a book for readers looking for familiar comfort. Monstrilio is for those who appreciate literary horror, grief narratives that resist sentimentality, and stories that are willing to sit in moral ambiguity. It understands that grief can be a kind of monster if we refuse to let it die.</p>
+        <p>Trigger warnings:<br>Child death<br>Graphic depictions of grief<br>Body horror<br>Gore<br>Emotional abuse<br>Obsessive behavior<br>Self-harm themes (non-graphic)</p>
+        <p>If you are drawn to books that blur the line between literary fiction and horror and you are open to being unsettled in deeply emotional ways, this one is unforgettable.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/62888185" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

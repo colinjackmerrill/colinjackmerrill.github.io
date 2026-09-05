@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="A tough book to read makes a tough book to review.  Pessoa’s “The Book Of Disquiet” is repetitive and self indulgent, but should we expect much different f">
+  <title>The Book of Disquiet by Fernando Pessoa - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Book of Disquiet</h1>
+      <p class="review-author">Fernando Pessoa</p>
+      <p class="review-meta"><span class="review-rating">★★☆☆☆</span> <span class="review-date">Read February 9, 2025</span></p>
+      <div class="review-body">
+        <p>A tough book to read makes a tough book to review.  Pessoa’s “The Book Of Disquiet” is repetitive and self indulgent, but should we expect much different from what is basically a collection of diary-like entries that explore the psyche of the writer from every possible angle? Even if we don’t hold The B. Of D. to the standard of novels (because it isn’t one) it’s still a bit disappointing because there are moments of genius that ignite with a glorious blaze, only to be snuffed out seconds later by the tiresome ramblings that rehash territory that was already covered. No doubt, Pessoa’s dedication to working on The B. of D. over the course of decades is impressive, but it’s also unfortunate because any work that goes on that long is bound to have continuity issues, plus a need for a God-like editor.  Unsurprisingly, The Book reads essentially like an authentically unedited journal, one by a writer that showed little-to-no restraint because he was still in the drafting stage. That just means that The B. of D. falls very short of reaching its full potential, and it’s too bad Pessoa wasn’t able to complete this work, because I suspect he would be just as unhappy with its current state as I am.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/8388793" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

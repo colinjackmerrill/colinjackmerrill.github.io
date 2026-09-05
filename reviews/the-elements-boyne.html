@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="4.25/5 Stars         John Boyne’s The Elements is an ambitious exploration of guilt, trauma, complicity, and the possibility of redemption. Boyne links fou">
+  <title>The Elements by John Boyne - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Elements</h1>
+      <p class="review-author">John Boyne</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read November 22, 2025</span></p>
+      <div class="review-body">
+        <p>4.25/5 Stars</p>
+        <p>John Boyne’s The Elements is an ambitious exploration of guilt, trauma, complicity, and the possibility of redemption. Boyne links four novellas in which he follows a woman fleeing scandal, a young athlete on trial, a surgeon shaped by childhood wounds, and a father traveling with his son.</p>
+        <p>He writes with a controlled intensity that lets the emotional weight land without melodrama. The characters are deeply flawed yet rendered with empathy, and their private shame and fear often feel painfully close. One line captures the book’s raw honesty about the damage we carry:</p>
+        <p>“I used to think the past was a place I could outrun, but it waits for me everywhere I go.”</p>
+        <p>The connections among the four narratives are give the book a cumulative force. Still, the repetition of trauma and the increasingly tight coincidences can feel numbing by the final section.</p>
+        <p>This is a heavy read that does not look away from the realities of abuse, guilt, and the long fallout of silence, so emotional readiness is essential. Readers who appreciate the intensity of novels like A Little Life will find similar power here.</p>
+        <p>Overall, this is a challenging and gripping novel: unsettling, absorbing, and morally complex. Even in its darkest moments, The Elements offers small but meaningful glimpses of humanity.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/222631674" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

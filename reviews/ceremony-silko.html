@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Leslie Marmon Silko’s Ceremony is more than what it appears on the surface. It is a novel structured as a healing ritual. Once you see that, the book opens">
+  <title>Ceremony by Leslie Marmon Silko - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Ceremony</h1>
+      <p class="review-author">Leslie Marmon Silko</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read December 19, 2025</span></p>
+      <div class="review-body">
+        <p>Leslie Marmon Silko’s Ceremony is more than what it appears on the surface. It is a novel structured as a healing ritual. Once you see that, the book opens up in extraordinary ways.</p>
+        <p>Set in New Mexico, Ceremony follows Tayo, a mixed-race Laguna Pueblo man returning from WWII shattered by grief, survivor’s guilt, and the psychic violence of colonialism. He is haunted by memories of his cousin Rocky’s death, alienated from his community, and sick with something that cannot be explained as purely physical.</p>
+        <p>Silko braids Tayo’s narrative with Pueblo myth, poetry, and oral tradition, collapsing time so that ancient stories and contemporary trauma coexist. These mythic interludes do not interrupt the novel. They define its structure and reveal a central truth of the book: stories make the world, and broken stories can destroy it.</p>
+        <p>The novel’s wide cast of characters embody different responses to trauma and dislocation. Rage turned inward, self-destruction disguised as resistance, bravado used to mask despair, and shame inherited through generations all surface through the people Tayo encounters.</p>
+        <p>Silko’s prose is deceptively spare and carefully paced. The book demands patience and trust, rewarding readers who are willing to slow down and allow meaning to surface gradually.</p>
+        <p>You can feel Ceremony’s influence throughout Native American literature, from Louise Erdrich’s braided narratives to Tommy Orange’s collective voice. It also echoes the modernist fragmentation of Faulkner and the mythic layering of Toni Morrison, while remaining unmistakably its own.</p>
+        <p>At its core, Ceremony is a cosmological novel. It asks what happens when a people’s stories are interrupted, and how they might be repaired.</p>
+        <p>The novel’s quiet revelation is that tradition is not static. It adapts, or it dies. Healing requires new ceremonies for new wounds.</p>
+        <p>Why read Ceremony now? Because it shows that healing is not individualistic. Because it refuses the idea that progress requires forgetting. Because it insists that who tells stories, how stories change, and who stories exclude shape reality itself.</p>
+        <p>Who will love this book:<br>	•	Readers who value theme and structure over plot speed<br>	•	Fans of literary fiction, myth, and nonlinear storytelling</p>
+        <p>This was a four-star read for me, and it is easy to see why it is considered a classic. I will definitely be rereading Ceremony. There is simply too much here to absorb in one pass. The novel does not end when the last page does. Like any real ritual, it works on you quietly long after you have finished.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/588234" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

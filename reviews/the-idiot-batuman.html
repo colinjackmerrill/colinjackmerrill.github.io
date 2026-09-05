@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Is the rock on the cover meant to suggest, “this is your brain on The Idiot”? Because I think I felt my brain slowly petrify while I read this book.       ">
+  <title>The Idiot by Elif Batuman - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Idiot</h1>
+      <p class="review-author">Elif Batuman</p>
+      <p class="review-meta"><span class="review-rating">★★☆☆☆</span> <span class="review-date">Read February 24, 2026</span></p>
+      <div class="review-body">
+        <p>Is the rock on the cover meant to suggest, “this is your brain on The Idiot”? Because I think I felt my brain slowly petrify while I read this book.</p>
+        <p>The Idiot follows Selin as she drifts through her first year of college. She befriends a small circle of eccentric classmates, enrolls in a Russian class that quietly shapes her inner life, and becomes fixated on a strange, elliptical email correspondence with an older Hungarian math student. Not much “happens” in a traditional plot sense, but the novel traces Selin’s attempts to interpret language, relationships, and herself.</p>
+        <p>I wanted to love this book. On paper, the awkward intellectual coming-of-age and deadpan humor should have worked. Yet, the narrators inability to turn experience into meaning became my own.</p>
+        <p>To her credit, Batuman fully commits to the bit. The voice is precise, alien, often very funny. The academic satire and early-email awkwardness are sharp and painfully accurate.</p>
+        <p>But admiration isn’t the same as enjoyment. The Ivan storyline circles without deepening, and the book’s refusal of catharsis started to feel airless rather than profound.</p>
+        <p>This is for readers who love interiority over plot, anti-climax over transformation, and the slow study of a mind thinking itself into corners. It just wasn’t for me.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/30962053" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

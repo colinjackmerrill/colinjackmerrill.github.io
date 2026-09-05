@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="2.25⭐️ As a huge Bill Gates fan I had high hopes that Source Code: My Beginnings would be a great book that I could recommend to others.  Unfortunately, I ">
+  <title>Source Code: My Beginnings by Bill  Gates - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Source Code: My Beginnings</h1>
+      <p class="review-author">Bill  Gates</p>
+      <p class="review-meta"><span class="review-rating">★★☆☆☆</span> <span class="review-date">Read April 23, 2025</span></p>
+      <div class="review-body">
+        <p>2.25⭐️ As a huge Bill Gates fan I had high hopes that <i>Source Code: My Beginnings</i> would be a great book that I could recommend to others.  Unfortunately, I was a bit let down— it’s not a bad book, but it turned out to be one that I might reply “meh” to when asked how it is. While it is enjoyable to read about Gates childhood, coming of age, and how he found his footing in the nascent PC industry, by the 3/4 mark the story gets bogged down by extraneous details that make it hard to stay engaged.  Not only that, but this book also suffers from its limited scope— it would be a more well-rounded read if it did a better job of tying the story back to modern day and offered more insight on how Gates’ source code continues to be a foundational part of how he operates.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/213034913" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

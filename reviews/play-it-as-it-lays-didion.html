@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="After hearing about the legendary Joan Didion for years, I worried my first experience reading her might not live up to the hype. Let me tell you, it absol">
+  <title>Play It As It Lays by Joan Didion - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Play It As It Lays</h1>
+      <p class="review-author">Joan Didion</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read December 9, 2025</span></p>
+      <div class="review-body">
+        <p>After hearing about the legendary Joan Didion for years, I worried my first experience reading her might not live up to the hype. Let me tell you, it absolutely did.</p>
+        <p>I expected the prose and the inventive form to impress, and they do. What I didn’t expect was the cold, unrelenting bleakness. Didion strings together spare sentences and clipped paragraphs into a pervasive sense of disquiet and detachment, all while maintaining a cinematic precision that makes every scene feel sharply lit and inescapably real.</p>
+        <p>Maria (pronounced mar-eye-uh) Wyeth is a former actress drifting through LA and Las Vegas in the aftermath of professional collapse and a disintegrating marriage. The novel unfolds in short, fragmentary chapters that slip backward and forward without neat cause-and-effect, amplifying its feeling of orbiting meaninglessness. That fractured structure mirrors Maria’s inner unraveling, and Didion’s L.A. becomes a hollow sprawl of freeways, motels, and casinos where glamour curdles into isolation and despair.</p>
+        <p>Didion’s control of tone is masterly. She creates a kind of intimate numbness: you feel the distance in Maria’s voice, but also the ache beneath it. Take a line like: “One thing in my defense, not that it matters: I know something Carter never knew, or Helene, or maybe you. I know what ‘nothing’ means, and keep on playing.” Maria keeps “playing” the game of life even when the rules feel void, and that tension gives the novel much of its power.</p>
+        <p>If you’re drawn to unsettling, psychologically rich novels like The Bell Jar or My Year of Rest and Relaxation, you may find Didion’s unique take on a woman’s mental unraveling deeply compelling. Just make sure to check trigger warnings because this is an unflinchingly bleak read.</p>
+        <p>4.25/5 stars</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/428" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

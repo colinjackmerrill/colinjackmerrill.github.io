@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Some novels devastate you loudly. The Remains of the Day devastates you through silence.         The book follows Stevens, an English butler taking a motor">
+  <title>The Remains of the Day by Kazuo Ishiguro - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Remains of the Day</h1>
+      <p class="review-author">Kazuo Ishiguro</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read February 27, 2026</span></p>
+      <div class="review-body">
+        <p>Some novels devastate you loudly. The Remains of the Day devastates you through silence.</p>
+        <p>The book follows Stevens, an English butler taking a motoring trip in the 1950s while reflecting on his decades of service to Lord Darlington and his relationship with Miss Kenton. What unfolds is not dramatic in a conventional sense, but rather a slow realization that a life built entirely around duty can leave very little room for the self.</p>
+        <p>This is one of Ishiguro’s defining novels, and you can see why it is so often praised. Stevens tells his story in a formal, careful voice, always emphasizing dignity and loyalty. What makes the book powerful is what he avoids saying. The emotional weight lives between the lines. As readers, we slowly piece together what Stevens cannot fully face about his employer, his choices, and his own heart.</p>
+        <p>The themes of duty, complicity, repression, and class are handled with remarkable control. The pacing is quiet and measured, which is why some readers consider it a masterpiece while others find it slow or emotionally distant. Both reactions make sense. If you prefer plot-heavy stories or highly expressive characters, this might feel restrained. If you enjoy subtle character studies, it is deeply rewarding.</p>
+        <p>For me, it is a 3.5/5 stars-- there&#x27;s nothing I actively dislike about the novel, but when it comes down to it, I admire it more than I love it. Even so, it remains a carefully crafted story with a quietly heartbreaking ending, and a great fit for readers who appreciate thoughtful, layered stories where the real drama happens beneath the surface.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/28921" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

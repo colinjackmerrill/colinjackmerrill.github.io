@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="If you like literary-speculative fiction that blurs art, obsession, and technology, this one’s worth checking out. It follows Enka, a struggling artist who">
+  <title>Immaculate Conception by Ling Ling Huang - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Immaculate Conception</h1>
+      <p class="review-author">Ling Ling Huang</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read November 9, 2025</span></p>
+      <div class="review-body">
+        <p>If you like literary-speculative fiction that blurs art, obsession, and technology, this one’s worth checking out. It follows Enka, a struggling artist who becomes entangled with the dazzling Mathilde, and explores the possibilities of a new technology called the Scaffold that links minds in the name of empathy and creative collaboration. The result is part art-world fever dream, part psychological thriller, paced like a slow burn that builds to something raw and unnerving.</p>
+        <p>This book teetered right on the edge of me really liking it. While the razor-sharp writing and blistering emotions had me devouring the novel in only a few sittings, the Scaffold concept and the way Enka connects her mind with Mathilde felt contrived, a little too gimmicky. Still, Huang’s prose and emotional insight nearly overcame that. The psychology at play was fascinating, and I enjoyed seeing how easily admiration blurs into fixation, and good intentions curdle into something murkier. I loved watching their friendship evolve from awe to dependency to quiet destruction. The art scenes and Enka’s hunger to be great grounded the book in something painfully human.</p>
+        <p>What stuck with me most was the tension between devotion and desire, and how ambition can corrode empathy. The mind-link premise sometimes veered into cringe territory, but Huang always reeled it back with beautiful, devastating clarity. I was frequently caught between fascination and discomfort, in a wonderful way.</p>
+        <p>I rate Immaculate Conception a 3.75/5 because it’s a fearless, unnerving exploration of art, envy, and identity, but it didn’t win me over completely.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/217453576" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

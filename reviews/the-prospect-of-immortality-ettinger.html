@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="As one of the first important manifestos of the cryonics movement, Prospect of Immortality is a must-read for those curious about suspended animation. The ">
+  <title>The Prospect of Immortality by Robert C.W. Ettinger - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Prospect of Immortality</h1>
+      <p class="review-author">Robert C.W. Ettinger</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read March 13, 2022</span></p>
+      <div class="review-body">
+        <p>As one of the first important manifestos of the cryonics movement, <i>Prospect of Immortality</i> is a must-read for those curious about suspended animation. The use of the word &quot;immortality&quot; is frequently cited as a misnomer by many cryonicists, citing that the goal of cryonics is only to save humans in their present state from death, not to grant them eternal life.  However, it is clear that Ettinger was of the strain of cryonicists that inextricably links successful reanimation to the technology that will also prolong life indefinitely.</p>
+        <p>The book&#x27;s over-optimism is clear from the start--while it does not exactly use immortality as a synonym for being cryogenically preserved, it ties so many other hypothetical technological successes related to &quot;immortality&quot; to the successful revival of &quot;freezees&quot; that it leaves little room for doubt. Thus, immortality is not only an appropriate representation of the spirit of what Ettinger proposed, but it is also a clear sign of its excessive idealization.</p>
+        <p>In simple terms:  Ettinger gets off track at times, but the valuable points he does make throughout and the core principles within still make <i>Prospect of Immortality</i> well worth the read.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/36817" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

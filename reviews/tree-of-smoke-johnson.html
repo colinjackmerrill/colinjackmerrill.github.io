@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Tree of Smoke is an ambitious, literary portrayal of the Vietnam war, but it is chaotic and hard to get into-- a novel that likely will reward readers that">
+  <title>Tree of Smoke by Denis Johnson - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Tree of Smoke</h1>
+      <p class="review-author">Denis Johnson</p>
+      <p class="review-meta"><span class="review-rating">★★☆☆☆</span> <span class="review-date">Read February 19, 2025</span></p>
+      <div class="review-body">
+        <p><i>Tree of Smoke</i> is an ambitious, literary portrayal of the Vietnam war, but it is chaotic and hard to get into-- a novel that likely will reward readers that give it a second go.  Whether or not you can wrap your head around the complicated military antics and multiple storylines contained within <i>Tree of Smoke</i>, those who submit to the unpredictability of this gritty rollercoaster of a novel may still enjoy the ride as it twists and turns through many existentialist themes.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/271074" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

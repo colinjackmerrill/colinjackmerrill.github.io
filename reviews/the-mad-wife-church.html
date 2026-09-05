@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="The Mad Wife is one of those novels that defies easy genre labels. It has suspense and a few surprising twists, but I wouldn’t call it a thriller; it brush">
+  <title>The Mad Wife by Meagan Church - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Mad Wife</h1>
+      <p class="review-author">Meagan Church</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read December 4, 2025</span></p>
+      <div class="review-body">
+        <p>The Mad Wife is one of those novels that defies easy genre labels. It has suspense and a few surprising twists, but I wouldn’t call it a thriller; it brushes up against historical fiction and mystery, but doesn’t sit neatly in either category. To me, it is domestic literary fiction that offers a character-driven story about identity, resilience, and the quiet unraveling of a 1950s housewife under suffocating expectations.</p>
+        <p>What I enjoyed most was the psychological depth. Meagan Church digs into the emotional cost of being a “perfect” mid-century wife: the performative smiles, the repression, and the medical gaslighting disguised as concern. Lulu’s inner world is beautifully explored, and the novel gives her space to question not only the people around her but her own sense of reality. The prose is sharp and straightforward, with flashes of lyricism that really stayed with me, such as “All of us are evolutions of ourselves…” or “Life is a continual process of letting go…” which feel like the book pausing to breathe and reflect.</p>
+        <p>I loved that there were twists I didn’t see coming, but the book does not rely on shock. Instead, it builds a slow, creeping sense of dread that mirrors Lulu’s growing uncertainty. It explores themes many readers will relate to, including grief, imposter syndrome, and the masks we put on to survive, while grounding everything in a vivid sense of time and place.</p>
+        <p>Overall, The Mad Wife is an accessible yet impactful read that I think a wide range of readers could enjoy. It is haunting and memorable. Just be sure to check the trigger warnings before diving in.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/223665360" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Thank you to NetGalley, William Morrow, and Allison King for the opportunity to read and review this ARC.         The Phoenix Pencil Company is an ambitiou">
+  <title>The Phoenix Pencil Company by Allison  King - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Phoenix Pencil Company</h1>
+      <p class="review-author">Allison  King</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read May 4, 2025</span></p>
+      <div class="review-body">
+        <p>Thank you to NetGalley, William Morrow, and Allison King for the opportunity to read and review this ARC.</p>
+        <p><i>The Phoenix Pencil Company</i> is an ambitious blend of the genres of fantasy, historical fiction, and contemporary adult fiction. Not only does King do a commendable job of bridging these genres, but she also weaves together an array of themes, including memory, storytelling, data sharing, and familial legacy.</p>
+        <p>The magical concept of &quot;reforging&quot; may be a hurdle for some readers-- regular fantasy consumers are likely to be more receptive to this inherited ability that is central to the narrative, while others might find it gimmicky. Despite the lack of a detailed origin story, King uses reforging effectively as a device to explore communication during war and across generations.</p>
+        <p>In contrast to the unfamiliarity of reforging, the EMBRs software platform, which aggregates user data into comprehensive personal narratives, will feel all too familiar. Most readers are already engaged in the ongoing fight for data privacy, making this subplot feel somewhat predictable, if not a little boring.</p>
+        <p>At its heart, <i>The Phoenix Pencil Company</i> is about relationships, and King writes them in a tender and relatable way-- whether it’s the unfolding of first love or the dynamic between grandparents and grandchild.</p>
+        <p>The novel’s journal entry/epistolary format makes sense within the context of the story, but its execution sometimes falls short, leading to moments of awkwardness. Fortunately, these issues aren&#x27;t significant enough to detract from the novel’s strengths.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/220652184" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

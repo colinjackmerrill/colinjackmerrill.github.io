@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="“Be patient toward all that is unsolved in your heart and try to love the questions themselves…”         Rilke wrote these letters to a young military cade">
+  <title>Letters to a Young Poet by Rainer Maria Rilke - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Letters to a Young Poet</h1>
+      <p class="review-author">Rainer Maria Rilke</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read September 28, 2025</span></p>
+      <div class="review-body">
+        <p>“Be patient toward all that is unsolved in your heart and try to love the questions themselves…”</p>
+        <p>Rilke wrote these letters to a young military cadet named Franz Xaver Kappus, who was struggling with whether to pursue poetry or stay in his conventional career path. What’s beautiful is that Rilke doesn’t just give writing advice, he gives life advice. These letters feel like a hand extended across time, guiding you toward introspection, faith, love, and gratitude.</p>
+        <p>Reading <i>Letters to a Young Poet</i> was profoundly calming. It’s the kind of book you underline, re-read, and let change you. Rilke reminds us to find beauty in solitude, to seek depth in the ordinary, and to reset our worldview toward something gentler, more patient, and more grateful.</p>
+        <p>Though it’s written to an aspiring poet, this book is for anyone who needs a mental reset or a quiet companion in moments of doubt. Rilke’s words reach beyond the page and feel like they’re addressed to you directly, urging you to slow down, breathe, and trust the unfolding of your own life.</p>
+        <p>If you’ve ever felt restless, uncertain, or in need of clarity, let Rilke’s wisdom wash over you. This slim little book has the power to alter the way you carry yourself through the world.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/46199" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

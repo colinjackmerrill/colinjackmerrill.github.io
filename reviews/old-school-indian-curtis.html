@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Old School Indian is a thoughtful and distinctive debut, one where the voice carries you even when the plot does not fully come together.         Abe Jacob">
+  <title>Old School Indian by Aaron John Curtis - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Old School Indian</h1>
+      <p class="review-author">Aaron John Curtis</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read November 21, 2025</span></p>
+      <div class="review-body">
+        <p>Old School Indian is a thoughtful and distinctive debut, one where the voice carries you even when the plot does not fully come together.</p>
+        <p>Abe Jacobs, a forty-three-year-old Mohawk man, returns to his reservation for a traditional healing while facing a serious illness. The trip forces him to confront his past, his family, his relationships, and the identity he has kept at a distance for decades. Curtis gives Abe a sharp, funny, restless narrative style that hooked me right away. Even when the story wandered, the voice stayed engaging. The presence of his alter-ego, Dominick Deer Woods, adds an extra layer of texture. Curtis is fearless in the way he plays with structure, memory, and tone, and that inventive approach is one of the book’s strongest qualities.</p>
+        <p>The plot itself felt scattered. Abe comes home because he is dying and hoping his great uncle can help, but the novel spends much of its time inside Abe’s head as he revisits past relationships, especially his marriage to Alex. That focus sometimes made the forward momentum feel thin. Still, Curtis brings a vivid sense of culture, history, and emotional tension to the page. The humor and linguistic playfulness kept the reading experience enjoyable even when the story felt uneven.</p>
+        <p>The novel tackles big themes with sincerity: generational trauma, belonging, and what it means to come home after years away. The cultural grounding and emotional transparency give the story its force, even when the structure wobbles.</p>
+        <p>Overall, I am glad I read it, but it is not one I am rushing to recommend. For me it landed at a solid 3 out of 5 stars. Curtis has an incredible voice and a willingness to take creative risks, and I will definitely be curious to see what he writes next.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/208580741" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

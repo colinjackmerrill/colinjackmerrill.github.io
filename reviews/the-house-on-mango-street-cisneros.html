@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="&amp;quot;There beneath the roots of soggy flowers were the bones of murdered pirates and dinosaurs, the eye of a unicorn turned to coal.&amp;quot;         The Hou">
+  <title>The House on Mango Street by Sandra Cisneros - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The House on Mango Street</h1>
+      <p class="review-author">Sandra Cisneros</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read January 29, 2026</span></p>
+      <div class="review-body">
+        <p>&quot;There beneath the roots of soggy flowers were the bones of murdered pirates and dinosaurs, the eye of a unicorn turned to coal.&quot;</p>
+        <p>The House on Mango Street follows Esperanza, a young Latina girl growing up in a poor Chicago neighborhood, as she observes her family, her neighbors, and herself through a series of short, lyrical vignettes. Rather than a traditional plot, the book unfolds as a collage of moments, memories, and impressions, reading less like a conventional novel and more like poetry in prose.</p>
+        <p>Though the short chapters are loosely connected, they share a consistent tone and a powerful emotional throughline: yearning.</p>
+        <p>Esperanza longs for escape, for autonomy, for a room of her own and a future that does not simply repeat the lives of the women around her. Cisneros captures this with remarkable impact. A single page can carry the weight of an entire coming-of-age story, using fragments to build a deeply felt portrait of identity and place.</p>
+        <p>Within the landscape of modern classics, this sits comfortably alongside works like Autobiography of Red by Anne Carson or Bluets by Maggie Nelson, books that blur genre and prioritize voice, mood, and emotional truth over conventional structure.</p>
+        <p>This is a book for readers who are open to nontraditional storytelling and who enjoy literature driven by atmosphere rather than plot. It is especially good if you are in a reflective, quietly melancholic mood, or if you want something that can be read slowly, vignette by vignette. Cisneros gives a vivid sense of what it may have felt like to grow up impoverished and Hispanic in that time and place, without flattening her characters into symbols. Even when Esperanza observes pain, she does so with tenderness and clarity. Some of the most striking moments come from Esperanza’s unfiltered despair, like in this beautiful but devastating passage:</p>
+        <p>“I read somewhere in India there are priests who can will their heart to stop beating. I wanted to will my blood to stop, my heart to quit its pumping. I wanted to be dead, to turn into the rain, my eyes melt into the ground like two black snails. I wished and wished.”</p>
+        <p>The House on Mango Street helped expand what counted as a “novel” in American literature and made space for voices and lives long pushed to the margins. It is an emotionally resonant book that proves you do not need length or narrative complexity to leave a lasting mark.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/18904302" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="A dead underachiever justifying his pathetic life? Right up my alley.         Machado de Assis was so ahead of his time that this 1881 novel, written in th">
+  <title>The Posthumous Memoirs of Brás Cubas by Machado de Assis - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Posthumous Memoirs of Brás Cubas</h1>
+      <p class="review-author">Machado de Assis</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read August 25, 2025</span></p>
+      <div class="review-body">
+        <p>A dead underachiever justifying his pathetic life? Right up my alley.</p>
+        <p>Machado de Assis was so ahead of his time that this 1881 novel, written in the age of literary realism, reads as if it were modern or even postmodern. His bold, groundbreaking style brims with playful irony and formal experimentation, gleefully breaking with tradition. The story isn’t linear; it jumps, digresses, mocks itself, and even interrupts the reader.</p>
+        <p>This should be required reading for anyone who loves the classics and wants to see the roots of later experimental fiction. I loved its themes: the liberation of death, the futility of ambition, the absurdity of life. At a time when most literature exalted heroes and great deeds, Assis dared to give us the anti-heroic memoir of a man who accomplished nothing.</p>
+        <p>And the cherry on top? After narrating his countless failings, Brás Cubas claims one great victory, but I won’t spoil it. You’ll have to read this strange, brilliant masterpiece to find out.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/87262" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="“Sometimes the stories we tell ourselves about family are truer than the ones we live.”         Patrick Ryan’s Buckeye is both sprawling and intimate, like">
+  <title>Buckeye by Patrick Ryan - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Buckeye</h1>
+      <p class="review-author">Patrick Ryan</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read October 3, 2025</span></p>
+      <div class="review-body">
+        <p>“Sometimes the stories we tell ourselves about family are truer than the ones we live.”</p>
+        <p>Patrick Ryan’s <i>Buckeye</i> is both sprawling and intimate, like sitting down with someone’s entire family history and realizing it’s also, somehow, your own.</p>
+        <p>The scope is epic: parents, kids, generations crossing paths, secrets kept and unearthed. Ryan shows how family legacies ripple outward and inward, shaping children long before they understand the weight of what’s been passed down.</p>
+        <p>The novel’s straightforward prose strikes emotional chords that sneak up on you. One moment you’re reading along easily; the next you’re gutted by a line that rings with truth. Ryan captures the everyday ache of being human: the longing to be seen, the fragility of connection, the small moments where ordinary life becomes extraordinary.</p>
+        <p><i>Buckeye</i> belongs on the shelf beside Elizabeth Strout and Ann Patchett. Like them, Ryan blends clean prose, deeply drawn characters, and an emotional core that cuts across age, gender, and background. He reminds us that “family drama” isn’t small—it’s the stage where our most universal struggles play out.</p>
+        <p>If I had to sum it up: <i>Buckeye</i> is a novel about the human condition in all its contradictions—loneliness and intimacy, fear and bravery, disappointment and love. For that reason, I’d recommend it widely. It’s a novel that makes you feel, and no matter who you are, there’s a good chance you’ll find a piece of yourself in it.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/221251828" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Atonement is a literary novel about love, guilt, and the consequences of a single misunderstanding, set against the backdrop of pre- and post-World War II ">
+  <title>Atonement by Ian McEwan - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Atonement</h1>
+      <p class="review-author">Ian McEwan</p>
+      <p class="review-meta"><span class="review-rating">★★☆☆☆</span> <span class="review-date">Read February 14, 2026</span></p>
+      <div class="review-body">
+        <p>Atonement is a literary novel about love, guilt, and the consequences of a single misunderstanding, set against the backdrop of pre- and post-World War II England.</p>
+        <p>It may appeal to readers who enjoy richly detailed settings, intricate social dynamics, and stories that explore moral complexity. McEwan’s writing is precise and elegant, and the novel is widely praised for its carefully structured narrative and its deep exploration of memory and the weight of past mistakes.</p>
+        <p>For me, however, it didn’t land. The story moved slowly in a way that felt tedious rather than immersive, and I struggled to connect with the characters or feel the tension of the central drama. While the descriptions of the English countryside and social hierarchy were beautiful, they didn’t draw me in emotionally. I can understand why the book is so highly regarded, but to me, the story felt dull, and I never quite got swept up in the narrative the way many readers do.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/6867" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

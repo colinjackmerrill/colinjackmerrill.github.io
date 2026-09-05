@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="I just finished Vineland and I have to admit that I struggled with it. The novel is often described as Pynchon’s “easiest” or “lightest” work, but I still ">
+  <title>Vineland by Thomas Pynchon - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Vineland</h1>
+      <p class="review-author">Thomas Pynchon</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read October 2, 2025</span></p>
+      <div class="review-body">
+        <p>I just finished Vineland and I have to admit that I struggled with it. The novel is often described as Pynchon’s “easiest” or “lightest” work, but I still found myself lost in its endless digressions, packed with jokes, side characters, and TV references. Supposedly stoner-hilarious, but for me, it felt more like noise than comedy.</p>
+        <p>Still, once I zoom out, I can see the shape of the story. At its heart, Vineland is about the fallout of the 1960s counterculture as it runs headlong into the paranoia and repression of 1980s America. A teenage girl tries to learn the truth about her absent mother, a hippie dad just wants to keep life together in northern California, and a slick government man symbolizes the creeping fascism that turns rebellion into sellout. The personal story mirrors the political one: what happens when a generation that promised freedom ends up fractured, compromised, or bought off?</p>
+        <p>Reading it feels less like following a plot and more like channel-surfing a strange late-night cable feed. You’ll stumble across:<br>	•	a man who annually has to jump through a plate-glass window to keep collecting his government check,<br>	•	ghostlike “Thanatoids” who mostly sit around watching television in a kind of limbo,<br>	•	meandering riffs on martial arts movies, Ronald Reagan, FBI surveillance, and stoner culture,<br>	•	and sentences so packed with pop culture references they almost collapse under their own weight.</p>
+        <p>If you vibe with that kaleidoscopic style, the novel can be a blast — equal parts satire, elegy, and absurdist cartoon. If not, it can feel like a haze you’re waiting to clear.</p>
+        <p>For me, Vineland didn’t quite resonate. But I can appreciate the big picture: a paranoid, goofy, sometimes moving look at how the dreams of the ‘60s dissolved into the neon glow of the ‘80s.</p>
+        <p>2.5/5 rounded up because it’s not for me, but I can see why it’s beloved by Pynchon fans.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/59721" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

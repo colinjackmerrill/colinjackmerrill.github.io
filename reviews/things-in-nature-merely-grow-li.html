@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Things in Nature Merely Grow will absolutely crush you, but in the best possible way. Yiyun Li writes with a clarity that both comforts and unsettles: this">
+  <title>Things in Nature Merely Grow by Yiyun Li - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Things in Nature Merely Grow</h1>
+      <p class="review-author">Yiyun Li</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read September 28, 2025</span></p>
+      <div class="review-body">
+        <p><i>Things in Nature Merely Grow</i> will absolutely crush you, but in the best possible way. Yiyun Li writes with a clarity that both comforts and unsettles: this is not consolation, it’s confrontation.</p>
+        <p>Reading this book is like being invited into the deepest corners of what it means to live when much of your world has already ended. Li’s insights into suicide are staggering—what it isn’t, what it is, and all the ways our language fails to capture it. And her reflections on parenthood? Heartbreaking, necessary. She teaches us that love doesn’t always protect, that understanding may be more important than loving in the way we expect, and that grief is not a process with a finish line.</p>
+        <p>Li doesn’t write this book about grief’s ending. She writes it about the ongoing presence of loss and how love, memory, and identity persist even when lives have been lost. She holds onto facts, gestures, and moments that aren’t just remembrances but assertions of what continues, that her children are, in some way, still with her.</p>
+        <p>If you pick this up expecting easy comfort, you won’t find it. But if you’re ready to be challenged, to feel deeply, to have your assumptions about life and death turned inside out, this is one of those rare books that will stay with you. Heavy, yes. Real. And in its honesty, strangely life-affirming.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/221164555" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

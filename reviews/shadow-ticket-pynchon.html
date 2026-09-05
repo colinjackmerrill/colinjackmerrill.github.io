@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="I went into Shadow Ticket with high hopes. I’m glad to say I had fun with it!         Milwaukee, 1932. Private-eye Hicks McTaggart thinks he’s found stabil">
+  <title>Shadow Ticket by Thomas Pynchon - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Shadow Ticket</h1>
+      <p class="review-author">Thomas Pynchon</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read November 7, 2025</span></p>
+      <div class="review-body">
+        <p>I went into Shadow Ticket with high hopes. I’m glad to say I had fun with it!</p>
+        <p>Milwaukee, 1932. Private-eye Hicks McTaggart thinks he’s found stability and job security until he’s assigned to track down the heiress of a Wisconsin cheese fortune who’s wandered off. The search goes transatlantic, and Hicks ends up in Hungary, chasing more than a missing woman while crossing paths with Nazis, Soviet agents, British spies, outlaw bikers, jazz musicians, and paranormal knacksters.</p>
+        <p>On the surface, it’s a rollicking detective caper full of absurd turns and vintage style. Beneath that playful shell lies Pynchon’s continuing obsession with unraveling the myth of individual agency in the face of sprawling systems like capitalism, fascism, and espionage. The detective doesn’t so much solve the case as drift through it while the ground gives way beneath him, suggesting that knowledge accumulates faster than meaning. In our current state of global disinformation, rising authoritarianism, and bizarre conspiracies, Hicks’s Lindy-hop through chaos feels oddly timely. He’s not heroic; he’s just trying not to trip. Character-wise, Hicks is unique and likable. His past as a strikebreaker and his moral unease are there, but the focus remains more on the world around him than on his inner life.</p>
+        <p>As for the title: a “ticket” refers to a case assignment given to a gumshoe, or his reason to exist within the system. The “shadow” part echoes both the literal noir tone and a historical reference to Hungary’s so-called “shadow region,” an area caught between empires and ideologies. Together, Shadow Ticket hints at a mission through murky borders, where the line between reality and paranoia blurs and even one’s sense of purpose becomes suspect.</p>
+        <p>This is vintage Pynchon: secret organizations, weird phenomena, song lyrics tucked into dialogue, conspiracies riffing into absurdity. It feels like Pynchon having fun while still keeping his thematic backbone intact. Whether you rank Shadow Ticket among his best or not, it’s a reminder that no one else writes like him.</p>
+        <p>Of course, there’s plenty here to please longtime Pynch-heads, but die-hards may feel the darker depths of paranoia and the labyrinthine digressions of earlier years are slightly muted. If you wanted another Gravity’s Rainbow or expected Pynchon to reinvent himself entirely, you might come away disappointed.</p>
+        <p>If you’re in the mood for something joyously eccentric, richly layered with historical oddities, jazzy detective drama, and cheese conspiracies, this book delivers. It’s buoyant, imaginative, and full of sentences that make you grin mid-page. The pacing moves from a smooth detective-lounge opening into a free-fall of conjured locations and surreal shifts. Don’t expect a steady gear change...expect a tumble!</p>
+        <p>A small PSA for those new to Pynchon: if you’re expecting tight plotting, deeply defined characters, or a firm central message, you might get frustrated. Sometimes the weirdness overwhelms coherence, but remember, feeling untethered is half the fun!</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/230910361" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

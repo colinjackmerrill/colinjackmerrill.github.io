@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Tomorrow, and Tomorrow, and Tomorrow surpassed all my expectations with the depth of its characters and its beautiful motifs in real and virtual worlds.  I">
+  <title>Tomorrow, and Tomorrow, and Tomorrow by Gabrielle Zevin - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Tomorrow, and Tomorrow, and Tomorrow</h1>
+      <p class="review-author">Gabrielle Zevin</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read August 16, 2022</span></p>
+      <div class="review-body">
+        <p><i>Tomorrow, and Tomorrow, and Tomorrow</i> surpassed all my expectations with the depth of its characters and its beautiful motifs in real and virtual worlds.  It&#x27;s a captivating study of how passions in life and relationships affect each other. Zevin manages to weave nostalgia and tangible emotion into a dazzling story while offering insights into a wide range of social issues.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/58784475" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

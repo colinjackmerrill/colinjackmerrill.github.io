@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Concrete is a funny, claustrophobic monologue about a man who cannot begin the book he believes will justify his existence.         Rudolf, a reclusive Vie">
+  <title>Concrete by Thomas Bernhard - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Concrete</h1>
+      <p class="review-author">Thomas Bernhard</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read February 17, 2026</span></p>
+      <div class="review-body">
+        <p>Concrete is a funny, claustrophobic monologue about a man who cannot begin the book he believes will justify his existence.</p>
+        <p>Rudolf, a reclusive Viennese musicologist, has been “about to” write his definitive study of Mendelssohn for years. Instead of writing he rambles on and on about his domineering sister, his lung disease, the stupidity of society, the impossibility of concentration, the catastrophe of other people. The delightful irony is that the book we are reading is, in fact, the masterpiece he cannot write.</p>
+        <p>Sure, the way Bernhard weaponizes repetition here is monotonous by design and can be suffocatingly interior. But, the relentless looping morphs into comedy, and in my opinion, if you appreciate the humor of authors like Beckett, this will likely be right up your alley.</p>
+        <p>The bottom line is that you don’t read Concrete for plot, you read it for Rudolf’s voice and to inhabit a mind that is eroding itself in real time.</p>
+        <p>For me, it’s a strong 4/5. A novel about NOT writing, that’s razor-sharp, disturbingly funny, and in many moments brilliant.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/19658106" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

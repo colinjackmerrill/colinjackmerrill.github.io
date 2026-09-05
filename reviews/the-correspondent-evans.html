@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="&amp;quot;You get the one life. It&amp;#x27;s awfully unfair, isn&amp;#x27;t it?&amp;quot;         If you&amp;#x27;ve ever felt the weight that life is too short and too long ">
+  <title>The Correspondent by Virginia      Evans - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Correspondent</h1>
+      <p class="review-author">Virginia      Evans</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read February 1, 2026</span></p>
+      <div class="review-body">
+        <p>&quot;You get the one life. It&#x27;s awfully unfair, isn&#x27;t it?&quot;</p>
+        <p>If you&#x27;ve ever felt the weight that life is too short and too long all at once, Virginia Evans has written a book that will sit with you for a very long time.</p>
+        <p>The Correspondent is the story of Sybil, a retired 73-year-old who has built her life around letters. Every morning she writes. She sends letters to her brother, her best friend, to authors (Joan Didion, Larry McMurtry, Ann Patchett!) to tell them what she thinks of their latest books, and to one person to whom she writes often but never sends the letter. Through her correspondences, we piece together a life shaped by love, grief, and regret. When letters from someone in Sybil&#x27;s past force her to confront the loss of her young son Gilbert, she begins to realize that the unsent letter she&#x27;s been composing for years may finally need to be read.</p>
+        <p>The novel is told entirely in letters and the occasional email. There is no narrator, no traditional scenes, no dialogue, and yet Evans manages to avoid gimmick territory entirely. That&#x27;s largely because of Sybil herself, who is sharp-tongued, opinionated, sometimes maddeningly stubborn, and underneath it all, deeply wounded. By the end you don&#x27;t feel like you&#x27;ve read a novel. You feel like you&#x27;ve gone through someone&#x27;s private mail and come out knowing them better than most people in their life do.</p>
+        <p>You spend the whole book playing detective, assembling Sybil&#x27;s story from scattered puzzle pieces, and that gradual reveal is one of the book&#x27;s greatest pleasures. Her character development is equally rewarding. She begins as someone who seems fully formed and prickly, but letter by letter, Evans peels back those layers to reveal the grief and loneliness she&#x27;s been papering over with eloquence and propriety.</p>
+        <p>Fair warning: the epistolary format can feel disjointed if you prefer linear, plot-driven storytelling. But this book rewards patience. In the landscape of modern fiction, it occupies a lovely, slightly old-fashioned space, and it&#x27;s all the better for it.</p>
+        <p>I gave this 5/5 stars because it is highly entertaining and enjoyable character-driven fiction that convinced me that even a quiet story about an ordinary woman can be every bit as profound as an epic. If you&#x27;re in the mood to slow down or you need to be reminded that it&#x27;s never too late to say the thing you&#x27;ve been meaning to say, you should read it!</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/223001257" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

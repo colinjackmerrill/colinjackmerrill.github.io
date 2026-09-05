@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="A Canticle for Leibowitz is a classic dystopian science fiction novel often praised for its ambition, philosophical depth, and originality.         The boo">
+  <title>A Canticle for Leibowitz by Walter M. Miller Jr. - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>A Canticle for Leibowitz</h1>
+      <p class="review-author">Walter M. Miller Jr.</p>
+      <p class="review-meta"><span class="review-rating">★★☆☆☆</span> <span class="review-date">Read December 27, 2025</span></p>
+      <div class="review-body">
+        <p>A Canticle for Leibowitz is a classic dystopian science fiction novel often praised for its ambition, philosophical depth, and originality.</p>
+        <p>The book is set in a post-apocalyptic future following a devastating nuclear war. Civilization has collapsed, and much of human knowledge has been lost or deliberately destroyed. Centuries later, a Catholic monastic order dedicates itself to preserving scraps of scientific and philosophical knowledge.</p>
+        <p>The book&#x27;s central idea, knowledge preserved without understanding, is clever and memorable. Plus, the novel was ahead of its time in imagining nuclear annihilation as a recurring historical pattern rather than a one-time warning. In that sense, it feels comparable to Foundation (full transparency: I&#x27;ve only seen the Foundation series), another work more interested in systems and ideas than in individual characters.</p>
+        <p>So, right off the bat, I can say that the book immediately struck me as ambitious, philosophical, and original. So far, so good.</p>
+        <p>But, then the reader encounters the first major hurdle: structure. The book is divided into three sections, set hundreds of years apart, tracing humanity’s slow climb back toward technological advancement. I tried to remain emotionally invested as each section introduced an almost entirely new cast. But, rather than feeling like a sweeping generational saga, it felt more like a series of loosely connected philosophical vignettes.</p>
+        <p>Another challenge is the characters. The monks, in particular, blurred together for me, and much of the book reads as extended scholarly rambling. Yes, this is partly intentional, but it made large stretches feel static and difficult to engage with.</p>
+        <p>I couldn&#x27;t help but compare the book to other dystopian novels like 1984, The Road, or Brave New World. Unfortunately, I found A Canticle for Leibowitz&#x27;s apocalypse to be less compelling because it is mostly intellectualized rather than viscerally experienced, and the sense of emotional urgency felt muted. Though Miller is clearly interested in big concepts like faith versus reason and cyclical history, the story often tells about these themes instead of letting the reader feel them through character-driven stakes.</p>
+        <p>Even though I&#x27;m not the most avid science fiction reader, I had hoped I could still really get into A Canticle for Leibowitz. The harsh truth is that I appreciate what Miller is trying to do, and I found the central concept really interesting, but the execution did not work for me. Miller’s clean prose suits the material, but its dryness did little to pull me along. Combined with the slow pacing, the book often felt distant, meandering, and longer than it is.</p>
+        <p>I think I can confidently say that there are probably more ideal readers out there that Miller was targeting with this novel. Those who love idea-driven science fiction, religious allegory, and long-view historical speculation will find a lot to admire here.</p>
+        <p>But, still, I offer a warning to the average/casual reader-- don&#x27;t pick up A Canticle for Leibowitz and expect to find a gripping dystopia with strong character development.</p>
+        <p>2.5/5 Stars</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/164154" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

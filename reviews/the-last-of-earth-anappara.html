@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Thank you to Random House and NetGalley for the opportunity to read and review the e-ARC of The Last of Earth. All opinions are my own.         The Last of">
+  <title>The Last of Earth by Deepa Anappara - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Last of Earth</h1>
+      <p class="review-author">Deepa Anappara</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read January 20, 2026</span></p>
+      <div class="review-body">
+        <p>Thank you to Random House and NetGalley for the opportunity to read and review the e-ARC of The Last of Earth. All opinions are my own.</p>
+        <p>The Last of Earth is an introspective novel that explores grief, guilt, and ghosts. It unfolds through a dual narrative, following a man and a woman navigating loss from very different social and cultural positions.</p>
+        <p>The dual perspectives are one of the book’s strongest elements. The parallel storylines add contrast and allow the novel to examine its themes from both a male and female point of view. Memories, past selves, and unresolved losses form the ghosts that haunt the characters across both narratives, shaping how each moves through the world. This structure is compelling, especially in how it highlights the different ways loss is shaped by social position and personal history.</p>
+        <p>I also appreciated how much I learned about Tibetan culture through this novel. The cultural details add a richness that elevates the book beyond a standard grief narrative.</p>
+        <p>Personally, the novel’s pacing tested my patience. The narrative unfolds slowly, and while I appreciated the depth of interior reflection given to both main characters, the momentum often stalled. Although there was little about this novel that I actively disliked, the read felt longer than it actually is, and I sometimes struggled to stay engaged.</p>
+        <p>Overall, The Last of Earth struck me as a slightly above average literary novel that is thoughtful, well written, and thematically ambitious, but not one I am rushing to recommend widely. That said, it may be a rewarding read for those who value slower paced novels focused on mood, introspection, and thematic depth over narrative drive.</p>
+        <p>3.25/5 Stars</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/231363155" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

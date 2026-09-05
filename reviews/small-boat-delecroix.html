@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Small Boat is one of those books that feels both fascinating and painful to read. I was struck by how deeply the author lets the reader inside the narrator">
+  <title>Small Boat by Vincent Delecroix - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Small Boat</h1>
+      <p class="review-author">Vincent Delecroix</p>
+      <p class="review-meta"><span class="review-rating">★★★★★</span> <span class="review-date">Read November 21, 2025</span></p>
+      <div class="review-body">
+        <p>Small Boat is one of those books that feels both fascinating and painful to read. I was struck by how deeply the author lets the reader inside the narrator’s head. It is almost unsettling at times, like being trapped in someone else’s conscience while they try to make sense of their own moral failures.</p>
+        <p>While the story centers on a tragedy in the English Channel, it is just as much about the psychology of rescue work, guilt, and the impossible ethics of deciding who gets saved and who does not. The book returns again and again to the unbearable truth that sometimes, even when someone is watching, help simply does not come.</p>
+        <p>The writing is sharp, philosophical, and at times almost dreamlike. Some passages read like moral poetry, especially when the narrator reflects on the sea and it becomes a character: ancient, indifferent, and a witness to every failure of human decency.</p>
+        <p>What stayed with me most is how the book explores the gap between intention and action. The narrator wrestles with the idea that most people want to believe they would say the words I will save you, even if they never step into the water. One line I kept returning to: “What mattered was not that they were saved; it was that I should be saved, and the whole world with me, through these words.” It is such a painfully accurate portrait of how we soothe ourselves with the idea of our own goodness.</p>
+        <p>Another moment that hit hard: “Even with their eyes shut, people are still watching… the stage is blacked out… they see nothing, but are still present at the drama.” The book stares straight at the uncomfortable truth that it is easier to feel moral than to be moral.</p>
+        <p>Small Boat is difficult, but never gratuitous. It is meant to be uncomfortable. The writing is astonishing—lyrical but never romanticized, raw without slipping into despair. I am genuinely glad I read it. It is one of the most thought-provoking books I have picked up this year.</p>
+        <p>4.5 stars, rounded up.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/228394781" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

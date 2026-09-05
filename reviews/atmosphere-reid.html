@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="3.75 ⭐         Let’s start with the title: Atmosphere. At first it struck me as vague, maybe even lazy. But the more I thought about it, the more it clicke">
+  <title>Atmosphere by Taylor Jenkins Reid - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Atmosphere</h1>
+      <p class="review-author">Taylor Jenkins Reid</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read August 25, 2025</span></p>
+      <div class="review-body">
+        <p>3.75 ⭐</p>
+        <p>Let’s start with the title: <i>Atmosphere</i>. At first it struck me as vague, maybe even lazy. But the more I thought about it, the more it clicked. The title seems to work on two levels—the literal atmosphere an astronaut must break through, and the metaphorical atmosphere of fear, shame, and societal pressure the protagonist feels trapped in. Just as she must conquer her fear of space and risk her life, she must also risk everything to embrace love. That parallel gave the title more meaning for me.</p>
+        <p>Now, to the big question: Is this as good as <i>The Seven Husbands of Evelyn Hugo</i> or <i>Daisy Jones &amp; The Six</i>? For me, not quite. While there are some tense space-set moments, don’t expect a nonstop thrill ride. The real heart of the novel is in Reid’s character work, which is mostly excellent. Most of the main cast feels layered and real, though one slipped into caricature, and a couple of side characters were forgettable.</p>
+        <p>The 1980s setting works perfectly for exploring a “forbidden” romance, though the circumstances behind that romance stretched believability at times. Still, the emotional stakes carried the story.</p>
+        <p>In the end, <i>Atmosphere</i> delivers an engaging, character-driven story with flashes of Reid’s brilliance, even if it doesn’t soar to the heights of her best work.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/220817728" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

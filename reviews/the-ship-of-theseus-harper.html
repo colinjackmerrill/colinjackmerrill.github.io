@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Thanks to Garry Harper for the opportunity to read The Ship of Theseus (I read Version 0.1).         From projecttheseus.com:         “Just as Pablo chases">
+  <title>The Ship of Theseus by Garry  Harper - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Ship of Theseus</h1>
+      <p class="review-author">Garry  Harper</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read October 19, 2025</span></p>
+      <div class="review-body">
+        <p>Thanks to Garry Harper for the opportunity to read The Ship of Theseus (I read Version 0.1).</p>
+        <p>From projecttheseus.com:</p>
+        <p>“Just as Pablo chases perfection in his artwork, the novel itself will likewise continue to be refined and reimagined over time. Every few months, a new, free update will take the place of the last. Plot points may change, characters may come and go, the very form and structure altered and experimented upon. Each version is designed to stand alone, yet together they form a living, breathing work — gradually transforming into something completely different from where it all began.”</p>
+        <p>It’s a fascinating premise, though not what first drew me in. When I came across The Ship of Theseus, I completely missed its “evolution” aspect—I likely entered the giveaway because I’m a sucker for novels about artists, especially those on the verge of unraveling. I was very happy to win the free e-book :)</p>
+        <p>First off, Harper assumes the reader is familiar with the ancient thought experiment that asks whether an object that has had all its components replaced remains the same object. His protagonist, Pablo Navarre, embodies that paradox: a celebrated sculptor now jaded and cynical, riddled with imposter syndrome, desperate to break free from critics, collectors, and his own perfectionism. He wants to create the purest artistic representation of creation itself and, in doing so, reinvent himself.</p>
+        <p>There’s plenty here for readers drawn to meditations on identity, perfectionism, and the creative process. The novel oscillates between self-aware satire of the art world and moments of existential despair. Harper’s prose is sharp and playful, able to shift from sardonic to soulful in a single paragraph.</p>
+        <p>That said, Navarre’s reinvention feels somewhat limited. It hinges mainly on a few encounters with friends/colleagues, a homeless artist, and some drug-induced visions. There are brief flashes of emotional intimacy in his strained marriage to Jeanette, but it feels like Harper missed the boat (pun intended, haha) on exploring that realm more deeply. At times, I found myself unsure whether I empathized with Pablo at all. The bottom line: the art-world satire is biting and entertaining, but it occasionally overshadows the human drama.</p>
+        <p>Now, to address the elephant in the room: Harper’s plan to continually update the novel is ambitious, but is it practical? Or even necessary? It’s an inventive nod to the Ship of Theseus paradox, but I’m not yet convinced readers will feel compelled to revisit the book multiple times to track its transformations. Whether this ongoing reinvention enriches the experience or serves as a clever gimmick remains to be seen.</p>
+        <p>Final verdict: The Ship of Theseus kept me turning pages, even if it didn’t probe as deeply into Navarre’s core as I hoped. For me, his personal evolution doesn’t quite mirror the meta-reinvention of the novel itself (at least not yet) but that might change in future versions. As a first iteration, this is a promising, thought-provoking start that raises more questions than it answers.</p>
+        <p>3.5 / 5 stars, rounded up.<br></p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/240497623" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

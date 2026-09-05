@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="I went into Death Comes for the Archbishop not knowing what to expect—the title felt dramatic, but the story is anything but. It’s a slow-paced, reflective">
+  <title>Death Comes for the Archbishop by Willa Cather - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Death Comes for the Archbishop</h1>
+      <p class="review-author">Willa Cather</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read July 27, 2025</span></p>
+      <div class="review-body">
+        <p>I went into <i>Death Comes for the Archbishop</i> not knowing what to expect—the title felt dramatic, but the story is anything but. It’s a slow-paced, reflective, and quietly emotional novel about a life of service and faith in the American Southwest.</p>
+        <p>Cather follows Father Jean Marie Latour as he arrives in New Mexico in 1851 to serve as Apostolic Vicar. Over nearly forty years, he navigates a vast, unforgiving landscape shaped by Mexican and Indigenous traditions, spreading his faith gently and persistently.</p>
+        <p>Rather than focusing on conflict, the novel offers a meditative portrait of a changing region and a man shaped by it. It reminded me of <i>Lonesome Dove</i> in its attention to the frontier, though this story centers more on spirituality than adventure. Thoughtful and beautifully written, it’s a classic worth reading.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/545951" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

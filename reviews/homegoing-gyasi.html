@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Let&amp;#x27;s balance out all those 5 star reviews a little bit-- Homegoing is overrated for what it is.         That&amp;#x27;s not to say that there aren&amp;#x27;t">
+  <title>Homegoing by Yaa Gyasi - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Homegoing</h1>
+      <p class="review-author">Yaa Gyasi</p>
+      <p class="review-meta"><span class="review-rating">★★☆☆☆</span> <span class="review-date">Read February 27, 2025</span></p>
+      <div class="review-body">
+        <p>Let&#x27;s balance out all those 5 star reviews a little bit-- <i>Homegoing</i> is overrated for what it is.</p>
+        <p>That&#x27;s not to say that there aren&#x27;t some interesting narrative threads, but it feels like some get lost, some don&#x27;t belong, and those that remain struggle to form themselves into a cohesive tapestry.</p>
+        <p>Unfortunately, this leads one to conclude that Gyasi was overambitious-- there is too much going on here, too many characters, too many years covered.  At it&#x27;s core, <i>Homegoing</i> contains  wonderful themes and messages, but they are detracted from by an attempt to write the next great epic, in which the execution is lacking.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/27071490" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

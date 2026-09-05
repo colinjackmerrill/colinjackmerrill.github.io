@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="“We’re forced into absurd lives, against which the only sane response is to wage a guerrilla operation of humour and lust and madness.”         Post Office">
+  <title>Post Office by Charles Bukowski - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>Post Office</h1>
+      <p class="review-author">Charles Bukowski</p>
+      <p class="review-meta"><span class="review-rating">★★★★☆</span> <span class="review-date">Read February 7, 2026</span></p>
+      <div class="review-body">
+        <p>“We’re forced into absurd lives, against which the only sane response is to wage a guerrilla operation of humour and lust and madness.”</p>
+        <p>Post Office follows Henry Chinaski, Charles Bukowski’s alter ego, as he drifts into a job at the U.S. Postal Service and stays just long enough to watch the grind hollow everything out. The novel turns shift work, hangovers, failed relationships, and bureaucratic absurdity into something surprisingly hard to put down.</p>
+        <p>Chinaski is endlessly watchable. The plot is loose and episodic, but the book moves fast because Bukowski never lingers where another writer might search for meaning. His prose is stripped down, mercilessly direct, and funny in a bleak, shrugging way.</p>
+        <p>Post Office feels like the natural companion to Ham on Rye, which shows how Chinaski was made. Post Office shows what happens after -- adulthood as endurance test. I think Ham on Rye barely comes out on top for me, but they succeed for completely different reasons.</p>
+        <p>As a modern cult classic, Post Office earns its reputation through raw honesty and a refusal to romanticize work or ambition. It captures the soul-crushing repetition of bureaucracy with sharp humor. Undoubtedly though, Bukowski’s abrasive worldview and deliberately crude voice will absolutely turn some readers away.</p>
+        <p>This lands at a solid 4/5 stars. It’s a book for when you want something cynical, funny, and brutally honest about work and survival, and don’t mind if it laughs at you along the way.</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/59034082" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>

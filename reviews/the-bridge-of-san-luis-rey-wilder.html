@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Written in 1927, The Bridge of San Luis Rey reflects Wilder’s interest in medieval morality plays, classical tragedy, and Catholic and Stoic moral philosop">
+  <title>The Bridge of San Luis Rey by Thornton Wilder - Colin Merrill</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" class="site-title">
+    Colin Merrill
+    <svg width="20" height="18" viewBox="0 0 40 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4 C20 4 12 2 4 4 L4 32 C12 30 20 32 20 32"/>
+      <path d="M20 4 C20 4 28 2 36 4 L36 32 C28 30 20 32 20 32"/>
+      <line x1="20" y1="4" x2="20" y2="32"/>
+    </svg>
+  </a>
+</header>
+
+  <main class="review-page">
+    <p class="review-back"><a href="/book-reviews.html">Book Reviews</a></p>
+    <article>
+      <h1>The Bridge of San Luis Rey</h1>
+      <p class="review-author">Thornton Wilder</p>
+      <p class="review-meta"><span class="review-rating">★★★☆☆</span> <span class="review-date">Read January 16, 2026</span></p>
+      <div class="review-body">
+        <p>Written in 1927, The Bridge of San Luis Rey reflects Wilder’s interest in medieval morality plays, classical tragedy, and Catholic and Stoic moral philosophy.</p>
+        <p>The novel begins with a sudden tragedy and follows a priest who attempts to understand whether human lives are governed by fate or by chance. In pursuing this question, the book examines the lives of several interconnected characters.</p>
+        <p>Structurally, it often feels like Wilder reverse-engineered a philosophical problem and then built a series of short character studies around it. That approach didn’t fully work for me. Still, the novel is doing more than staging a simple fate-versus-chance debate. Beneath the surface, it argues that the meaning of a life cannot be measured by logic, morality, or outcome.</p>
+        <p>Wilder is especially interested in misdirected love. The relationships he portrays are often obsessive, performative, or unbalanced, revealing how devotion can become isolating rather than sustaining.</p>
+        <p>I didn’t personally connect with the tone or the prose, which felt distant and deliberately allegorical. At times it read more like a collection of moral tales than a fully immersive novel.</p>
+        <p>The book ultimately offers a clear spiritual conclusion about love and meaning. While I understand what Wilder is reaching for, the novel didn’t convince me emotionally.</p>
+        <p>That said, it’s easy to see why The Bridge of San Luis Rey resonated with readers in its time. In the aftermath of World War I, it offered reassurance that even random loss could be reconciled with meaning, without relying on punishment or moral accounting.</p>
+        <p>In that sense, it feels less like a novel and more like a spiritual artifact of its moment.</p>
+        <p>2.5/5 ⭐️</p>
+      </div>
+      <p class="review-source"><a href="https://www.goodreads.com/book/show/92508" rel="nofollow">This book on Goodreads</a></p>
+    </article>
+  </main>
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      const link = document.getElementById('footer-main-link');
+      if (window.location.pathname === '/about.html' || window.location.pathname === '/about') {
+        link.textContent = 'Home';
+        link.href = '/';
+      }
+    });
+</script>
+
+</body>
+</html>
